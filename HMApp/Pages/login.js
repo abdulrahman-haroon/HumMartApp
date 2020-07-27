@@ -7,32 +7,44 @@ import {
   Image,
   ActivityIndicator,
   Button,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import FlatButton from "../styles/button";
 
 export default function Login() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle}>
-        We will send a SMS with a confirmation code to the number
-      </Text>
-      <View style={styles.textInputStyle}>
-        <TextInput
-          style={styles.tiStyle1}
-          placeholder="+92"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.tiStyle2}
-          placeholder="Mobile"
-          keyboardType="numeric"
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Text style={styles.textStyle}>
+          We will send a SMS with a confirmation code to the number
+        </Text>
+        <View style={styles.textInputStyle}>
+          <View style={{ paddingRight: 10 }}>
+            <TextInput
+              style={styles.tiStyle1}
+              placeholder="+92"
+              keyboardType="numeric"
+              editable={false}
+              placeholderTextColor="black"
+            />
+          </View>
+          <View>
+            <TextInput
+              style={styles.tiStyle2}
+              placeholder="Mobile"
+              keyboardType="numeric"
+            />
+          </View>
+        </View>
+        <FlatButton
+          text="next"
+          onPress={() => console.log("Next button is pressed check")}
         />
       </View>
-
-      <View style={styles.buttonStyle}>
-        <Button color="black" title="NEXT" />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 const styles = StyleSheet.create({
@@ -44,24 +56,25 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   textStyle: {
-    padding: 30,
+    paddingTop: 15,
+    paddingLeft: 40,
+    paddingRight: 40,
+    paddingBottom: 10,
     fontSize: 18,
     color: "gray",
     textAlign: "center",
-  },
-  buttonStyle: {
-    padding: 20,
+    fontFamily: "sans-serif-thin",
   },
   tiStyle1: {
-    height: 40,
-    width: 50,
     color: "black",
+    borderBottomWidth: 2,
   },
   tiStyle2: {
-    height: 40,
-    width: 50,
+    color: "black",
+    borderBottomWidth: 2,
   },
   textInputStyle: {
     flexDirection: "row",
+    paddingBottom: 20,
   },
 });

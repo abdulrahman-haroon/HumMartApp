@@ -8,7 +8,10 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-function WelcomeLoad() {
+function WelcomeLoad({ navigation }) {
+  setTimeout(() => {
+    navigation.replace("Drawer");
+  }, 1500);
   return (
     <View style={styles.container}>
       <View style={styles.containerImg}>
