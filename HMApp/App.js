@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,7 +6,12 @@ import {
   StatusBar,
   Image,
   ActivityIndicator,
+  Button,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -14,67 +19,84 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import WelcomeLoad from "./Pages/welcomeLoading";
 import Login from "./Pages/login";
 import Home from "./Pages/home";
+import Header from "./styles/header";
 
 const HomeStack = createStackNavigator();
-const HomeStackScreen = () => (
+const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator>
     <HomeStack.Screen
       options={{
         headerTitleAlign: "center",
         headerStyle: { backgroundColor: "#515151" },
         headerTitleStyle: { color: "white", fontFamily: "sans-serif-thin" },
+        headerTitle: () => <Header />,
+        headerLeft: () => (
+          <Entypo
+            name="menu"
+            size={24}
+            color="white"
+            style={{ paddingLeft: 15 }}
+            onPress={() => navigation.openDrawer()}
+          />
+        ),
+        headerRight: () => (
+          <FontAwesome5
+            name="shopping-cart"
+            size={24}
+            color="white"
+            style={{ paddingRight: 15 }}
+            onPress={() => console.log("Shopping cart is pressed.")}
+          />
+        ),
       }}
-      name="HumMart"
+      name="Home"
       component={Home}
     />
   </HomeStack.Navigator>
 );
 
 const LoginStack = createStackNavigator();
-const LoginStackScreen = () => (
+const LoginStackScreen = ({ navigation }) => (
   <LoginStack.Navigator>
     <LoginStack.Screen
       options={{
         headerTitleAlign: "center",
         headerStyle: { backgroundColor: "#515151" },
         headerTitleStyle: { color: "white", fontFamily: "sans-serif-thin" },
+        headerLeft: () => (
+          <AntDesign
+            name="close"
+            size={24}
+            color="white"
+            style={{ paddingLeft: 15 }}
+            onPress={() => navigation.goBack("Home")}
+          />
+        ),
       }}
       name="Login"
       component={Login}
     />
   </LoginStack.Navigator>
 );
-const Drawer = createDrawerNavigator();
-function DrawerRoutes() {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Welcome" component={HomeStackScreen} />
-      <Drawer.Screen name="Login" component={LoginStackScreen} />
-    </Drawer.Navigator>
-  );
-}
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  if (isLoading) {
+    return <WelcomeLoad />;
+  }
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="SplashScreen"
-          component={WelcomeLoad}
-        />
-        <Stack.Screen
-          options={{
-            headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#515151" },
-            headerTitleStyle: { color: "white", fontFamily: "sans-serif-thin" },
-            headerShown: false,
-          }}
-          name="Drawer"
-          component={DrawerRoutes}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Welcome" component={HomeStackScreen} />
+        <Drawer.Screen name="Login" component={LoginStackScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

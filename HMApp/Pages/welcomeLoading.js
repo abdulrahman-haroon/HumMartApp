@@ -9,9 +9,6 @@ import {
 } from "react-native";
 
 function WelcomeLoad({ navigation }) {
-  setTimeout(() => {
-    navigation.replace("Drawer");
-  }, 1500);
   return (
     <View style={styles.container}>
       <View style={styles.containerImg}>
@@ -26,6 +23,7 @@ function WelcomeLoad({ navigation }) {
         size="large"
         color="green"
       />
+      <StatusBar hidden />
     </View>
   );
 }
@@ -36,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-end",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   welcomeLoadingImageSize: {
     width: 300,
