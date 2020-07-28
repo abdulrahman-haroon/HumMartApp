@@ -16,6 +16,9 @@ import {
 } from "react-native";
 import FlatButton from "../styles/button";
 
+import fonts from "../styles/fonts";
+import color from "../styles/color";
+
 export default function Login() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -65,9 +68,9 @@ const styles = StyleSheet.create({
     paddingRight: 40,
     paddingBottom: 10,
     fontSize: 18,
-    color: "gray",
+    color: color.gray,
     textAlign: "center",
-    fontFamily: "sans-serif-thin",
+    fontFamily: fonts.sst,
   },
   tiStyle1: {
     color: "black",

@@ -16,11 +16,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import WelcomeLoad from "./Pages/welcomeLoading";
-import Login from "./Pages/login";
-import Home from "./Pages/home";
-import Header from "./styles/header";
+import WelcomeLoad from "./app/Pages/welcomeLoading";
+import Login from "./app/Pages/login";
+import Home from "./app/Pages/home";
+import Header from "./app/styles/header";
 
+import fonts from "./app/styles/fonts";
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator>
@@ -28,7 +29,7 @@ const HomeStackScreen = ({ navigation }) => (
       options={{
         headerTitleAlign: "center",
         headerStyle: { backgroundColor: "#515151" },
-        headerTitleStyle: { color: "white", fontFamily: "sans-serif-thin" },
+        headerTitleStyle: { color: "white", fontFamily: fonts.sst },
         headerTitle: () => <Header />,
         headerLeft: () => (
           <Entypo
@@ -62,7 +63,7 @@ const LoginStackScreen = ({ navigation }) => (
       options={{
         headerTitleAlign: "center",
         headerStyle: { backgroundColor: "#515151" },
-        headerTitleStyle: { color: "white", fontFamily: "sans-serif-thin" },
+        headerTitleStyle: { color: "white", fontFamily: fonts.sst },
         headerLeft: () => (
           <AntDesign
             name="close"
