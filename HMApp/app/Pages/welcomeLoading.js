@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-function WelcomeLoad({ navigation }) {
+function WelcomeLoad() {
   return (
     <View style={styles.container}>
       <View style={styles.containerImg}>

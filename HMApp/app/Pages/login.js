@@ -23,7 +23,6 @@ export default function Login() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        {/* <Modal visible={false}> */}
         <Text style={styles.textStyle}>
           We will send a SMS with a confirmation code to the number
         </Text>
@@ -49,7 +48,6 @@ export default function Login() {
           text="next"
           onPress={() => console.log("Next button is pressed check")}
         />
-        {/* </Modal> */}
       </View>
     </TouchableWithoutFeedback>
   );
