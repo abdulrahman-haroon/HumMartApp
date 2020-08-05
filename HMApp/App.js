@@ -16,9 +16,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import WelcomeLoad from "./app/Pages/welcomeLoading";
-import Login from "./app/Pages/login";
-import Home from "./app/Pages/home";
+import WelcomeLoad from "./app/Screens/welcomeLoading";
+import Login from "./app/Screens/login";
+import Home from "./app/Screens/home";
 import Header from "./app/styles/header";
 
 import fonts from "./app/styles/fonts";
