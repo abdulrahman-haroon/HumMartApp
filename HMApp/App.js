@@ -11,6 +11,7 @@ import {
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -22,6 +23,8 @@ import Home from "./app/Screens/home";
 import Header from "./app/styles/header";
 
 import fonts from "./app/styles/fonts";
+import Card from "./app/component/Card";
+
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator>
@@ -79,7 +82,64 @@ const LoginStackScreen = ({ navigation }) => (
     />
   </LoginStack.Navigator>
 );
-
+const CardStack = createStackNavigator();
+const CardStackScreen = ({ navigation }) => {
+  const cardSend = () => (
+    <Card
+      title="BUY brooke Bond Supreme Tea 910 gm GET Brooke Bond SUpreme Tea Hard Pack 90 gm FREE"
+      rating="4.5"
+      quantity="910 gm +90 gm"
+      price="Rs 885"
+      prevPrice="899"
+      image={require("./app/assets/Products/Tea/1.jpg")}
+    />
+  );
+  return (
+    <CardStack.Navigator>
+      <CardStack.Screen
+        name="Card"
+        component={cardSend}
+        options={{
+          headerStyle: { backgroundColor: "#515151" },
+          headerTitleStyle: { color: "white", fontFamily: fonts.sst },
+          headerLeft: () => (
+            <Ionicons
+              name="ios-arrow-back"
+              size={24}
+              color="white"
+              style={{ paddingLeft: 25 }}
+              onPress={() => navigation.goBack("Home")}
+            />
+          ),
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+                alignItems: "baseline",
+              }}
+            >
+              <View style={{ padding: 20 }}>
+                <Ionicons name="md-search" size={24} color="white" />
+              </View>
+              <View>
+                <FontAwesome5
+                  name="shopping-cart"
+                  size={24}
+                  color="white"
+                  style={{ paddingRight: 15 }}
+                  onPress={() => console.log("Shopping cart is pressed.")}
+                />
+              </View>
+            </View>
+          ),
+          headerTitle:
+            "BUY brooke Bond Supreme Tea 910 gm GET Brooke Bond SUpreme Tea Hard Pack 90 gm FREE",
+        }}
+      />
+    </CardStack.Navigator>
+  );
+};
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -97,6 +157,7 @@ export default function App() {
       <Drawer.Navigator>
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
+        {/* <Drawer.Screen name="Card" component={CardStackScreen} /> */}
       </Drawer.Navigator>
     </NavigationContainer>
   );

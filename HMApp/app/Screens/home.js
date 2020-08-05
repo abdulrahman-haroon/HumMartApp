@@ -8,11 +8,15 @@ import {
   FlatList,
   ScrollView,
   Image,
+  TextInput,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 
 import color from "../styles/color";
 import ListItem from "../component/ListItem";
 import OffersCategory from "../component/OffersCategory";
+import fonts from "../styles/fonts";
 
 const dropDownContainers = [
   {
@@ -119,9 +123,34 @@ const dropDownContainers = [
   },
 ];
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          width: "100%",
+          backgroundColor: "#515151",
+          marginBottom: 10,
+          position: "absolute",
+          alignItems: "center",
+          padding: 5,
+        }}
+      >
+        <TextInput
+          style={{
+            width: "97%",
+            height: "100%",
+            backgroundColor: "white",
+            fontFamily: fonts.sst,
+            fontSize: 16,
+            borderRadius: 5,
+            padding: 5,
+            fontWeight: "bold",
+          }}
+          placeholder=" Search for products"
+          onTouchStart={() => console.log("Textinput is pressed")}
+        />
+      </View>
       <View style={styles.slider}>
         <Image
           resizeMode="contain"
@@ -147,6 +176,7 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
             <OffersCategory
               image={require("../assets/OfferCategories/offer2.jpg")}
@@ -154,6 +184,7 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
             <OffersCategory
               image={require("../assets/OfferCategories/offer3.jpg")}
@@ -161,6 +192,7 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
             <OffersCategory
               image={require("../assets/OfferCategories/offer4.jpg")}
@@ -168,6 +200,7 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
             <OffersCategory
               image={require("../assets/OfferCategories/offer5.jpg")}
@@ -175,6 +208,7 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
             <OffersCategory
               image={require("../assets/OfferCategories/offer6.jpg")}
@@ -182,18 +216,9 @@ export default function Home() {
               prevPrice="899"
               description="Buy Brooke Bond Supreme Tea 910123"
               quantity="910 gm + 90 gm"
+              onPress={() => navigation.navigate("Card")}
             />
           </ScrollView>
-
-          {/* <View style={styles.offerContainer1}>
-            <Text>Slider Container 1</Text>
-          </View>
-          <View style={styles.offerContainer1}>
-            <Text>Slider Container 2</Text>
-          </View>
-          <View style={styles.offerContainer1}>
-            <Text>Slider Container 3</Text>
-          </View> */}
         </View>
       </View>
       <View style={styles.dropDownContainer}>
@@ -209,14 +234,71 @@ export default function Home() {
               image={item.image}
             />
           )}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                width: "100%",
+                height: 1,
+                backgroundColor: color.gray,
+              }}
+            />
+          )}
         />
 
-        {/* <View style={styles.dropDownContainer1}>
-          <Text>Drop Down 2</Text>
+        {/* <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        >
+          <Text>Hiii</Text>
         </View>
-        <View style={styles.dropDownContainer1}>
-          <Text>Drop Down 3</Text>
-        </View> */}
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        >
+          <Text>Hiii</Text>
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        >
+          <Text>Hiii</Text>
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        ></View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        ></View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            backgroundColor: "white",
+            marginBottom: 10,
+          }}
+        ></View> */}
       </View>
     </View>
   );
@@ -225,7 +307,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ddd",
-    alignItems: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   image: {
@@ -234,9 +315,9 @@ const styles = StyleSheet.create({
   },
   slider: {
     width: "100%",
-    height: "25%",
+    height: "24%",
     backgroundColor: color.gray,
-    bottom: 20,
+    top: 20,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -244,12 +325,13 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "40%",
     backgroundColor: "white",
-    top: -10,
+    top: 25,
   },
   offerText: {
     position: "absolute",
     top: 5,
     left: 10,
+    fontWeight: "bold",
   },
   seeAllButton: {
     position: "absolute",
@@ -260,20 +342,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 45,
   },
-  offerContainer1: {
-    width: "30%",
-    height: "85%",
-    backgroundColor: "white",
-    bottom: 5,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   dropDownContainer: {
     flex: 1,
-    width: "100%",
-    height: "20%",
+    height: "100%",
     backgroundColor: "#787878",
-    justifyContent: "space-evenly",
+    top: 30,
   },
   dropDownContainer1: {
     width: "100%",
