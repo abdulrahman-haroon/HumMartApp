@@ -25,6 +25,8 @@ import Header from "./app/styles/header";
 import fonts from "./app/styles/fonts";
 import Card from "./app/component/Card";
 
+import ListItemSearch from "./app/component/ListItemSearch";
+
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator>
@@ -140,6 +142,7 @@ const CardStackScreen = ({ navigation }) => {
     </CardStack.Navigator>
   );
 };
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -157,7 +160,16 @@ export default function App() {
       <Drawer.Navigator>
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
-        {/* <Drawer.Screen name="Card" component={CardStackScreen} /> */}
+        <Drawer.Screen
+          options={{ drawerLabel: () => null }}
+          name="Card"
+          component={CardStackScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null }}
+          name="ListItemSearch"
+          component={ListItemSearch}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );

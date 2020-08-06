@@ -11,12 +11,14 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 
 import color from "../styles/color";
 import ListItem from "../component/ListItem";
 import OffersCategory from "../component/OffersCategory";
 import fonts from "../styles/fonts";
+import ListItemSearch from "../component/ListItemSearch";
 
 const dropDownContainers = [
   {
@@ -122,8 +124,8 @@ const dropDownContainers = [
     image: require("../assets/Categories/catagory17.jpg"),
   },
 ];
-
-export default function Home({ navigation }) {
+function Home({ navigation }) {
+  const { height, scale } = Dimensions.get("window");
   return (
     <View style={styles.container}>
       <View
@@ -148,157 +150,118 @@ export default function Home({ navigation }) {
             fontWeight: "bold",
           }}
           placeholder=" Search for products"
-          onTouchStart={() => console.log("Textinput is pressed")}
+          onTouchStart={() => navigation.navigate("ListItemSearch")}
         />
       </View>
-      <View style={styles.slider}>
-        <Image
-          resizeMode="contain"
-          style={styles.image}
-          source={require("../assets/homeSlider/1.jpg")}
-        />
-      </View>
-      <View style={styles.offer}>
-        <Text style={styles.offerText}>Offers</Text>
-        <View style={styles.seeAllButton}>
-          <Button color="black" title="See All" />
-        </View>
-
-        <View style={styles.offerContainers}>
-          <ScrollView
-            scrollEventThrottle={16}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "white",
+          marginTop: 30,
+        }}
+      >
+        <ScrollView>
+          <View
+            style={{
+              flex: 1,
+              width: "100%",
+              height: height * scale,
+              backgroundColor: "white",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
           >
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer1.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer2.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer3.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer4.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer5.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-            <OffersCategory
-              image={require("../assets/OfferCategories/offer6.jpg")}
-              price="Rs 885"
-              prevPrice="899"
-              description="Buy Brooke Bond Supreme Tea 910123"
-              quantity="910 gm + 90 gm"
-              onPress={() => navigation.navigate("Card")}
-            />
-          </ScrollView>
-        </View>
-      </View>
-      <View style={styles.dropDownContainer}>
-        <FlatList
-          data={dropDownContainers}
-          keyExtractor={(dropDownContainer) =>
-            dropDownContainer.containerId.toString()
-          }
-          renderItem={({ item }) => (
-            <ListItem
-              title={item.title}
-              subTitle={item.subtitle}
-              image={item.image}
-            />
-          )}
-          ItemSeparatorComponent={() => (
+            <View style={styles.slider}>
+              <Image
+                resizeMode="contain"
+                style={styles.image}
+                source={require("../assets/homeSlider/1.jpg")}
+              />
+            </View>
+            <View style={styles.offer}>
+              <Text style={styles.offerText}>Offers</Text>
+              <View style={styles.seeAllButton}>
+                <Button color="black" title="See All" />
+              </View>
+
+              <View style={styles.offerContainers}>
+                <ScrollView
+                  scrollEventThrottle={16}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                >
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer1.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer2.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer3.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer4.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer5.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                  <OffersCategory
+                    image={require("../assets/OfferCategories/offer6.jpg")}
+                    price="Rs 885"
+                    prevPrice="899"
+                    description="Buy Brooke Bond Supreme Tea 910123"
+                    quantity="910 gm + 90 gm"
+                    onPress={() => navigation.navigate("Card")}
+                  />
+                </ScrollView>
+              </View>
+            </View>
+
             <View
               style={{
+                flex: 1,
                 width: "100%",
-                height: 1,
-                backgroundColor: color.gray,
+                height: "20%",
+                backgroundColor: "white",
+                marginVertical: 10,
               }}
-            />
-          )}
-        />
-
-        {/* <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        >
-          <Text>Hiii</Text>
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        >
-          <Text>Hiii</Text>
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        >
-          <Text>Hiii</Text>
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        ></View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        ></View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            backgroundColor: "white",
-            marginBottom: 10,
-          }}
-        ></View> */}
+            >
+              {dropDownContainers.map((item, key) => (
+                <ListItem
+                  key={key}
+                  title={item.title}
+                  subTitle={item.subTitle}
+                  image={item.image}
+                />
+              ))}
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -306,26 +269,33 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ddd",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: "white",
   },
+  scrollView: {
+    backgroundColor: "green",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+  },
+
   image: {
     width: "100%",
     height: "100%",
   },
   slider: {
     width: "100%",
-    height: "24%",
-    backgroundColor: color.gray,
-    top: 20,
-    justifyContent: "center",
-    alignItems: "center",
+    height: "8.5%",
+    backgroundColor: color.white,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   offer: {
     width: "100%",
-    height: "40%",
+    height: "15%",
     backgroundColor: "white",
-    top: 25,
+    top: 15,
+    borderTopWidth: 2,
+    borderTopColor: color.lightgray,
   },
   offerText: {
     position: "absolute",
@@ -342,17 +312,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 45,
   },
-  dropDownContainer: {
-    flex: 1,
-    height: "100%",
-    backgroundColor: "#787878",
-    top: 30,
-  },
-  dropDownContainer1: {
-    width: "100%",
-    height: "20%",
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });
+export default Home;

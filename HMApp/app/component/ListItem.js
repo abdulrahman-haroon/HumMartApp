@@ -1,6 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import AppText from "../component/AppText";
+import color from "../styles/color";
 
 function ListItem({ title, subTitle, image }) {
   return (
@@ -10,6 +14,9 @@ function ListItem({ title, subTitle, image }) {
         <AppText style={styles.title} title={title} />
         {subTitle && <AppText style={styles.subTitle} title={subTitle} />}
       </View>
+      <View style={styles.icon}>
+        <MaterialCommunityIcons name="chevron-down" size={24} color="black" />
+      </View>
     </View>
   );
 }
@@ -18,6 +25,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     backgroundColor: "white",
+    borderTopWidth: 2,
+    borderTopColor: color.lightgray,
   },
   detailsContainer: {
     marginLeft: 10,
@@ -34,6 +43,12 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: "gray",
+  },
+  icon: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
 });
 
