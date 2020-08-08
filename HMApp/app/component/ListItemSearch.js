@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -13,162 +13,185 @@ import font from "../styles/fonts";
 
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
 import ListItemsDataDisplay from "./ListItemsDataDisplay";
 
 const dataSearchs = [
   {
     containerId: 1,
-    title: "Mobile & Laptops",
-    subtitle: "Subtitle",
+    title: "Mobile & Laptops and other items that are avilable in it ",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory1.jpeg"),
   },
   {
     containerId: 2,
     title: "Electornic Accessories",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory2.jpeg"),
   },
   {
     containerId: 3,
     title: "Baby Kids & Toys",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory3.jpeg"),
   },
   {
     containerId: 4,
     title: "Personal Care",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory4.jpeg"),
   },
   {
     containerId: 5,
     title: "Pharmacy",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory5.jpeg"),
   },
   {
     containerId: 6,
     title: "Noodles Sauces & Frozen Food",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory6.jpg"),
   },
   {
     containerId: 7,
     title: "Household Need",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory7.jpg"),
   },
   {
     containerId: 8,
     title: "Breakfast & Dairy",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory8.jpg"),
   },
   {
     containerId: 9,
     title: "Biscuits Snacks & Chocolates",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory9.jpg"),
   },
   {
     containerId: 10,
     title: "Grocery & Staples",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory10.jpg"),
   },
   {
     containerId: 11,
     title: "Beverages",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory11.jpg"),
   },
   {
     containerId: 12,
     title: "Home & Kitchen",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory12.jpg"),
   },
   {
     containerId: 13,
     title: "Furnishing & Home Needs",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory13.jpg"),
   },
   {
     containerId: 14,
     title: "Pet Care",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory14.jpg"),
   },
   {
     containerId: 15,
     title: "Meat & Seafood",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory15.jpg"),
   },
   {
     containerId: 16,
     title: "Offers",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory16.jpg"),
   },
   {
     containerId: 17,
     title: "Other Categories",
-    subtitle: "Subtitle",
+    grams: "1kg",
+    price: "Rs 249",
     image: require("../assets/Categories/catagory17.jpg"),
   },
 ];
+
 function ListItemSearch({ totalItems, navigation }) {
+  const [text, setText] = useState();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <Ionicons
+          name="ios-arrow-back"
+          size={30}
+          color="white"
+          onPress={() => navigation.navigate("Home")}
+          style={{
+            marginLeft: 20,
+            width: 30,
+            height: 30,
+          }}
+        />
         <View
           style={{
-            justifyContent: "center",
+            flex: 1,
+            flexDirection: "row",
+            backgroundColor: "white",
+            height: 50,
+            borderRadius: 7,
             alignItems: "center",
-            marginBottom: 40,
           }}
         >
-          <View
+          <TextInput
             style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              width: "90%",
+              padding: 10,
+              fontSize: 16,
+              fontWeight: "bold",
+              fontFamily: font.sst,
             }}
-          >
-            <View style={{ right: 20, paddingBottom: 10 }}>
-              <Ionicons
-                name="ios-arrow-back"
-                size={24}
-                color="white"
-                onPress={() => navigation.navigate("Home")}
-              />
-            </View>
-            <TextInput
-              style={{
-                width: "75%",
-                height: 50,
-                backgroundColor: "white",
-                marginBottom: 10,
-                borderRadius: 6,
-                fontFamily: font.sst,
-                fontWeight: "bold",
-                padding: 10,
-                fontSize: 16,
-              }}
-              placeholder="Search for products"
-            />
-            <View style={{ left: 17, paddingBottom: 10 }}>
-              <FontAwesome5
-                name="shopping-cart"
-                size={24}
-                color="white"
-                onPress={() => console.log("Shopping cart is pressed.")}
-              />
-            </View>
-          </View>
+            placeholder="Search for products"
+            onChangeText={(text) => setText(text)}
+          />
+          <AntDesign
+            name="close"
+            size={24}
+            color="black"
+            onPress={() => console.log("text removed")}
+          />
         </View>
+
+        <FontAwesome5
+          name="shopping-cart"
+          size={24}
+          color="white"
+          onPress={() => console.log("Shopping cart is pressed.")}
+          style={{ marginHorizontal: 18 }}
+        />
       </View>
 
       <View>
@@ -184,7 +207,14 @@ function ListItemSearch({ totalItems, navigation }) {
       <FlatList
         data={dataSearchs}
         keyExtractor={(dataSearch) => dataSearch.containerId.toString()}
-        renderItem={({ item }) => <ListItemsDataDisplay image={item.image} />}
+        renderItem={({ item }) => (
+          <ListItemsDataDisplay
+            image={item.image}
+            title={item.title}
+            grams={item.grams}
+            price={item.price}
+          />
+        )}
       />
     </View>
   );
@@ -196,9 +226,11 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "8%",
+    height: "10%",
     backgroundColor: "#515151",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
 export default ListItemSearch;

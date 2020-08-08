@@ -64,8 +64,11 @@ function OffersCategory({
                   {prevPrice}
                 </Text>
               </View>
-              <View>
-                <Text numberOfLines={2} style={{ paddingVertical: 5 }}>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Text
+                  numberOfLines={2}
+                  style={{ paddingVertical: 5, marginHorizontal: 5 }}
+                >
                   {description}
                 </Text>
               </View>

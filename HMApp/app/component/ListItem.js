@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Image } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import AppText from "../component/AppText";
 import color from "../styles/color";
+import SubCategoryList from "./SubCategoryList";
 
-function ListItem({ title, subTitle, image }) {
+function ListItem({ title, subTitle, image, visible }) {
   return (
-    <View style={styles.container}>
-      {image && <Image style={styles.image} source={image} />}
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title} title={title} />
-        {subTitle && <AppText style={styles.subTitle} title={subTitle} />}
+    <View style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {image && <Image style={styles.image} source={image} />}
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title} title={title} />
+          {subTitle && <AppText style={styles.subTitle} title={subTitle} />}
+        </View>
       </View>
-      <View style={styles.icon}>
-        <MaterialCommunityIcons name="chevron-down" size={24} color="black" />
-      </View>
+
+      {visible == true ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SubCategoryList />
+        </View>
+      ) : null}
     </View>
   );
 }

@@ -143,6 +143,10 @@ const CardStackScreen = ({ navigation }) => {
   );
 };
 
+const ListItemSearchpass = ({ navigation }) => (
+  <ListItemSearch navigation={navigation} totalItems="17" />
+);
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -157,18 +161,18 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
         <Drawer.Screen
-          options={{ drawerLabel: () => null }}
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="Card"
           component={CardStackScreen}
         />
         <Drawer.Screen
-          options={{ drawerLabel: () => null }}
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="ListItemSearch"
-          component={ListItemSearch}
+          component={ListItemSearchpass}
         />
       </Drawer.Navigator>
     </NavigationContainer>
