@@ -2,7 +2,11 @@ import React from "react";
 import { View, StyleSheet, Text, Platform } from "react-native";
 
 function AppText({ title, style }) {
-  return <Text style={[styles.Text, style]}>{title}</Text>;
+  return (
+    <Text numberOfLines={1} style={[styles.Text, style]}>
+      {title}
+    </Text>
+  );
 }
 const styles = StyleSheet.create({
   Text: {

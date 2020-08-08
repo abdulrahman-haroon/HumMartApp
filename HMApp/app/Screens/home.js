@@ -389,44 +389,55 @@ function Home({ navigation }) {
               {dropDownContainers.map((item, key) => (
                 <View
                   key={key}
-                  style={{ flexDirection: "row", height: heightContainer }}
+                  style={{
+                    flexDirection: "row",
+                    height: heightContainer,
+                  }}
                 >
-                  <ListItem
-                    title={item.title}
-                    subTitle={item.subTitle}
-                    image={item.image}
-                    visible={isVisible}
-                  />
                   <View
                     style={{
-                      borderTopWidth: 0.5,
-                      borderBottomWidth: 0.5,
+                      flex: 1,
+                      flexDirection: "row",
+                      borderTopWidth: 1,
                       borderTopColor: color.lightgray,
-                      borderBottomColor: color.lightgray,
                     }}
                   >
-                    <Ionicons
-                      name={iconName}
-                      size={26}
-                      color="black"
-                      style={{
-                        marginTop: 40,
-                        marginRight: 17,
-
-                        width: 30,
-                      }}
-                      onPress={() => {
-                        isVisible == true
-                          ? (setIsVisible(false),
-                            setHeightContainer(-1),
-                            setIconName("ios-arrow-down"),
-                            console.log(isVisible))
-                          : (setIsVisible(true),
-                            setHeightContainer(200),
-                            setIconName("ios-arrow-up"),
-                            console.log(isVisible));
-                      }}
+                    <ListItem
+                      title={item.title}
+                      subTitle={item.subtitle}
+                      image={item.image}
+                      visible={isVisible}
                     />
+
+                    <View
+                      style={{
+                        borderTopWidth: 0.5,
+                        borderBottomWidth: 0.5,
+                        borderTopColor: color.lightgray,
+                        borderBottomColor: color.lightgray,
+                      }}
+                    >
+                      <Ionicons
+                        name={iconName}
+                        size={26}
+                        color="black"
+                        style={{
+                          marginTop: 40,
+                          marginRight: 17,
+
+                          width: 30,
+                        }}
+                        onPress={() => {
+                          isVisible == true
+                            ? (setIsVisible(false),
+                              setHeightContainer(-1),
+                              setIconName("ios-arrow-down"))
+                            : (setIsVisible(true),
+                              setHeightContainer(200),
+                              setIconName("ios-arrow-up"));
+                        }}
+                      />
+                    </View>
                   </View>
                 </View>
               ))}

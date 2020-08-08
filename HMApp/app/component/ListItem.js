@@ -23,6 +23,7 @@ function ListItem({ title, subTitle, image, visible }) {
         <View
           style={{
             flex: 1,
+
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -38,8 +39,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     backgroundColor: "white",
-    borderTopWidth: 2,
-    borderTopColor: color.lightgray,
+    // borderTopWidth: 2,
+    // borderTopColor: color.lightgray,
   },
   detailsContainer: {
     marginLeft: 10,

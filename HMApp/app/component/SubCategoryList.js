@@ -12,13 +12,12 @@ function SubCategoryList({ image, title }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: color.lightgray,
 
     width: "100%",
     height: "15%",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 8,
   },
 });
 export default SubCategoryList;
