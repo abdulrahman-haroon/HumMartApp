@@ -387,7 +387,6 @@ function Home({ navigation }) {
                 key={key}
                 style={{
                   flexDirection: "row",
-                  height: heightContainer,
                 }}
               >
                 <View
@@ -406,12 +405,8 @@ function Home({ navigation }) {
                     }}
                     onPress={() => {
                       isVisible == true
-                        ? (setIsVisible(false),
-                          setHeightContainer(-1),
-                          setIconName("ios-arrow-down"))
-                        : (setIsVisible(true),
-                          setHeightContainer(200),
-                          setIconName("ios-arrow-up"));
+                        ? (setIsVisible(false), setIconName("ios-arrow-down"))
+                        : (setIsVisible(true), setIconName("ios-arrow-up"));
                     }}
                   >
                     <ListItem

@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import AppText from "../component/AppText";
 import color from "../styles/color";
 import SubCategoryList from "./SubCategoryList";
+import { ScrollView } from "react-native-gesture-handler";
 
 function ListItem({ title, subTitle, image, visible }) {
   return (
@@ -28,9 +29,28 @@ function ListItem({ title, subTitle, image, visible }) {
             alignItems: "center",
           }}
         >
-          <SubCategoryList />
-          <SubCategoryList />
-          <SubCategoryList />
+          <ScrollView horizontal={true}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                borderTopWidth: 0.5,
+                borderTopColor: color.lightgray,
+              }}
+            >
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+              <SubCategoryList />
+            </View>
+          </ScrollView>
         </View>
       ) : null}
     </View>
@@ -41,6 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
     backgroundColor: "white",
+
     // borderTopWidth: 2,
     // borderTopColor: color.lightgray,
   },
