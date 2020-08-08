@@ -26,6 +26,7 @@ import fonts from "./app/styles/fonts";
 import Card from "./app/component/Card";
 
 import ListItemSearch from "./app/component/ListItemSearch";
+import PracticeFlatscreen from "./app/Screens/PracticeFlatscreen";
 
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
@@ -161,9 +162,13 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Welcome">
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
+        {/* <Drawer.Screen
+          name="PracticeFlatscreen"
+          component={PracticeFlatscreen}
+        /> */}
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="Card"
