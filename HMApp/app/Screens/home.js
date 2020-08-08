@@ -9,7 +9,6 @@ import {
   ScrollView,
   Image,
   TextInput,
-  TouchableWithoutFeedback,
   TouchableOpacity,
   Dimensions,
   TouchableNativeFeedback,
@@ -399,42 +398,50 @@ function Home({ navigation }) {
                     borderTopColor: color.lightgray,
                   }}
                 >
-                  <ListItem
-                    title={item.title}
-                    subTitle={item.subtitle}
-                    image={item.image}
-                    visible={isVisible}
-                  />
-
-                  <View
+                  <TouchableOpacity
+                    activeOpacity={0.7}
                     style={{
-                      borderTopWidth: 0.5,
-                      borderBottomWidth: 0.5,
-                      borderTopColor: color.lightgray,
-                      borderBottomColor: color.lightgray,
+                      flex: 1,
+                      flexDirection: "row",
+                    }}
+                    onPress={() => {
+                      isVisible == true
+                        ? (setIsVisible(false),
+                          setHeightContainer(-1),
+                          setIconName("ios-arrow-down"))
+                        : (setIsVisible(true),
+                          setHeightContainer(200),
+                          setIconName("ios-arrow-up"));
                     }}
                   >
-                    <Ionicons
-                      name={iconName}
-                      size={26}
-                      color="black"
-                      style={{
-                        marginTop: 40,
-                        marginRight: 17,
-
-                        width: 30,
-                      }}
-                      onPress={() => {
-                        isVisible == true
-                          ? (setIsVisible(false),
-                            setHeightContainer(-1),
-                            setIconName("ios-arrow-down"))
-                          : (setIsVisible(true),
-                            setHeightContainer(200),
-                            setIconName("ios-arrow-up"));
-                      }}
+                    <ListItem
+                      title={item.title}
+                      subTitle={item.subtitle}
+                      image={item.image}
+                      visible={isVisible}
                     />
-                  </View>
+
+                    <View
+                      style={{
+                        borderTopWidth: 0.5,
+                        borderBottomWidth: 0.5,
+                        borderTopColor: color.lightgray,
+                        borderBottomColor: color.lightgray,
+                      }}
+                    >
+                      <Ionicons
+                        name={iconName}
+                        size={26}
+                        color="green"
+                        style={{
+                          marginTop: 40,
+                          marginRight: 17,
+
+                          width: 30,
+                        }}
+                      />
+                    </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             ))}

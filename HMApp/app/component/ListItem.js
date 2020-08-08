@@ -23,11 +23,13 @@ function ListItem({ title, subTitle, image, visible }) {
         <View
           style={{
             flex: 1,
-
+            flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
+          <SubCategoryList />
+          <SubCategoryList />
           <SubCategoryList />
         </View>
       ) : null}
