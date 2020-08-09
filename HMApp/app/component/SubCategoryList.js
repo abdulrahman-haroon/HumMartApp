@@ -488,7 +488,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -535,7 +535,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -583,7 +583,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -631,7 +631,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -679,7 +679,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -727,7 +727,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -775,7 +775,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -823,7 +823,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -871,7 +871,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -919,7 +919,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -967,7 +967,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1015,7 +1015,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1063,7 +1063,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1111,7 +1111,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1121,7 +1121,7 @@ function SubCategoryList({ index }) {
           ))}
         </View>
       )}
-      {index === 14 && (
+      {index === 12 && (
         <View
           style={{
             flexDirection: "row",
@@ -1159,7 +1159,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1207,7 +1207,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >
@@ -1255,7 +1255,7 @@ function SubCategoryList({ index }) {
               <Text
                 style={{
                   fontFamily: fonts.sst,
-                  fontSize: 14,
+                  fontSize: 12,
                   textAlign: "center",
                 }}
               >

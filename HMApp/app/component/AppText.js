@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Platform } from "react-native";
 
 function AppText({ title, style }) {
   return (
-    <Text numberOfLines={1} style={[styles.Text, style]}>
+    <Text numberOfLines={2} style={[styles.Text, style]}>
       {title}
     </Text>
   );

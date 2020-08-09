@@ -10,7 +10,7 @@ import { EvilIcons } from "@expo/vector-icons";
 import fonts from "./fonts";
 import color from "./color";
 
-function DrawerStyle(props) {
+function DrawerStyle({ userContact, navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -23,7 +23,7 @@ function DrawerStyle(props) {
         }}
       >
         <Text style={{ marginLeft: 15, fontSize: 20, fontFamily: fonts.ssl }}>
-          Welcome
+          {userContact}
         </Text>
       </View>
       <View>
@@ -33,6 +33,7 @@ function DrawerStyle(props) {
             marginHorizontal: 10,
             marginTop: 15,
             marginBottom: 20,
+            color: color.otherLightGray,
           }}
         >
           My Information
@@ -44,10 +45,16 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => props.navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Login")}
         >
           <FontAwesome name="user" size={22} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             Login
           </Text>
         </TouchableOpacity>
@@ -60,7 +67,13 @@ function DrawerStyle(props) {
           }}
         >
           <Entypo name="location" size={22} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             My Addresses
           </Text>
         </TouchableOpacity>
@@ -77,7 +90,13 @@ function DrawerStyle(props) {
             size={24}
             color="black"
           />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             My Orders
           </Text>
         </TouchableOpacity>
@@ -90,7 +109,13 @@ function DrawerStyle(props) {
           }}
         >
           <FontAwesome5 name="shopping-cart" size={20} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             My Cart
           </Text>
         </TouchableOpacity>
@@ -105,7 +130,13 @@ function DrawerStyle(props) {
           }}
         >
           <Entypo name="ticket" size={24} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             New Offers
           </Text>
         </TouchableOpacity>
@@ -114,7 +145,7 @@ function DrawerStyle(props) {
         <Text
           style={{
             fontFamily: fonts.ssl,
-
+            color: color.otherLightGray,
             marginHorizontal: 10,
             marginTop: 10,
             marginBottom: 20,
@@ -129,10 +160,16 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => props.navigation.navigate("NeedHelp")}
+          onPress={() => navigation.navigate("NeedHelp")}
         >
           <FontAwesome5 name="fist-raised" size={20} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: fonts.ssl,
+              marginHorizontal: 10,
+              fontSize: 12,
+            }}
+          >
             Need Help?
           </Text>
         </TouchableOpacity>
@@ -145,7 +182,9 @@ function DrawerStyle(props) {
           }}
         >
           <EvilIcons name="star" size={24} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 6 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 6, fontSize: 12 }}
+          >
             Rate Us
           </Text>
         </TouchableOpacity>
@@ -158,7 +197,9 @@ function DrawerStyle(props) {
           }}
         >
           <FontAwesome name="upload" size={22} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             Share
           </Text>
         </TouchableOpacity>
@@ -169,10 +210,12 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => props.navigation.navigate("TermsAndCondition")}
+          onPress={() => navigation.navigate("TermsAndCondition")}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             Terms amd Condition
           </Text>
         </TouchableOpacity>
@@ -183,9 +226,12 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
+          onPress={() => navigation.navigate("PrivacyPolicy")}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             Privacy Policy
           </Text>
         </TouchableOpacity>
@@ -196,10 +242,12 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => props.navigation.navigate("ContactUs")}
+          onPress={() => navigation.navigate("ContactUs")}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             Contact Us
           </Text>
         </TouchableOpacity>
@@ -210,10 +258,12 @@ function DrawerStyle(props) {
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => props.navigation.navigate("AboutUs")}
+          onPress={() => navigation.navigate("AboutUs")}
         >
           <FontAwesome5 name="info" size={18} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             About Us
           </Text>
         </TouchableOpacity>
@@ -226,7 +276,9 @@ function DrawerStyle(props) {
           }}
         >
           <FontAwesome5 name="info-circle" size={20} color="black" />
-          <Text style={{ fontFamily: fonts.ssl, marginHorizontal: 8 }}>
+          <Text
+            style={{ fontFamily: fonts.ssl, marginHorizontal: 8, fontSize: 12 }}
+          >
             About This Release 7.7
           </Text>
         </View>

@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   welcomeLoadingImageSize: {
-    width: 300,
-    height: 300,
+    width: 380,
+    height: 380,
   },
   ActivityIndicatorStyle: {
     flex: 1,

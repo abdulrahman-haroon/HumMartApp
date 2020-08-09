@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,6 +8,8 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import fonts from "../styles/fonts";
+import color from "../styles/color";
 
 function OffersCategory({
   image,
@@ -17,6 +19,7 @@ function OffersCategory({
   quantity,
   onPress,
 }) {
+  const [visible, setVisible] = useState(true);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableOpacity onPress={onPress}>
@@ -26,7 +29,7 @@ function OffersCategory({
             width: 130,
             marginLeft: 20,
             borderWidth: 0.5,
-            borderColor: "#dddddd",
+            borderColor: color.lightgray,
             elevation: 0.5,
           }}
         >
@@ -39,8 +42,9 @@ function OffersCategory({
             <View style={{ flex: 3 }}>
               <Image
                 style={{
+                  marginTop: 10,
                   width: 120,
-                  height: 150,
+                  height: 120,
                   resizeMode: "contain",
                   overflow: "hidden",
                 }}
@@ -64,10 +68,17 @@ function OffersCategory({
                   {prevPrice}
                 </Text>
               </View>
+
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
                   numberOfLines={2}
-                  style={{ paddingVertical: 5, marginHorizontal: 5 }}
+                  style={{
+                    paddingVertical: 5,
+                    marginHorizontal: 5,
+                    fontFamily: fonts.ssl,
+                    fontSize: 13,
+                    textAlign: "center",
+                  }}
                 >
                   {description}
                 </Text>
@@ -82,19 +93,22 @@ function OffersCategory({
               </View>
             </View>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <TouchableOpacity
-                style={{
-                  width: "80%",
-                  height: 30,
-                  backgroundColor: "#fe7027",
-                  borderRadius: 5,
-                  marginVertical: 5,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ color: "white" }}>ADD</Text>
-              </TouchableOpacity>
+              {visible === true ? (
+                <TouchableOpacity
+                  style={{
+                    width: "80%",
+                    height: 30,
+                    backgroundColor: color.orangeDark,
+                    borderRadius: 5,
+                    marginVertical: 5,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onPress={() => setVisible(false)}
+                >
+                  <Text style={{ color: "white" }}>ADD</Text>
+                </TouchableOpacity>
+              ) : null}
             </View>
           </View>
         </View>

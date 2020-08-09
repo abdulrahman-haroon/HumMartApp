@@ -32,6 +32,7 @@ import NeedHelp from "./app/Screens/NeedHelp";
 import TermsAndCondition from "./app/Screens/TermsAndCondition";
 import ContactUs from "./app/Screens/ContactUs";
 import AboutUs from "./app/Screens/AboutUs";
+import PrivacyPolicy from "./app/Screens/PrivacyPolicy";
 
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
@@ -157,6 +158,7 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [userContact, setUserContact] = useState("Welcome");
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -169,7 +171,9 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="Welcome"
-        drawerContent={(props) => <DrawerStyle {...props} />}
+        drawerContent={({ navigation }) => (
+          <DrawerStyle userContact={userContact} navigation={navigation} />
+        )}
       >
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
@@ -177,6 +181,11 @@ export default function App() {
           name="PracticeFlatscreen"
           component={PracticeFlatscreen}
         /> */}
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="PrivacyPolicy"
+          component={PrivacyPolicy}
+        />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="AboutUs"

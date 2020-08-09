@@ -13,6 +13,8 @@ import { EvilIcons } from "@expo/vector-icons";
 
 import AppText from "../component/AppText";
 import color from "../styles/color";
+import font from "../styles/fonts";
+
 import SubCategoryList from "./SubCategoryList";
 
 function ListItem({ title, subTitle, image, index }) {
@@ -169,25 +171,43 @@ function ListItem({ title, subTitle, image, index }) {
       >
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
-          <AppText style={styles.title} title={title} />
-          {subTitle && <AppText style={styles.subTitle} title={subTitle} />}
+          <AppText
+            style={styles.title}
+            title={title}
+            style={{
+              fontFamily: font.ssl,
+
+              fontWeight: "bold",
+              marginBottom: 7,
+            }}
+          />
+          {subTitle && (
+            <AppText
+              style={styles.subTitle}
+              title={subTitle}
+              style={{
+                fontFamily: font.ssl,
+                fontSize: 11,
+                color: color.lightdarkGray,
+              }}
+            />
+          )}
         </View>
         <View
           style={{
-            flex: 1,
             flexDirection: "row",
             justifyContent: "flex-end",
             alignItems: "center",
+
+            left: 10,
           }}
         >
           <Ionicons
             name={iconName}
-            size={26}
+            size={18}
             color="green"
             style={{
-              marginTop: 30,
               width: 50,
-              height: 50,
             }}
           />
         </View>
@@ -222,8 +242,10 @@ const styles = StyleSheet.create({
     // borderTopColor: color.lightgray,
   },
   detailsContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
+    alignItems: "flex-start",
   },
   image: {
     width: 70,
@@ -235,7 +257,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   subTitle: {
-    color: "gray",
+    color: color.lightdarkGray,
   },
   icon: {
     flex: 1,
