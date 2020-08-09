@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import fonts from "../styles/fonts";
 import color from "../styles/color";
+import Counter from "./Counter";
 
 function OffersCategory({
   image,
@@ -19,7 +20,6 @@ function OffersCategory({
   quantity,
   onPress,
 }) {
-  const [visible, setVisible] = useState(true);
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <TouchableOpacity onPress={onPress}>
@@ -43,6 +43,7 @@ function OffersCategory({
               <Image
                 style={{
                   marginTop: 10,
+                  marginLeft: 5,
                   width: 120,
                   height: 120,
                   resizeMode: "contain",
@@ -93,22 +94,7 @@ function OffersCategory({
               </View>
             </View>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
-              {visible === true ? (
-                <TouchableOpacity
-                  style={{
-                    width: "80%",
-                    height: 30,
-                    backgroundColor: color.orangeDark,
-                    borderRadius: 5,
-                    marginVertical: 5,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                  onPress={() => setVisible(false)}
-                >
-                  <Text style={{ color: "white" }}>ADD</Text>
-                </TouchableOpacity>
-              ) : null}
+              <Counter />
             </View>
           </View>
         </View>

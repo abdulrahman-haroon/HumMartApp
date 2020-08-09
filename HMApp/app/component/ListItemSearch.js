@@ -147,10 +147,11 @@ function ListItemSearch({ totalItems, navigation }) {
       <View style={styles.header}>
         <Ionicons
           name="ios-arrow-back"
-          size={30}
+          size={24}
           color="white"
           onPress={() => navigation.navigate("Home")}
           style={{
+            marginTop: 5,
             marginLeft: 20,
             width: 30,
             height: 30,
@@ -161,7 +162,7 @@ function ListItemSearch({ totalItems, navigation }) {
             flex: 1,
             flexDirection: "row",
             backgroundColor: "white",
-            height: 50,
+            height: 40,
             borderRadius: 7,
             alignItems: "center",
           }}
@@ -179,7 +180,7 @@ function ListItemSearch({ totalItems, navigation }) {
           />
           <AntDesign
             name="close"
-            size={24}
+            size={22}
             color="black"
             onPress={() => console.log("text removed")}
           />
@@ -187,7 +188,7 @@ function ListItemSearch({ totalItems, navigation }) {
 
         <FontAwesome5
           name="shopping-cart"
-          size={24}
+          size={20}
           color="white"
           onPress={() => console.log("Shopping cart is pressed.")}
           style={{ marginHorizontal: 18 }}
@@ -226,7 +227,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "10%",
+    height: 60,
     backgroundColor: "#515151",
     justifyContent: "center",
     alignItems: "center",

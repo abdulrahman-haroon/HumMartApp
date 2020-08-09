@@ -4,13 +4,48 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Color from "../styles/color";
 
 import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import fonts from "../styles/fonts";
-import color from "../styles/color";
 
-function Card({ title, price, prevPrice, quantity, rating, image }) {
+function Card({ prevPrice, route, navigation }) {
+  let data = route.params;
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          height: 50,
+          flexDirection: "row",
+          backgroundColor: Color.navigationColor,
+          alignItems: "center",
+        }}
+      >
+        <Ionicons
+          style={{ marginLeft: 20, width: 30 }}
+          name="ios-arrow-back"
+          size={24}
+          color="white"
+          onPress={() => navigation.navigate("Home")}
+        />
+        <Text
+          numberOfLines={1}
+          style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
+        >
+          {data.title}
+        </Text>
+        <Ionicons
+          style={{ flex: 1, marginLeft: 10 }}
+          name="md-search"
+          size={24}
+          color="white"
+        />
+        <FontAwesome5
+          style={{ flex: 1, marginRight: 10 }}
+          name="shopping-cart"
+          size={20}
+          color="white"
+        />
+      </View>
       <View
         style={{
           width: "100%",
@@ -44,7 +79,7 @@ function Card({ title, price, prevPrice, quantity, rating, image }) {
           }}
         >
           <Ionicons name="ios-star" size={15} color="black" />
-          <Text> {rating}</Text>
+          <Text> {data.rating}</Text>
         </View>
       </View>
       <View
@@ -60,28 +95,33 @@ function Card({ title, price, prevPrice, quantity, rating, image }) {
             width: "100%",
             height: "100%",
           }}
-          source={image}
+          source={data.image}
         />
       </View>
       <View style={{ width: "100%", backgroundColor: "white", padding: 20 }}>
         <Text style={{ fontFamily: fonts.sst, fontSize: 18, color: "#2c2c2c" }}>
-          {title}
+          {data.title}
         </Text>
 
         <Text style={{ fontFamily: fonts.sst, color: "gray", fontSize: 15 }}>
-          {quantity}
+          {data.quantity}
         </Text>
         <View style={{ flexDirection: "row", marginVertical: 5 }}>
           <Text
             style={{ fontFamily: fonts.sst, fontWeight: "bold", fontSize: 15 }}
           >
-            {price}
+            {data.price}
           </Text>
-          <Text
-            style={{ textDecorationLine: "line-through", marginHorizontal: 5 }}
-          >
-            {prevPrice}
-          </Text>
+          {prevPrice && (
+            <Text
+              style={{
+                textDecorationLine: "line-through",
+                marginHorizontal: 5,
+              }}
+            >
+              {data.prevPrice}
+            </Text>
+          )}
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>

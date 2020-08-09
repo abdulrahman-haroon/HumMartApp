@@ -209,7 +209,7 @@ export default function App() {
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="Card"
-          component={CardStackScreen}
+          component={Card}
         />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
