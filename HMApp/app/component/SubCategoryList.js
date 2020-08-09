@@ -56,7 +56,7 @@ const Baby = [
   {
     id: 4,
     title: "Baby Accessories & More",
-    image: require("../assets/SubCategories/baby/4.jpg"),
+    image: require("../assets/SubCategories/baby/5.jpg"),
   },
 ];
 const Personal = [
@@ -451,26 +451,47 @@ function SubCategoryList({ index }) {
   return (
     <View style={styles.container}>
       {index === 0 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Mobiles.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
                 borderColor: color.lightgray,
-                padding: 15,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 70,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -478,26 +499,46 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 1 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Electornics.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
-                resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 70,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -505,26 +546,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 2 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Baby.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 70,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -532,26 +594,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 3 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Personal.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -559,26 +642,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 4 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Pharmacy.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -586,26 +690,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 5 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Noodles.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -613,26 +738,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 6 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {HouseHold.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -640,26 +786,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 7 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Breakfast.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -667,26 +834,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 8 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Biscuits.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -694,26 +882,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 9 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Grocery.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -721,26 +930,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 10 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Beverages.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -748,26 +978,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 11 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Home.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -775,26 +1026,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 12 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Furnishing.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -802,26 +1074,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 13 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Pet.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -829,26 +1122,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 14 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Meat.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -856,26 +1170,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 15 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Offers.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>
@@ -883,26 +1218,47 @@ function SubCategoryList({ index }) {
         </View>
       )}
       {index === 16 && (
-        <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 10,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           {Other.map((items, key) => (
             <TouchableOpacity
               key={items.id}
               style={{
-                flex: 1,
+                width: 150,
+                height: 150,
+
                 justifyContent: "center",
                 alignItems: "center",
+
                 borderWidth: 0.8,
-                padding: 15,
                 borderColor: color.lightgray,
-                marginRight: 5,
+                marginHorizontal: 5,
+                marginVertical: 5,
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ width: 70, height: 70 }}
+                style={{
+                  width: 80,
+                  height: 70,
+                  alignSelf: "center",
+                }}
                 source={items.image}
               />
-              <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>
+              <Text
+                style={{
+                  fontFamily: fonts.sst,
+                  fontSize: 14,
+                  textAlign: "center",
+                }}
+              >
                 {items.title}
               </Text>
             </TouchableOpacity>

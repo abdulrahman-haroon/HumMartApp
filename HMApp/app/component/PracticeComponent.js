@@ -202,11 +202,27 @@ function ListItem({ title, subTitle, image, index }) {
             alignItems: "center",
             borderTopWidth: 1,
             borderTopColor: color.lightgray,
-            marginLeft: 5,
-            marginRight: 30,
           }}
         >
-          <SubCategoryList index={selectedKey} />
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: 5,
+              }}
+            >
+              <SubCategoryList index={selectedKey} />
+            </View>
+          </ScrollView>
+          <MaterialCommunityIcons
+            name="arrow-right"
+            size={24}
+            color="green"
+            style={{ marginRight: 45 }}
+          />
         </View>
       ) : null}
     </View>
