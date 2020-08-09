@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,27 +10,196 @@ import color from "../styles/color";
 import SubCategoryList from "./SubCategoryList";
 import { ScrollView } from "react-native-gesture-handler";
 
-function ListItem({ title, subTitle, image, visible }) {
+function ListItem({ title, subTitle, image, index }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [iconName, setIconName] = useState("ios-arrow-down");
+  const [keys, setKeys] = useState(index);
+  const [selectedKey, setSelectedKey] = useState(0);
+  // console.log("Index:" + selectedKey);
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => {
+          {
+            keys === 0
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(0))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(0))
+              : keys === 1
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(1))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(1))
+              : keys === 2
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(2))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(2))
+              : keys === 3
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(3))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(3))
+              : keys === 4
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(4))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(4))
+              : keys === 5
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(5))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(5))
+              : keys === 6
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(6))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(6))
+              : keys === 7
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(7))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(7))
+              : keys === 8
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(8))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(8))
+              : keys === 9
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(9))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(9))
+              : keys === 10
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(10))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(10))
+              : keys === 11
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(11))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(11))
+              : keys === 12
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(12))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(12))
+              : keys === 13
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(13))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(13))
+              : keys === 14
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(14))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(14))
+              : keys === 15
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(15))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(15))
+              : keys === 16
+              ? isVisible == true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(16))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(16))
+              : null;
+          }
+        }}
+      >
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
           <AppText style={styles.title} title={title} />
           {subTitle && <AppText style={styles.subTitle} title={subTitle} />}
         </View>
-      </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Ionicons
+            name={iconName}
+            size={26}
+            color="green"
+            style={{
+              marginTop: 30,
+              width: 50,
+              height: 50,
+            }}
+          />
+        </View>
+      </TouchableOpacity>
 
-      {visible == true ? (
+      {isVisible == true ? (
         <View
           style={{
             flex: 1,
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            borderTopWidth: 1,
+            borderTopColor: color.lightgray,
           }}
         >
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View
               style={{
                 flex: 1,
@@ -38,19 +207,17 @@ function ListItem({ title, subTitle, image, visible }) {
                 justifyContent: "center",
                 alignItems: "center",
                 marginLeft: 5,
-                borderTopWidth: 0.5,
-                borderTopColor: color.lightgray,
               }}
             >
-              <MaterialCommunityIcons
-                name="arrow-right"
-                size={24}
-                color="black"
-              />
-
-              <SubCategoryList />
+              <SubCategoryList index={selectedKey} />
             </View>
           </ScrollView>
+          <MaterialCommunityIcons
+            name="arrow-right"
+            size={24}
+            color="green"
+            style={{ marginRight: 45 }}
+          />
         </View>
       ) : null}
     </View>
