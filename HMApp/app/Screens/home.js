@@ -16,6 +16,7 @@ import {
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { EvilIcons } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import ListItem from "../component/ListItem";
@@ -231,9 +232,7 @@ const dropDownContainers = [
   },
 ];
 function Home({ navigation }) {
-  const { height, scale } = Dimensions.get("window");
   const [isVisible, setIsVisible] = useState(false);
-  const [heightContainer, setHeightContainer] = useState();
   const [iconName, setIconName] = useState("ios-arrow-down");
 
   return (
@@ -397,16 +396,10 @@ function Home({ navigation }) {
                     borderTopColor: color.lightgray,
                   }}
                 >
-                  <TouchableOpacity
-                    activeOpacity={0.7}
+                  <View
                     style={{
                       flex: 1,
                       flexDirection: "row",
-                    }}
-                    onPress={() => {
-                      isVisible == true
-                        ? (setIsVisible(false), setIconName("ios-arrow-down"))
-                        : (setIsVisible(true), setIconName("ios-arrow-up"));
                     }}
                   >
                     <ListItem
@@ -416,27 +409,26 @@ function Home({ navigation }) {
                       visible={isVisible}
                     />
 
-                    <View
-                      style={{
-                        borderTopWidth: 0.5,
-                        borderBottomWidth: 0.5,
-                        borderTopColor: color.lightgray,
-                        borderBottomColor: color.lightgray,
-                      }}
-                    >
+                    <View>
                       <Ionicons
                         name={iconName}
                         size={26}
                         color="green"
                         style={{
-                          marginTop: 40,
-                          marginRight: 17,
+                          marginTop: 30,
 
-                          width: 30,
+                          width: 50,
+                          height: 50,
+                        }}
+                        onPress={() => {
+                          isVisible == true
+                            ? (setIsVisible(false),
+                              setIconName("ios-arrow-down"))
+                            : (setIsVisible(true), setIconName("ios-arrow-up"));
                         }}
                       />
                     </View>
-                  </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             ))}

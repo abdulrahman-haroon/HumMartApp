@@ -1,27 +1,26 @@
 import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import color from "../styles/color";
+import fonts from "../styles/fonts";
+
 function SubCategoryList({ image, title }) {
   return (
-    <View style={styles.container}>
-      <Image
-        resizeMode="contain"
-        style={{ width: 70, height: 70 }}
-        source={require("../assets/SubCategories/mobile.jpg")}
-      />
-      <Text style={{ textAlign: "center" }}>Mobiles</Text>
-    </View>
+    <TouchableOpacity style={styles.container}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Image
+          resizeMode="contain"
+          style={{ width: 70, height: 70 }}
+          source={require("../assets/SubCategories/mobile.jpg")}
+        />
+        <Text style={{ fontFamily: fonts.sst, fontSize: 14 }}>Mobiles</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 5,
-    // borderTopWidth: 0.5,
-    // borderTopColor: color.lightgray,
-    width: "100%",
-    justifyContent: "center",
-    marginBottom: 8,
+    marginBottom: 5,
   },
 });
 export default SubCategoryList;

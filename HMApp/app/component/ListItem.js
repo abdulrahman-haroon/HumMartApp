@@ -3,6 +3,7 @@ import { StyleSheet, View, Image } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { EvilIcons } from "@expo/vector-icons";
 
 import AppText from "../component/AppText";
 import color from "../styles/color";
@@ -36,18 +37,17 @@ function ListItem({ title, subTitle, image, visible }) {
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                marginLeft: 5,
                 borderTopWidth: 0.5,
                 borderTopColor: color.lightgray,
               }}
             >
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
-              <SubCategoryList />
+              <MaterialCommunityIcons
+                name="arrow-right"
+                size={24}
+                color="black"
+              />
+
               <SubCategoryList />
             </View>
           </ScrollView>

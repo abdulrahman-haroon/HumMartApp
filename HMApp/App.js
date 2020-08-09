@@ -27,6 +27,11 @@ import Card from "./app/component/Card";
 
 import ListItemSearch from "./app/component/ListItemSearch";
 import PracticeFlatscreen from "./app/Screens/PracticeFlatscreen";
+import DrawerStyle from "./app/styles/DrawerStyle";
+import NeedHelp from "./app/Screens/NeedHelp";
+import TermsAndCondition from "./app/Screens/TermsAndCondition";
+import ContactUs from "./app/Screens/ContactUs";
+import AboutUs from "./app/Screens/AboutUs";
 
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
@@ -162,13 +167,36 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Welcome">
+      <Drawer.Navigator
+        initialRouteName="Welcome"
+        drawerContent={(props) => <DrawerStyle {...props} />}
+      >
         <Drawer.Screen name="Welcome" component={HomeStackScreen} />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
         {/* <Drawer.Screen
           name="PracticeFlatscreen"
           component={PracticeFlatscreen}
         /> */}
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="AboutUs"
+          component={AboutUs}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="ContactUs"
+          component={ContactUs}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="TermsAndCondition"
+          component={TermsAndCondition}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="NeedHelp"
+          component={NeedHelp}
+        />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="Card"
