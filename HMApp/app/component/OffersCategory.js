@@ -92,7 +92,9 @@ function OffersCategory({
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "gray" }}>{quantity}</Text>
+                <Text numberOfLines={1} style={{ color: "gray" }}>
+                  {quantity}
+                </Text>
               </View>
             </View>
             <View style={{ justifyContent: "center", alignItems: "center" }}>

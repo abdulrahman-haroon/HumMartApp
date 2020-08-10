@@ -67,7 +67,7 @@ const deals = [
     rating: 4.5,
   },
 ];
-function BundleDealsTab(props) {
+function BundleDealsTab({ navigation }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -82,6 +82,17 @@ function BundleDealsTab(props) {
             prevPrice={item.prevPrice}
             grams={item.quantity}
             sameDayDelievery
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: true,
+              })
+            }
           />
         )}
       />

@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Dimensions,
   TouchableNativeFeedback,
+  TouchableWithoutFeedback,
 } from "react-native";
 import Card from "../component/Card";
 
@@ -205,6 +206,7 @@ const offersOuterCategories = [
 ];
 
 function Home({ navigation }) {
+  const [scrollTop, setScrollTop] = useState(false);
   return (
     <View style={styles.container}>
       <View
@@ -240,6 +242,7 @@ function Home({ navigation }) {
         }}
       >
         <ScrollView
+          scrollsToTop={scrollTop}
           style={{
             flex: 1,
             backgroundColor: "#c6c6c6",
@@ -351,6 +354,7 @@ function Home({ navigation }) {
               </ScrollView>
             </View>
           </View>
+
           <View
             style={{
               flex: 1,

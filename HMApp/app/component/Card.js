@@ -27,7 +27,7 @@ function Card({ prevPrice, route, navigation }) {
           name="ios-arrow-back"
           size={24}
           color="white"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.goBack()}
         />
         <Text
           numberOfLines={1}
