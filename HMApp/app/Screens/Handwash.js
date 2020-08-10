@@ -5,6 +5,8 @@ const deals = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/Handwash/1.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Handwash/BiggerImages/1.jpg"),
+
     price: "Rs 383",
     prevPrice: "Rs 450",
     description: "BUY 3 Dettol Liquid Handwash Pouche Original & GET 10 % OFF",
@@ -14,6 +16,8 @@ const deals = [
   {
     id: 1,
     image: require("../assets/SubCategories/personalCare/BathBody/Handwash/2.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Handwash/BiggerImages/2.jpg"),
+
     price: "Rs 383",
     prevPrice: "Rs 450",
 
@@ -26,6 +30,8 @@ const deals = [
   {
     id: 2,
     image: require("../assets/SubCategories/personalCare/BathBody/Handwash/3.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Handwash/BiggerImages/3.jpg"),
+
     price: "Rs 350",
     description: "Siena Foaming Tempting Desire Hand Wash",
     quantity: "400 ml",
@@ -33,7 +39,7 @@ const deals = [
     rating: 4.5,
   },
 ];
-function Handwash(props) {
+function Handwash({ navigation }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -48,6 +54,17 @@ function Handwash(props) {
             prevPrice={item.prevPrice}
             grams={item.quantity}
             sameDayDelievery
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: true,
+              })
+            }
           />
         )}
       />

@@ -313,6 +313,7 @@ function Home({ navigation }) {
                               title: item.description,
                               quantity: item.quantity,
                               rating: item.rating,
+                              sameDayDelievery: true,
                             })
                           )
                         : null;

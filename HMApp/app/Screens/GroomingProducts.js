@@ -5,6 +5,7 @@ const deals = [
   {
     id: 0,
     image: require("../assets/SubCategories/electronic/Grooming/1.jpg"),
+    image2: require("../assets/SubCategories/electronic/Grooming/BiggerImages/1.jpg"),
     price: "Rs 10323",
     description:
       "Philips (Model PR3110/00) Infrared Lamp For Muscles and Joint Pain Relief White 150 Watts",
@@ -14,6 +15,8 @@ const deals = [
   {
     id: 1,
     image: require("../assets/SubCategories/electronic/Grooming/2.jpg"),
+    image2: require("../assets/SubCategories/electronic/Grooming/BiggerImages/2.jpg"),
+
     price: "Rs 10369",
     description:
       "Philips (Model S5051/03) Shaver Black Quatec Wet & Dry With Comfort Cut Blade System",
@@ -23,6 +26,8 @@ const deals = [
   {
     id: 2,
     image: require("../assets/SubCategories/electronic/Grooming/3.jpg"),
+    image2: require("../assets/SubCategories/electronic/Grooming/BiggerImages/3.jpg"),
+
     price: "Rs 12014",
 
     description:
@@ -34,6 +39,7 @@ const deals = [
   {
     id: 3,
     image: require("../assets/SubCategories/electronic/Grooming/4.jpg"),
+    image2: require("../assets/SubCategories/electronic/Grooming/BiggerImages/4.jpg"),
 
     price: "Rs 11899",
 
@@ -44,7 +50,7 @@ const deals = [
     rating: 4.5,
   },
 ];
-function GroomingProducts(props) {
+function GroomingProducts({ navigation }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -58,6 +64,17 @@ function GroomingProducts(props) {
             price={item.price}
             prevPrice={item.prevPrice}
             grams={item.quantity}
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: false,
+              })
+            }
           />
         )}
       />

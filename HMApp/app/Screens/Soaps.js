@@ -5,6 +5,8 @@ const deals = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/Soups/1.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Soups/BiggerImages/1.jpg"),
+
     price: "Rs 153",
     prevPrice: "Rs 180",
     description: "BUY 3 Dettol Cool Soap 85 gm GET 10 % OFF",
@@ -14,6 +16,8 @@ const deals = [
   {
     id: 1,
     image: require("../assets/SubCategories/personalCare/BathBody/Soups/2.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Soups/BiggerImages/2.jpg"),
+
     price: "Rs 740",
     prevPrice: "Rs 870",
 
@@ -25,6 +29,8 @@ const deals = [
   {
     id: 2,
     image: require("../assets/SubCategories/personalCare/BathBody/Soups/3.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/Soups/BiggerImages/3.jpg"),
+
     price: "Rs 740",
     prevPrice: "Rs 870",
     description:
@@ -34,7 +40,7 @@ const deals = [
     rating: 4.5,
   },
 ];
-function Soaps(props) {
+function Soaps({ navigation }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -49,6 +55,17 @@ function Soaps(props) {
             prevPrice={item.prevPrice}
             grams={item.quantity}
             sameDayDelievery
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: true,
+              })
+            }
           />
         )}
       />

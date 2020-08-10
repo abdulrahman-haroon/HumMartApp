@@ -51,7 +51,7 @@ function Counter() {
             name="circle-with-minus"
             size={24}
             color={color.orangeDark}
-            style={{ marginRight: 5 }}
+            style={{ width: 35 }}
             onPress={() => {
               count === 0
                 ? (setVisible(true), setVisibleCounter(false))
@@ -63,7 +63,7 @@ function Counter() {
             name="circle-with-plus"
             size={24}
             color={color.orangeDark}
-            style={{ marginLeft: 8 }}
+            style={{ marginLeft: 12, width: 35 }}
             onPress={() => setCount(count + 1)}
           />
         </View>

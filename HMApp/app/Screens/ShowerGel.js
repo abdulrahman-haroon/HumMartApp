@@ -5,6 +5,7 @@ const deals = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/1.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/BiggerImages/1.jpg"),
     price: "Rs 529",
     prevPrice: "Rs 545",
     description: "Adidas Adipower Shower Gel",
@@ -14,6 +15,8 @@ const deals = [
   {
     id: 1,
     image: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/2.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/BiggerImages/2.jpg"),
+
     price: "Rs 941",
     prevPrice: "Rs 949",
     description: "Old Spice Fresh Fraicheur Body Wash",
@@ -23,6 +26,8 @@ const deals = [
   {
     id: 2,
     image: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/3.jpg"),
+    image2: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/BiggerImages/3.jpg"),
+
     price: "Rs 949",
 
     description: "Old Spice Bearglove Body Wash",
@@ -31,7 +36,7 @@ const deals = [
     rating: 4.5,
   },
 ];
-function ShowerGel(props) {
+function ShowerGel({ navigation }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -46,6 +51,17 @@ function ShowerGel(props) {
             prevPrice={item.prevPrice}
             grams={item.quantity}
             sameDayDelievery
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: true,
+              })
+            }
           />
         )}
       />

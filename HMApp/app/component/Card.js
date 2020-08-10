@@ -8,6 +8,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import fonts from "../styles/fonts";
 import Counter from "./Counter";
+import { color } from "react-native-reanimated";
 
 function Card({ prevPrice, route, navigation }) {
   let data = route.params;
@@ -92,6 +93,7 @@ function Card({ prevPrice, route, navigation }) {
         }}
       >
         <Image
+          resizeMode="contain"
           style={{
             width: "100%",
             height: "100%",
@@ -100,11 +102,24 @@ function Card({ prevPrice, route, navigation }) {
         />
       </View>
       <View style={{ width: "100%", backgroundColor: "white", padding: 20 }}>
-        <Text style={{ fontFamily: fonts.sst, fontSize: 18, color: "#2c2c2c" }}>
+        <Text
+          style={{
+            fontWeight: "bold",
+            fontFamily: fonts.ssl,
+            fontSize: 18,
+            color: "#2c2c2c",
+          }}
+        >
           {data.title}
         </Text>
 
-        <Text style={{ fontFamily: fonts.sst, color: "gray", fontSize: 15 }}>
+        <Text
+          style={{
+            fontFamily: fonts.ssl,
+            color: Color.darkishLight,
+            fontSize: 15,
+          }}
+        >
           {data.quantity}
         </Text>
         <View style={{ flexDirection: "row", marginVertical: 5 }}>
@@ -116,6 +131,7 @@ function Card({ prevPrice, route, navigation }) {
           {prevPrice && (
             <Text
               style={{
+                fontFamily: fonts.ssl,
                 textDecorationLine: "line-through",
                 marginHorizontal: 5,
               }}
@@ -123,25 +139,18 @@ function Card({ prevPrice, route, navigation }) {
               {data.prevPrice}
             </Text>
           )}
-        </View>
-
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <FontAwesome5 name="motorcycle" size={24} color="green" />
-          <Text> Same Day Delivery</Text>
           <View
             style={{
               flex: 1,
               flexDirection: "row",
-              alignItems: "center",
               justifyContent: "flex-end",
-              paddingRight: 20,
+              alignItems: "center",
             }}
           >
             <TouchableOpacity
               style={{
                 width: "30%",
                 height: 30,
-
                 justifyContent: "center",
                 alignItems: "center",
               }}
@@ -150,6 +159,22 @@ function Card({ prevPrice, route, navigation }) {
             </TouchableOpacity>
           </View>
         </View>
+
+        {data.sameDayDelievery === true && (
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <FontAwesome5 name="motorcycle" size={24} color="green" />
+            <Text> Same Day Delivery</Text>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                paddingRight: 20,
+              }}
+            ></View>
+          </View>
+        )}
       </View>
     </View>
   );
