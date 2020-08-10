@@ -214,6 +214,7 @@ function ListItemSearch({ totalItems, navigation }) {
             title={item.title}
             grams={item.grams}
             price={item.price}
+            sameDayDelievery
           />
         )}
       />

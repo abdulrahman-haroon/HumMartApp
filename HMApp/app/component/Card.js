@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import fonts from "../styles/fonts";
+import Counter from "./Counter";
 
 function Card({ prevPrice, route, navigation }) {
   let data = route.params;
@@ -140,13 +141,12 @@ function Card({ prevPrice, route, navigation }) {
               style={{
                 width: "30%",
                 height: 30,
-                backgroundColor: "#fe7027",
-                borderRadius: 5,
+
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <Text style={{ color: "white" }}>ADD</Text>
+              <Counter />
             </TouchableOpacity>
           </View>
         </View>

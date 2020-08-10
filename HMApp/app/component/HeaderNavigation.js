@@ -7,7 +7,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";
-function HeaderNavigation({ showPromotion, navigation }) {
+function HeaderNavigation({ showPromotion, navigation, title }) {
   return (
     <View>
       <View
@@ -29,7 +29,7 @@ function HeaderNavigation({ showPromotion, navigation }) {
           numberOfLines={1}
           style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
         >
-          Offers
+          {title}
         </Text>
         <Ionicons
           style={{ flex: 1, marginLeft: 10 }}

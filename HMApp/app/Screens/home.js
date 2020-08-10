@@ -36,105 +36,106 @@ const dropDownContainers = [
   },
   {
     containerId: 3,
-    title: "Baby Kids & Toys",
-    subtitle:
-      "Baby Food, Diapers & Wipes. Baby Skin & Hair Products,Baby Accessories & More",
-    image: require("../assets/Categories/catagory3.jpeg"),
-  },
-  {
-    containerId: 4,
     title: "Personal Care",
     subtitle:
       "Bath & Body, Hair Care, skin Care, Oral Care, Face care, Hygiene, Grooming, Deos 7 Perfumes , Cosmetics",
     image: require("../assets/Categories/catagory4.jpeg"),
   },
-  {
-    containerId: 5,
-    title: "Pharmacy",
-    subtitle:
-      "Contraceptives, Pain Relievers, Antiseptics, OTCs, Health Supplements, Hand & Foot Care, Adut Diapers",
-    image: require("../assets/Categories/catagory5.jpeg"),
-  },
-  {
-    containerId: 6,
-    title: "Noodles Sauces & Frozen Food",
-    subtitle:
-      "Noodles, Baking & Dessert Items, Sauces & Ketchups, Pasta & Soups, Ready Made Meals & Mixes, Canned Foods",
-    image: require("../assets/Categories/catagory6.jpg"),
-  },
-  {
-    containerId: 7,
-    title: "Household Need",
-    subtitle:
-      "Laundry Detergents, Dish washers, Cleaners, Cleaning Tools, Repellents, Air Fresheners, Tissues & Disposables, Premium Home Care, Shoe Care",
-    image: require("../assets/Categories/catagory7.jpg"),
-  },
-  {
-    containerId: 8,
-    title: "Breakfast & Dairy",
-    subtitle:
-      "Milk, BreakFast Cereals, Bread & Eggs, Yogurt, Butter & Cheese, Jam Honey & Spreads",
-    image: require("../assets/Categories/catagory8.jpg"),
-  },
-  {
-    containerId: 9,
-    title: "Biscuits Snacks & Chocolates",
-    subtitle:
-      "Biscuits & Cookies, Namkeen & Snacks, Chips & Crips, Chocolates & Candies, Sweets",
-    image: require("../assets/Categories/catagory9.jpg"),
-  },
-  {
-    containerId: 10,
-    title: "Grocery & Staples",
-    subtitle:
-      "Pulses, Atta, Rice, Dry Fruits & Nuts, Oils Ghee & Banaspati, Spices, Salt Sugar, Vinegar & Dressings",
-    image: require("../assets/Categories/catagory10.jpg"),
-  },
-  {
-    containerId: 11,
-    title: "Beverages",
-    subtitle:
-      "Soft Drinks, Juices & Concentrates, Tea & Coffee, Energy Drinks, Water",
-    image: require("../assets/Categories/catagory11.jpg"),
-  },
-  {
-    containerId: 12,
-    title: "Home & Kitchen",
-    subtitle:
-      "Bathroom Essentials, Cookware, Kitchen Tools & Accessories, Dining & Servings, Cleaning Equipments",
-    image: require("../assets/Categories/catagory12.jpg"),
-  },
-  {
-    containerId: 13,
-    title: "Furnishing & Home Needs",
-    subtitle:
-      "Bedding, Curtains & Home Decor, Bathing Needs, Mats & Carpets, Furniture & Storage, Travelling Bags",
-    image: require("../assets/Categories/catagory13.jpg"),
-  },
-  {
-    containerId: 14,
-    title: "Pet Care",
-    subtitle: "Dog Supplies, Cat Supplies, Fish Supplies",
-    image: require("../assets/Categories/catagory14.jpg"),
-  },
-  {
-    containerId: 15,
-    title: "Meat & Seafood",
-    subtitle: "Meat, Poultry, SeaFood",
-    image: require("../assets/Categories/catagory15.jpg"),
-  },
-  {
-    containerId: 16,
-    title: "Offers",
-    subtitle: "Bundle Deals, Discounted Deals, Near Expiry Products",
-    image: require("../assets/Categories/catagory16.jpg"),
-  },
-  {
-    containerId: 17,
-    title: "Other Categories",
-    subtitle: "Smoker Corner",
-    image: require("../assets/Categories/catagory17.jpg"),
-  },
+  // {
+  //   containerId: 3,
+  //   title: "Baby Kids & Toys",
+  //   subtitle:
+  //     "Baby Food, Diapers & Wipes. Baby Skin & Hair Products,Baby Accessories & More",
+  //   image: require("../assets/Categories/catagory3.jpeg"),
+  // },
+  //
+  // {
+  //   containerId: 5,
+  //   title: "Pharmacy",
+  //   subtitle:
+  //     "Contraceptives, Pain Relievers, Antiseptics, OTCs, Health Supplements, Hand & Foot Care, Adut Diapers",
+  //   image: require("../assets/Categories/catagory5.jpeg"),
+  // },
+  // {
+  //   containerId: 6,
+  //   title: "Noodles Sauces & Frozen Food",
+  //   subtitle:
+  //     "Noodles, Baking & Dessert Items, Sauces & Ketchups, Pasta & Soups, Ready Made Meals & Mixes, Canned Foods",
+  //   image: require("../assets/Categories/catagory6.jpg"),
+  // },
+  // {
+  //   containerId: 7,
+  //   title: "Household Need",
+  //   subtitle:
+  //     "Laundry Detergents, Dish washers, Cleaners, Cleaning Tools, Repellents, Air Fresheners, Tissues & Disposables, Premium Home Care, Shoe Care",
+  //   image: require("../assets/Categories/catagory7.jpg"),
+  // },
+  // {
+  //   containerId: 8,
+  //   title: "Breakfast & Dairy",
+  //   subtitle:
+  //     "Milk, BreakFast Cereals, Bread & Eggs, Yogurt, Butter & Cheese, Jam Honey & Spreads",
+  //   image: require("../assets/Categories/catagory8.jpg"),
+  // },
+  // {
+  //   containerId: 9,
+  //   title: "Biscuits Snacks & Chocolates",
+  //   subtitle:
+  //     "Biscuits & Cookies, Namkeen & Snacks, Chips & Crips, Chocolates & Candies, Sweets",
+  //   image: require("../assets/Categories/catagory9.jpg"),
+  // },
+  // {
+  //   containerId: 10,
+  //   title: "Grocery & Staples",
+  //   subtitle:
+  //     "Pulses, Atta, Rice, Dry Fruits & Nuts, Oils Ghee & Banaspati, Spices, Salt Sugar, Vinegar & Dressings",
+  //   image: require("../assets/Categories/catagory10.jpg"),
+  // },
+  // {
+  //   containerId: 11,
+  //   title: "Beverages",
+  //   subtitle:
+  //     "Soft Drinks, Juices & Concentrates, Tea & Coffee, Energy Drinks, Water",
+  //   image: require("../assets/Categories/catagory11.jpg"),
+  // },
+  // {
+  //   containerId: 12,
+  //   title: "Home & Kitchen",
+  //   subtitle:
+  //     "Bathroom Essentials, Cookware, Kitchen Tools & Accessories, Dining & Servings, Cleaning Equipments",
+  //   image: require("../assets/Categories/catagory12.jpg"),
+  // },
+  // {
+  //   containerId: 13,
+  //   title: "Furnishing & Home Needs",
+  //   subtitle:
+  //     "Bedding, Curtains & Home Decor, Bathing Needs, Mats & Carpets, Furniture & Storage, Travelling Bags",
+  //   image: require("../assets/Categories/catagory13.jpg"),
+  // },
+  // {
+  //   containerId: 14,
+  //   title: "Pet Care",
+  //   subtitle: "Dog Supplies, Cat Supplies, Fish Supplies",
+  //   image: require("../assets/Categories/catagory14.jpg"),
+  // },
+  // {
+  //   containerId: 15,
+  //   title: "Meat & Seafood",
+  //   subtitle: "Meat, Poultry, SeaFood",
+  //   image: require("../assets/Categories/catagory15.jpg"),
+  // },
+  // {
+  //   containerId: 16,
+  //   title: "Offers",
+  //   subtitle: "Bundle Deals, Discounted Deals, Near Expiry Products",
+  //   image: require("../assets/Categories/catagory16.jpg"),
+  // },
+  // {
+  //   containerId: 17,
+  //   title: "Other Categories",
+  //   subtitle: "Smoker Corner",
+  //   image: require("../assets/Categories/catagory17.jpg"),
+  // },
 ];
 const offersOuterCategories = [
   {
@@ -342,7 +343,7 @@ function Home({ navigation }) {
                         fontSize: 15,
                       }}
                     >
-                      See all >
+                      See all
                     </Text>
                   </View>
                 </TouchableOpacity>

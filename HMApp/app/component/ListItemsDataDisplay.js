@@ -14,8 +14,16 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import font from "../styles/fonts";
+import Counter from "./Counter";
 
-function ListItemsDataDisplay({ title, grams, price, image, prevPrice }) {
+function ListItemsDataDisplay({
+  title,
+  grams,
+  price,
+  image,
+  prevPrice,
+  sameDayDelievery,
+}) {
   return (
     <View styles={styles.container}>
       <View style={styles.innerContainer}>
@@ -76,24 +84,28 @@ function ListItemsDataDisplay({ title, grams, price, image, prevPrice }) {
                 style={{
                   width: "34%",
                   height: 30,
-                  backgroundColor: "#fe7027",
-                  borderRadius: 3,
+                  top: 10,
+                  left: 30,
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "white" }}>ADD</Text>
+                <Counter />
               </TouchableOpacity>
             </View>
-            <View style={{ flexDirection: "row", marginLeft: 10 }}>
-              <FontAwesome5
-                style={{ marginRight: 7 }}
-                name="motorcycle"
-                size={24}
-                color="green"
-              />
-              <Text>Same Day Delievery</Text>
-            </View>
+            {sameDayDelievery && (
+              <View
+                style={{ flexDirection: "row", marginLeft: 10, bottom: 20 }}
+              >
+                <FontAwesome5
+                  style={{ marginRight: 7 }}
+                  name="motorcycle"
+                  size={24}
+                  color="green"
+                />
+                <Text>Same Day Delievery</Text>
+              </View>
+            )}
           </View>
         </View>
         <View

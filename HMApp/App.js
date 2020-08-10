@@ -41,6 +41,16 @@ import BundleDealsTab from "./app/Screens/BundleDealsTab";
 import DiscountedItemsTab from "./app/Screens/DiscountedItemsTab";
 import MyTabBar from "./app/component/MyTabBar";
 import HeaderNavigation from "./app/component/HeaderNavigation";
+import Apple from "./app/Screens/Apple";
+import Huawei from "./app/Screens/Huawei";
+import Itel from "./app/Screens/Itel";
+import MobileAccessories from "./app/Screens/MobileAccessories";
+import GroomingProducts from "./app/Screens/GroomingProducts";
+import ShowerGel from "./app/Screens/ShowerGel";
+import Soaps from "./app/Screens/Soaps";
+import Handwash from "./app/Screens/Handwash";
+import Shampoo from "./app/Screens/Shampoo";
+import Conditioner from "./app/Screens/Conditioner";
 
 const HomeStack = createStackNavigator();
 const HomeStackScreen = ({ navigation }) => (
@@ -75,7 +85,6 @@ const HomeStackScreen = ({ navigation }) => (
     />
   </HomeStack.Navigator>
 );
-
 const LoginStack = createStackNavigator();
 const LoginStackScreen = ({ navigation }) => (
   <LoginStack.Navigator>
@@ -99,7 +108,6 @@ const LoginStackScreen = ({ navigation }) => (
     />
   </LoginStack.Navigator>
 );
-
 const ListItemSearchpass = ({ navigation }) => (
   <ListItemSearch navigation={navigation} totalItems="17" />
 );
@@ -107,9 +115,26 @@ const OffersTab = createMaterialTopTabNavigator();
 const OffersTabScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
-      <HeaderNavigation showPromotion navigation={navigation} />
+      <HeaderNavigation showPromotion navigation={navigation} title="Offers" />
       <OffersTab.Navigator
-        tabBarOptions={{ labelStyle: { fontSize: 12, fontFamily: fonts.ssl } }}
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
       >
         <OffersTab.Screen
           options={{ tabBarLabel: "Cartons" }}
@@ -130,9 +155,224 @@ const OffersTabScreen = ({ navigation }) => {
     </View>
   );
 };
+const MobileTab = createMaterialTopTabNavigator();
+const MobileTabScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <HeaderNavigation
+        showPromotion
+        navigation={navigation}
+        title={"Mobiles"}
+      />
+      <MobileTab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
+      >
+        <MobileTab.Screen
+          options={{ tabBarLabel: "Apple" }}
+          name="Apple"
+          component={Apple}
+        />
+
+        <MobileTab.Screen
+          options={{ tabBarLabel: "Huawei" }}
+          name="Huawei"
+          component={Huawei}
+        />
+        <MobileTab.Screen
+          options={{ tabBarLabel: "Itel" }}
+          name="Itel"
+          component={Itel}
+        />
+      </MobileTab.Navigator>
+    </View>
+  );
+};
+const MobilesAccessoriesTab = createMaterialTopTabNavigator();
+const MobilesAccessoriesTabScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <HeaderNavigation
+        showPromotion
+        navigation={navigation}
+        title="Mobile Accessories"
+      />
+      <MobilesAccessoriesTab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
+      >
+        <MobilesAccessoriesTab.Screen
+          options={{ tabBarLabel: "Mobile Accessories" }}
+          name="MobileAccessories"
+          component={MobileAccessories}
+        />
+      </MobilesAccessoriesTab.Navigator>
+    </View>
+  );
+};
+const GroomingProductsTab = createMaterialTopTabNavigator();
+const GroomingProductsTabScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <HeaderNavigation
+        showPromotion
+        navigation={navigation}
+        title="Grooming Products"
+      />
+      <GroomingProductsTab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
+      >
+        <GroomingProductsTab.Screen
+          options={{ tabBarLabel: "Grooming Products" }}
+          name="MobileAccessories"
+          component={GroomingProducts}
+        />
+      </GroomingProductsTab.Navigator>
+    </View>
+  );
+};
+const BathBodyTab = createMaterialTopTabNavigator();
+const BathBodyTabScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <HeaderNavigation
+        showPromotion
+        navigation={navigation}
+        title="Bath & Body"
+      />
+      <BathBodyTab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
+      >
+        <BathBodyTab.Screen
+          options={{ tabBarLabel: "Shower Gels & Creams" }}
+          name="ShowerGel"
+          component={ShowerGel}
+        />
+        <BathBodyTab.Screen
+          options={{ tabBarLabel: "Soaps" }}
+          name="Soaps"
+          component={Soaps}
+        />
+        <BathBodyTab.Screen
+          options={{ tabBarLabel: "Handwash" }}
+          name="Handwash"
+          component={Handwash}
+        />
+      </BathBodyTab.Navigator>
+    </View>
+  );
+};
+const HairCareTab = createMaterialTopTabNavigator();
+const HairCareTabScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <HeaderNavigation
+        showPromotion
+        navigation={navigation}
+        title="Hair Care"
+      />
+      <HairCareTab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            fontSize: 12,
+            fontWeight: "bold",
+            textTransform: "none",
+            fontFamily: fonts.ssl,
+          },
+          tabStyle: {
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            borderTopColor: color.lightdarkGray,
+            borderBottomColor: color.lightdarkGray,
+          },
+          indicatorStyle: {
+            height: 3,
+            backgroundColor: "green",
+          },
+        }}
+      >
+        <HairCareTab.Screen
+          options={{ tabBarLabel: "Shampoo" }}
+          name="Shampoo"
+          component={Shampoo}
+        />
+        <HairCareTab.Screen
+          options={{ tabBarLabel: "Conditioner" }}
+          name="Conditioner"
+          component={Conditioner}
+        />
+      </HairCareTab.Navigator>
+    </View>
+  );
+};
 
 const Drawer = createDrawerNavigator();
-
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userContact, setUserContact] = useState("Welcome");
@@ -158,6 +398,31 @@ export default function App() {
           name="PracticeFlatscreen"
           component={PracticeFlatscreen}
         /> */}
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="HairCare"
+          component={HairCareTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="BathBody"
+          component={BathBodyTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="GroomingProducts"
+          component={GroomingProductsTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MobileAccessories"
+          component={MobilesAccessoriesTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MobileTab"
+          component={MobileTabScreen}
+        />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="OfferTab"

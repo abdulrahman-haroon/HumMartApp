@@ -81,6 +81,7 @@ function BundleDealsTab(props) {
             price={item.price}
             prevPrice={item.prevPrice}
             grams={item.quantity}
+            sameDayDelievery
           />
         )}
       />

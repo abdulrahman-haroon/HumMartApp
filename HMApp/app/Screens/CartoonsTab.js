@@ -77,6 +77,7 @@ function CartoonsTab(props) {
             price={item.price}
             prevPrice={item.prevPrice}
             grams={item.grams}
+            sameDayDelievery
           />
         )}
       />
