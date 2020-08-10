@@ -13,6 +13,7 @@ function WelcomeLoad() {
     <View style={styles.container}>
       <View style={styles.containerImg}>
         <Image
+          resizeMode="contain"
           style={styles.welcomeLoadingImageSize}
           source={require("../assets/WelcomeLoading.png")}
         />

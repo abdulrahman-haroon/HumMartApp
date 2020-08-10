@@ -15,7 +15,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import color from "../styles/color";
 import font from "../styles/fonts";
 
-function ListItemsDataDisplay({ title, grams, price, image }) {
+function ListItemsDataDisplay({ title, grams, price, image, prevPrice }) {
   return (
     <View styles={styles.container}>
       <View style={styles.innerContainer}>
@@ -44,40 +44,48 @@ function ListItemsDataDisplay({ title, grams, price, image }) {
             </Text>
             <View
               style={{
-                flex: 1,
+                width: "60%",
                 flexDirection: "row",
                 alignItems: "center",
               }}
             >
-              <Text style={{ marginBottom: 10, marginLeft: 10, fontSize: 13 }}>
-                {price}
-              </Text>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "flex-end",
-                  marginBottom: 10,
-                }}
-              >
-                <TouchableOpacity
+              <Text style={{ marginLeft: 10, fontSize: 13 }}>{price}</Text>
+              {prevPrice && (
+                <Text
                   style={{
-                    width: "34%",
-                    height: 30,
-                    backgroundColor: "#fe7027",
-                    borderRadius: 3,
-                    justifyContent: "center",
-                    alignItems: "center",
+                    marginLeft: 10,
+                    fontSize: 13,
+                    color: color.lightdarkGray,
+                    textDecorationLine: "line-through",
                   }}
                 >
-                  <Text style={{ color: "white" }}>ADD</Text>
-                </TouchableOpacity>
-              </View>
+                  {prevPrice}
+                </Text>
+              )}
             </View>
             <View
-              style={{ flexDirection: "row", marginTop: 5, marginLeft: 10 }}
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                bottom: 25,
+              }}
             >
+              <TouchableOpacity
+                style={{
+                  width: "34%",
+                  height: 30,
+                  backgroundColor: "#fe7027",
+                  borderRadius: 3,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ color: "white" }}>ADD</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: "row", marginLeft: 10 }}>
               <FontAwesome5
                 style={{ marginRight: 7 }}
                 name="motorcycle"
@@ -112,6 +120,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: color.lightgray,
     padding: 10,
+    backgroundColor: "white",
   },
   image: {
     width: 100,

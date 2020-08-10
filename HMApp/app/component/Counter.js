@@ -40,6 +40,7 @@ function Counter() {
       {visibleCounter === true ? (
         <View
           style={{
+            height: 30,
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",

@@ -57,6 +57,8 @@ function OffersCategory({
                 style={{
                   flexDirection: "row",
                   paddingHorizontal: 20,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Text>{price} </Text>

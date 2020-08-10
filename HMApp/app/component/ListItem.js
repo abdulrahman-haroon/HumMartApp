@@ -17,7 +17,7 @@ import font from "../styles/fonts";
 
 import SubCategoryList from "./SubCategoryList";
 
-function ListItem({ title, subTitle, image, index }) {
+function ListItem({ title, subTitle, image, index, navigation }) {
   const [isVisible, setIsVisible] = useState(false);
   const [iconName, setIconName] = useState("ios-arrow-down");
   const [keys, setKeys] = useState(index);
@@ -172,23 +172,20 @@ function ListItem({ title, subTitle, image, index }) {
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
           <AppText
-            style={styles.title}
             title={title}
             style={{
               fontFamily: font.ssl,
-
               fontWeight: "bold",
               marginBottom: 7,
             }}
           />
           {subTitle && (
             <AppText
-              style={styles.subTitle}
               title={subTitle}
               style={{
                 fontFamily: font.ssl,
                 fontSize: 11,
-                color: color.lightdarkGray,
+                color: color.darkishLight,
               }}
             />
           )}
@@ -226,7 +223,7 @@ function ListItem({ title, subTitle, image, index }) {
             marginRight: 30,
           }}
         >
-          <SubCategoryList index={selectedKey} />
+          <SubCategoryList index={selectedKey} navigation={navigation} />
         </View>
       ) : null}
     </View>
@@ -251,13 +248,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  subTitle: {
-    color: color.lightdarkGray,
   },
   icon: {
     flex: 1,

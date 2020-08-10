@@ -256,7 +256,9 @@ function Home({ navigation }) {
           />
           <View style={styles.offer}>
             <Text style={styles.offerText}>Offers</Text>
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback
+              onPress={() => navigation.navigate("OfferTab")}
+            >
               <View
                 style={{
                   width: 60,
@@ -317,7 +319,10 @@ function Home({ navigation }) {
                   />
                 ))}
 
-                <TouchableOpacity style={{ height: 265, width: 150 }}>
+                <TouchableOpacity
+                  style={{ height: 265, width: 150 }}
+                  onPress={() => navigation.navigate("OfferTab")}
+                >
                   <View
                     style={{
                       flex: 1,
@@ -367,6 +372,7 @@ function Home({ navigation }) {
                   subTitle={item.subtitle}
                   image={item.image}
                   index={key}
+                  navigation={navigation}
                 />
               </View>
             ))}

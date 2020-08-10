@@ -447,7 +447,7 @@ const Other = [
     image: require("../assets/SubCategories/Other/1.jpg"),
   },
 ];
-function SubCategoryList({ index }) {
+function SubCategoryList({ index, navigation }) {
   return (
     <View style={styles.container}>
       {index === 0 && (

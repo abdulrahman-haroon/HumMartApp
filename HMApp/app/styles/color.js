@@ -9,4 +9,6 @@ export default {
   navigationColor: "#515151",
   contactColor: "#7fb226",
   orangeDark: "#fe7027",
+  lightBlue: "#6ab1c8",
+  darkishLight: "#858585",
 };
