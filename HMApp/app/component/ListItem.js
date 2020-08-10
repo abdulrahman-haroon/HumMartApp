@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -16,6 +17,10 @@ import color from "../styles/color";
 import font from "../styles/fonts";
 
 import SubCategoryList from "./SubCategoryList";
+import {
+  TouchableHighlight,
+  TouchableNativeFeedback,
+} from "react-native-gesture-handler";
 
 function ListItem({ title, subTitle, image, index, navigation, onPress }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,63 +29,65 @@ function ListItem({ title, subTitle, image, index, navigation, onPress }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => {
-          {
-            isVisible === true
-              ? (setIsVisible(false),
-                setIconName("ios-arrow-down"),
-                setSelectedKey(0))
-              : (setIsVisible(true),
-                setIconName("ios-arrow-up"),
-                setSelectedKey(index));
-          }
-        }}
-      >
-        {image && <Image style={styles.image} source={image} />}
-        <View style={styles.detailsContainer}>
-          <AppText
-            title={title}
-            style={{
-              fontFamily: font.ssl,
-              fontWeight: "bold",
-              marginBottom: 7,
-            }}
-          />
-          {subTitle && (
-            <AppText
-              title={subTitle}
-              style={{
-                fontFamily: font.ssl,
-                fontSize: 11,
-                color: color.darkishLight,
-              }}
-            />
-          )}
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            alignItems: "center",
-
-            left: 10,
+      <TouchableOpacity onPress={onPress}>
+        <TouchableNativeFeedback
+          style={styles.container}
+          onPress={() => {
+            {
+              isVisible === true
+                ? (setIsVisible(false),
+                  setIconName("ios-arrow-down"),
+                  setSelectedKey(0))
+                : (setIsVisible(true),
+                  setIconName("ios-arrow-up"),
+                  setSelectedKey(index));
+            }
           }}
         >
-          <Ionicons
-            name={iconName}
-            size={18}
-            color="green"
+          {image && <Image style={styles.image} source={image} />}
+          <View style={styles.detailsContainer}>
+            <AppText
+              title={title}
+              style={{
+                fontFamily: font.ssl,
+                fontWeight: "bold",
+                marginBottom: 7,
+              }}
+            />
+            {subTitle && (
+              <AppText
+                title={subTitle}
+                style={{
+                  fontFamily: font.ssl,
+                  fontSize: 11,
+                  color: color.darkishLight,
+                }}
+              />
+            )}
+          </View>
+          <View
             style={{
-              width: 50,
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              alignItems: "center",
+
+              left: 10,
             }}
-          />
-        </View>
+          >
+            <Ionicons
+              name={iconName}
+              size={18}
+              color="green"
+              style={{
+                width: 50,
+              }}
+            />
+          </View>
+        </TouchableNativeFeedback>
       </TouchableOpacity>
 
       {isVisible == true ? (
-        <View
+        <TouchableWithoutFeedback
           style={{
             flex: 1,
             flexDirection: "row",
@@ -92,8 +99,12 @@ function ListItem({ title, subTitle, image, index, navigation, onPress }) {
             marginRight: 30,
           }}
         >
-          <SubCategoryList index={selectedKey} navigation={navigation} />
-        </View>
+          <SubCategoryList
+            index={selectedKey}
+            navigation={navigation}
+            onPress={onPress}
+          />
+        </TouchableWithoutFeedback>
       ) : null}
     </View>
   );

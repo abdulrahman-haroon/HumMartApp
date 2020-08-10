@@ -99,7 +99,7 @@ const LoginStackScreen = ({ navigation }) => (
             size={24}
             color="white"
             style={{ paddingLeft: 15 }}
-            onPress={() => navigation.goBack("Home")}
+            onPress={() => navigation.goBack()}
           />
         ),
       }}

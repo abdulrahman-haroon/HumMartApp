@@ -8,6 +8,7 @@ const Mobiles = [
     id: 0,
     title: "Mobiles",
     image: require("../assets/SubCategories/Mobile/mobile.jpg"),
+    screen: "MobileTab",
   },
 ];
 const Electornics = [
@@ -67,7 +68,7 @@ function SubCategoryList({ index, navigation }) {
                 marginHorizontal: 5,
                 marginVertical: 5,
               }}
-              onPress={() => navigation.navigate("MobileTab")}
+              onPress={() => navigation.navigate(items.screen)}
             >
               <Image
                 resizeMode="contain"

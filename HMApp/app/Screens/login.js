@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,11 +15,10 @@ import {
   TouchableHighlight,
 } from "react-native";
 import FlatButton from "../styles/button";
-
 import fonts from "../styles/fonts";
 import color from "../styles/color";
 
-export default function Login() {
+export default function Login({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>

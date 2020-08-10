@@ -42,6 +42,7 @@ const dropDownContainers = [
       "Bath & Body, Hair Care, skin Care, Oral Care, Face care, Hygiene, Grooming, Deos 7 Perfumes , Cosmetics",
     image: require("../assets/Categories/catagory4.jpeg"),
   },
+
   // {
   //   containerId: 3,
   //   title: "Baby Kids & Toys",
@@ -206,7 +207,10 @@ const offersOuterCategories = [
 ];
 
 function Home({ navigation }) {
-  const [scrollTop, setScrollTop] = useState(false);
+  const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
+  const scrollToBottom = () => {
+    return scrollViewRef.current.scrollToEnd({ animated: true });
+  };
   return (
     <View style={styles.container}>
       <View
@@ -242,7 +246,7 @@ function Home({ navigation }) {
         }}
       >
         <ScrollView
-          scrollsToTop={scrollTop}
+          ref={scrollViewRef}
           style={{
             flex: 1,
             backgroundColor: "#c6c6c6",
@@ -379,6 +383,7 @@ function Home({ navigation }) {
                   image={item.image}
                   index={key}
                   navigation={navigation}
+                  onPress={() => scrollToBottom()}
                 />
               </View>
             ))}
