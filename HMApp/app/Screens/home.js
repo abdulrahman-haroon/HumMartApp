@@ -14,6 +14,8 @@ import {
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
 } from "react-native";
+import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
+
 import Card from "../component/Card";
 
 import color from "../styles/color";
@@ -206,7 +208,7 @@ const offersOuterCategories = [
   },
 ];
 
-function Home({ navigation }) {
+function Home({ navigation, counter }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
   const scrollToBottom = () => {
     return scrollViewRef.current.scrollToEnd({ animated: true });
@@ -216,33 +218,87 @@ function Home({ navigation }) {
       <View
         style={{
           width: "100%",
-          backgroundColor: "#515151",
-          marginBottom: 10,
-          position: "absolute",
-          alignItems: "center",
-          padding: 5,
+          paddingBottom: 10,
+          backgroundColor: color.navigationColor,
         }}
       >
-        <TextInput
+        <View
           style={{
-            width: "97%",
-            height: "100%",
-            backgroundColor: "white",
-            fontFamily: fonts.sst,
-            fontSize: 16,
-            borderRadius: 5,
-            padding: 5,
-            fontWeight: "bold",
+            flexDirection: "row",
+            alignItems: "center",
+            marginVertical: 5,
           }}
-          placeholder=" Search for Offers"
-          onTouchStart={() => navigation.navigate("ListItemSearch")}
-        />
+        >
+          <Entypo
+            name="menu"
+            size={24}
+            color="white"
+            style={{ paddingLeft: 15 }}
+            onPress={() => navigation.openDrawer()}
+          />
+          <View
+            style={{
+              flex: 1,
+              left: 5,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              style={{ width: 130, height: 50 }}
+              source={require("../assets/WelcomeLoading.png")}
+            />
+          </View>
+
+          <View style={{ flexDirection: "row" }}>
+            <FontAwesome5
+              name="shopping-cart"
+              size={24}
+              color="white"
+              style={{ paddingRight: 10 }}
+              onPress={() => navigation.navigate("Cart")}
+            />
+            <View
+              style={{
+                width: 18,
+                height: 18,
+                borderRadius: 18 / 2,
+                backgroundColor: color.orangeDark,
+                right: 15,
+                bottom: 6,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ color: "white", fontFamily: fonts.ssl }}>
+                {counter}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <TextInput
+            style={{
+              width: "95%",
+              backgroundColor: "white",
+              fontFamily: fonts.sst,
+              fontSize: 16,
+              borderRadius: 5,
+              padding: 5,
+              fontWeight: "bold",
+            }}
+            placeholder=" Search for Offers"
+            onTouchStart={() => navigation.navigate("ListItemSearch")}
+          />
+        </View>
       </View>
       <View
         style={{
           flex: 1,
           backgroundColor: "green",
-          marginTop: 25,
+          marginTop: 3,
         }}
       >
         <ScrollView
@@ -310,20 +366,15 @@ function Home({ navigation }) {
                     description={item.description}
                     quantity={item.quantity}
                     onPress={() => {
-                      key === item.id
-                        ? navigation.navigate(
-                            "Card",
-                            navigation.navigate("Card", {
-                              image: item.image2,
-                              price: item.price,
-                              prevPrice: item.prevPrice,
-                              title: item.description,
-                              quantity: item.quantity,
-                              rating: item.rating,
-                              sameDayDelievery: true,
-                            })
-                          )
-                        : null;
+                      navigation.navigate("Card", {
+                        image: item.image2,
+                        price: item.price,
+                        prevPrice: item.prevPrice,
+                        title: item.description,
+                        quantity: item.quantity,
+                        rating: item.rating,
+                        sameDayDelievery: true,
+                      });
                     }}
                   />
                 ))}
@@ -396,7 +447,7 @@ function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: "#c6c6c6",
   },
   scrollView: {

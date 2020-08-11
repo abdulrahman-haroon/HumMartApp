@@ -6,7 +6,7 @@ export default {
   lightgrayDrawer: "#e2e2e2",
   lightdarkGray: "#c6c6c6",
   otherLightGray: "#afafaf",
-  navigationColor: "#515151",
+  navigationColor: "#3c3c3c",
   contactColor: "#7fb226",
   orangeDark: "#fe7027",
   lightBlue: "#6ab1c8",

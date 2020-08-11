@@ -1,90 +1,45 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  Image,
-  ActivityIndicator,
-  Button,
-} from "react-native";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import WelcomeLoad from "./app/Screens/welcomeLoading";
-import Login from "./app/Screens/login";
-import Home from "./app/Screens/home";
-import Header from "./app/styles/header";
+import React, { useEffect, useState } from "react";
+import { View, Text } from "react-native";
 
-import fonts from "./app/styles/fonts";
 import Card from "./app/component/Card";
-import color from "./app/styles/color";
-
-import ListItemSearch from "./app/component/ListItemSearch";
-import PracticeFlatscreen from "./app/Screens/PracticeFlatscreen";
-import DrawerStyle from "./app/styles/DrawerStyle";
-import NeedHelp from "./app/Screens/NeedHelp";
-import TermsAndCondition from "./app/Screens/TermsAndCondition";
-import ContactUs from "./app/Screens/ContactUs";
-import AboutUs from "./app/Screens/AboutUs";
-import PrivacyPolicy from "./app/Screens/PrivacyPolicy";
-import CartoonsTab from "./app/Screens/CartoonsTab";
-import BundleDealsTab from "./app/Screens/BundleDealsTab";
-import DiscountedItemsTab from "./app/Screens/DiscountedItemsTab";
-import MyTabBar from "./app/component/MyTabBar";
 import HeaderNavigation from "./app/component/HeaderNavigation";
+import ListItemSearch from "./app/component/ListItemSearch";
+
+import AboutUs from "./app/Screens/AboutUs";
 import Apple from "./app/Screens/Apple";
+import BundleDealsTab from "./app/Screens/BundleDealsTab";
+import Cart from "./app/Screens/Cart";
+import CartoonsTab from "./app/Screens/CartoonsTab";
+import Conditioner from "./app/Screens/Conditioner";
+import ContactUs from "./app/Screens/ContactUs";
+import DiscountedItemsTab from "./app/Screens/DiscountedItemsTab";
+import GroomingProducts from "./app/Screens/GroomingProducts";
+import Handwash from "./app/Screens/Handwash";
+import Home from "./app/Screens/home";
 import Huawei from "./app/Screens/Huawei";
 import Itel from "./app/Screens/Itel";
+import Login from "./app/Screens/login";
 import MobileAccessories from "./app/Screens/MobileAccessories";
-import GroomingProducts from "./app/Screens/GroomingProducts";
+import NeedHelp from "./app/Screens/NeedHelp";
+import PrivacyPolicy from "./app/Screens/PrivacyPolicy";
+import Shampoo from "./app/Screens/Shampoo";
 import ShowerGel from "./app/Screens/ShowerGel";
 import Soaps from "./app/Screens/Soaps";
-import Handwash from "./app/Screens/Handwash";
-import Shampoo from "./app/Screens/Shampoo";
-import Conditioner from "./app/Screens/Conditioner";
+import TermsAndCondition from "./app/Screens/TermsAndCondition";
+import WelcomeLoad from "./app/Screens/welcomeLoading";
+import PracticeFlatscreen from "./app/Screens/PracticeFlatscreen";
 
-const HomeStack = createStackNavigator();
-const HomeStackScreen = ({ navigation }) => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen
-      options={{
-        headerTitleAlign: "center",
-        headerStyle: { backgroundColor: "#515151" },
-        headerTitleStyle: { color: "white", fontFamily: fonts.sst },
-        headerTitle: () => <Header />,
-        headerLeft: () => (
-          <Entypo
-            name="menu"
-            size={24}
-            color="white"
-            style={{ paddingLeft: 15 }}
-            onPress={() => navigation.openDrawer()}
-          />
-        ),
-        headerRight: () => (
-          <FontAwesome5
-            name="shopping-cart"
-            size={24}
-            color="white"
-            style={{ paddingRight: 15 }}
-            onPress={() => console.log("Shopping cart is pressed.")}
-          />
-        ),
-      }}
-      name="Home"
-      component={Home}
-    />
-  </HomeStack.Navigator>
-);
+import color from "./app/styles/color";
+import DrawerStyle from "./app/styles/DrawerStyle";
+import fonts from "./app/styles/fonts";
+import Header from "./app/styles/header";
+
 const LoginStack = createStackNavigator();
 const LoginStackScreen = ({ navigation }) => (
   <LoginStack.Navigator>
@@ -387,17 +342,26 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Home"
         drawerContent={({ navigation }) => (
           <DrawerStyle userContact={userContact} navigation={navigation} />
         )}
       >
-        <Drawer.Screen name="Welcome" component={HomeStackScreen} />
+        <Drawer.Screen
+          options={{ title: "Welcome" }}
+          name="Home"
+          component={Home}
+        />
         <Drawer.Screen name="Login" component={LoginStackScreen} />
         {/* <Drawer.Screen
           name="PracticeFlatscreen"
           component={PracticeFlatscreen}
         /> */}
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="Cart"
+          component={Cart}
+        />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name="HairCare"

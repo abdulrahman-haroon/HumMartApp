@@ -6,7 +6,7 @@ import color from "../styles/color";
 import { Entypo } from "@expo/vector-icons";
 
 function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [visible, setVisible] = useState(true);
   const [visibleCounter, setVisibleCounter] = useState(false);
 
@@ -53,7 +53,7 @@ function Counter() {
             color={color.orangeDark}
             style={{ width: 35 }}
             onPress={() => {
-              count === 0
+              count === 1
                 ? (setVisible(true), setVisibleCounter(false))
                 : setCount(count - 1);
             }}

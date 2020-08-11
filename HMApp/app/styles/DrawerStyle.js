@@ -107,6 +107,7 @@ function DrawerStyle({ userContact, navigation }) {
             marginLeft: 10,
             marginBottom: 20,
           }}
+          onPress={() => navigation.navigate("Cart")}
         >
           <FontAwesome5 name="shopping-cart" size={20} color="black" />
           <Text

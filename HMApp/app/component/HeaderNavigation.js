@@ -7,7 +7,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";
-function HeaderNavigation({ showPromotion, navigation, title }) {
+function HeaderNavigation({ showPromotion, navigation, title, counter }) {
   return (
     <View>
       <View
@@ -38,11 +38,28 @@ function HeaderNavigation({ showPromotion, navigation, title }) {
           color="white"
         />
         <FontAwesome5
-          style={{ flex: 1, marginRight: 10 }}
+          style={{ flex: 1 }}
           name="shopping-cart"
           size={20}
           color="white"
+          onPress={() => navigation.navigate("Cart")}
         />
+        <View
+          style={{
+            width: 18,
+            height: 18,
+            borderRadius: 18 / 2,
+            backgroundColor: color.orangeDark,
+            right: 18,
+            bottom: 6,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: "white", fontFamily: fonts.ssl }}>
+            {counter}
+          </Text>
+        </View>
       </View>
       {showPromotion && (
         <View

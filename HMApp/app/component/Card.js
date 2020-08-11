@@ -4,13 +4,13 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Color from "../styles/color";
 
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+
 import fonts from "../styles/fonts";
 import Counter from "./Counter";
-import { color } from "react-native-reanimated";
+import color from "../styles/color";
 
-function Card({ prevPrice, route, navigation }) {
+function Card({ prevPrice, route, navigation, counter }) {
   let data = route.params;
   return (
     <View style={styles.container}>
@@ -42,11 +42,28 @@ function Card({ prevPrice, route, navigation }) {
           color="white"
         />
         <FontAwesome5
-          style={{ flex: 1, marginRight: 10 }}
+          style={{ flex: 1 }}
           name="shopping-cart"
           size={20}
           color="white"
+          onPress={() => navigation.navigate("Cart")}
         />
+        <View
+          style={{
+            width: 18,
+            height: 18,
+            borderRadius: 18 / 2,
+            backgroundColor: color.orangeDark,
+            right: 18,
+            bottom: 6,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: "white", fontFamily: fonts.ssl }}>
+            {counter}
+          </Text>
+        </View>
       </View>
       <View
         style={{
