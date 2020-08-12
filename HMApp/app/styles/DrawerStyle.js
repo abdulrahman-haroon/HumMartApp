@@ -1,16 +1,19 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Linking, Share } from "react-native";
 
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import fonts from "./fonts";
 import color from "./color";
 
-function DrawerStyle({ userContact, navigation }) {
+import { showMessage, hideMessage } from "react-native-flash-message";
+
+function DrawerStyle({ userContact, navigation, logout }) {
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -65,6 +68,7 @@ function DrawerStyle({ userContact, navigation }) {
             marginLeft: 12,
             marginBottom: 20,
           }}
+          onPress={() => navigation.navigate("MyAddresses")}
         >
           <Entypo name="location" size={22} color="black" />
           <Text
@@ -129,6 +133,14 @@ function DrawerStyle({ userContact, navigation }) {
             borderBottomWidth: 0.8,
             borderBottomColor: color.lightdarkGray,
           }}
+          onPress={() => {
+            showMessage({
+              message: "No new offers for now.",
+              type: "info",
+              backgroundColor: color.lightgray,
+              color: "black",
+            });
+          }}
         >
           <Entypo name="ticket" size={24} color="black" />
           <Text
@@ -181,6 +193,9 @@ function DrawerStyle({ userContact, navigation }) {
             marginLeft: 8,
             marginBottom: 20,
           }}
+          onPress={() =>
+            Linking.openURL("market://details?id=com.matechco.hummart")
+          }
         >
           <EvilIcons name="star" size={24} color="black" />
           <Text
@@ -196,6 +211,13 @@ function DrawerStyle({ userContact, navigation }) {
             marginLeft: 10,
             marginBottom: 20,
           }}
+          onPress={() =>
+            Share.share({
+              title: "Hum Mart App",
+              message:
+                "Download HumMart app at : https://play.google.com/store/apps/details?id=com.matechco.hummart",
+            })
+          }
         >
           <FontAwesome name="upload" size={22} color="black" />
           <Text
@@ -257,6 +279,7 @@ function DrawerStyle({ userContact, navigation }) {
             flexDirection: "row",
             alignItems: "center",
             marginLeft: 15,
+
             marginBottom: 20,
           }}
           onPress={() => navigation.navigate("AboutUs")}
@@ -268,6 +291,32 @@ function DrawerStyle({ userContact, navigation }) {
             About Us
           </Text>
         </TouchableOpacity>
+        {logout && (
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 8,
+              paddingTop: 15,
+              marginBottom: 20,
+              borderTopWidth: 0.8,
+              borderTopColor: color.lightdarkGray,
+            }}
+            onPress={() => console.log("LogOut")}
+          >
+            <SimpleLineIcons name="logout" size={18} color="black" />
+
+            <Text
+              style={{
+                fontFamily: fonts.ssl,
+                marginHorizontal: 8,
+                fontSize: 12,
+              }}
+            >
+              Logout
+            </Text>
+          </TouchableOpacity>
+        )}
         <View
           style={{
             flexDirection: "row",
