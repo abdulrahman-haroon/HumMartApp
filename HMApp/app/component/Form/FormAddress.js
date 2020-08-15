@@ -58,11 +58,11 @@ function FormAddress({ navigation,addAddress }) {
           onSubmit={(values, actions) => {
             addAddress(values),
             actions.resetForm();
-              navigation.navigate("MyAddresses", {
-                values: values,
-                data: selectedData,
-                data2: selectedData2,
-              });
+              // navigation.navigate("MyAddresses", {
+              //   values: values,
+              //   data: selectedData,
+              //   data2: selectedData2,
+              // });
               
           }}
           validationSchema={validationSchema}

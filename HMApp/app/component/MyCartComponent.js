@@ -24,6 +24,8 @@ function MyCartComponent({
   prevPrice,
   sameDayDelievery,
   onPress,
+  add=true,
+  cross=true
 }) {
   return (
     <View styles={styles.container}>
@@ -83,7 +85,7 @@ function MyCartComponent({
               )}
             </View>
 
-            <View
+           {add ===true&& <View
               style={{
                 flex: 1,
                 flexDirection: "row",
@@ -104,7 +106,7 @@ function MyCartComponent({
               >
                 <Counter />
               </View>
-            </View>
+            </View>}
             {sameDayDelievery && (
               <View
                 style={{ flexDirection: "row", marginLeft: 10, bottom: 20 }}
@@ -120,7 +122,7 @@ function MyCartComponent({
             )}
           </View>
         </View>
-        <View onPress={onPress} style={{ height: 50 }}>
+        {cross===true &&<View onPress={onPress} style={{ height: 50 }}>
           <View
             style={{
               flexDirection: "row",
@@ -130,7 +132,7 @@ function MyCartComponent({
           >
             <Ionicons name="ios-close" size={24} color={color.lightdarkGray} />
           </View>
-        </View>
+        </View>}
       </View>
     </View>
   );

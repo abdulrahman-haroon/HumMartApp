@@ -27,6 +27,7 @@ import DrawerStyle from "../styles/DrawerStyle";
 import { AntDesign } from "@expo/vector-icons";
 
 import { AppleFunction, BundleDealsFunction, CartoonFunction, ConditionerFunction, DiscountedItemsFunction, GroomingProductsFunction, HandwashFunction, HuaweiFunction, ItelFunction, MobileAccessoriesFunction, ShampooFunction, ShowerGelFunction, SoapFunction } from "../Callings/TabsScreenFunctions";
+import MyOrders from "../Screens/MyOrders";
 
 
 
@@ -340,6 +341,11 @@ function Navigations({userContact}) {
       name="PracticeFlatscreen"
       component={PracticeFlatscreen}
     /> */}
+    <Drawer.Screen
+        options={{ drawerLabel: () => null, gestureEnabled: false }}
+        name="MyOrders"
+        component={MyOrders}
+      />
       <Drawer.Screen
         options={{ drawerLabel: () => null, gestureEnabled: false }}
         name="FormAddress"

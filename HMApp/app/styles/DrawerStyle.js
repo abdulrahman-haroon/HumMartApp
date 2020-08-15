@@ -88,6 +88,7 @@ function DrawerStyle({ userContact, navigation, logout }) {
             marginLeft: 10,
             marginBottom: 20,
           }}
+          onPress={() => navigation.navigate("MyOrders",{ordersData:true})}
         >
           <MaterialCommunityIcons
             name="hexagon-slice-6"
