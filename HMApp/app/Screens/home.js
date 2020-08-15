@@ -3,27 +3,21 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar,
-  Button,
-  FlatList,
   ScrollView,
   Image,
   TextInput,
   TouchableOpacity,
-  Dimensions,
   TouchableNativeFeedback,
-  TouchableWithoutFeedback,
 } from "react-native";
-import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
+import {  Entypo, FontAwesome5 } from "@expo/vector-icons";
 
-import Card from "../component/Card";
 
 import color from "../styles/color";
-import ListItem from "../component/ListItem";
+import ListItem from "../component/Lists/ListItem";
 import OffersCategory from "../component/OffersCategory";
 import fonts from "../styles/fonts";
 
-import { dropDownContainers, offersOuterCategories } from "../Data";
+import { dropDownContainers, offersOuterCategories } from "../Callings/Data";
 
 function Home({ navigation, counter }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
@@ -105,8 +99,10 @@ function Home({ navigation, counter }) {
               borderRadius: 5,
               padding: 5,
               fontWeight: "bold",
+              
             }}
-            placeholder=" Search for Offers"
+            caretHidden={true}
+            placeholder=" Search for Products"
             onTouchStart={() => navigation.navigate("ListItemSearch")}
           />
         </View>

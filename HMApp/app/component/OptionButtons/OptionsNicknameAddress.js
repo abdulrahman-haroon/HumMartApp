@@ -3,8 +3,8 @@ import { Text, View, TouchableOpacity } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
-import color from "../styles/color";
-import font from "../styles/fonts";
+import color from "../../styles/color";
+import font from "../../styles/fonts";
 
 function OptionsNicknameAddress({
   data,

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import color from "../styles/color";
-import fonts from "../styles/fonts";
+import color from "../../styles/color";
+import fonts from "../../styles/fonts";
 
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

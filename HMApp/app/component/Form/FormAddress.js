@@ -5,14 +5,14 @@ import { Formik } from "formik";
 
 import * as Yup from "yup";
 
-import HeaderNavigation from "./HeaderNavigation";
+import HeaderNavigation from "../HeaderNavigation";
 
-import RadioButton from "./RadioButton";
+import RadioButton from "../OptionButtons/RadioButton";
 import AppTextInput from "./AppTextInput";
 import ErrorMessage from "./ErrorMessage";
-import fonts from "../styles/fonts";
-import color from "../styles/color";
-import OptionsNicknameAddress from "./OptionsNicknameAddress";
+import fonts from "../../styles/fonts";
+import color from "../../styles/color";
+import OptionsNicknameAddress from "../OptionButtons/OptionsNicknameAddress";
 import AppButton from "./AppButton";
 
 const validationSchema = Yup.object().shape({
@@ -26,7 +26,7 @@ const validationSchema = Yup.object().shape({
   city: Yup.string().required().label("City"),
 });
 
-function FormAddress({ navigation }) {
+function FormAddress({ navigation,route }) {
   const [data, setData] = useState(["Mr.", "Mrs.", "Miss."]);
   const [selectedData, setSelectedData] = useState();
   const [checked, setChecked] = useState(0);
@@ -35,6 +35,10 @@ function FormAddress({ navigation }) {
   const [selectedData2, setSelectedData2] = useState();
   const [checked2, setChecked2] = useState(0);
   // console.log(selectedData2);
+
+
+ 
+
   return (
     <View style={{ flex: 1 }}>
       <HeaderNavigation
@@ -61,6 +65,7 @@ function FormAddress({ navigation }) {
             city: "",
           }}
           onSubmit={(values, actions) => {
+        
             actions.resetForm(),
               navigation.navigate("MyAddresses", {
                 values: values,

@@ -1,8 +1,8 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
-import colors from "../styles/color";
-import fonts from "../styles/fonts";
+import colors from "../../styles/color";
+import fonts from "../../styles/fonts";
 
 function AppButton({ title, onPress }) {
   return (

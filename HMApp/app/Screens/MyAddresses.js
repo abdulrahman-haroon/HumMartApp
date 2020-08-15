@@ -7,19 +7,23 @@ import { AntDesign } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import font from "../styles/fonts";
-import AddressesCard from "../component/AddressesCard";
+import AddressesCard from "../component/Cards/AddressesCard";
 
-// const [addressData, setAddressData] = useState([]);
 
-// const dataArray = (data) => {
-//   setAddressData((currentAddresses) => {
-//     return [...currentAddresses, data];
-//   });
-// };
 
 function MyAddresses({ navigation, route }) {
   let data = route.params;
-  // console.log(data);
+
+  const [addressData, setAddressData] = useState([]);
+  const addAddress=()=>(
+    
+     setAddressData((currentAddress)=>{
+       return [data,...currentAddress]
+     })
+   )
+  
+  // console.log(addressData)
+  // console.log(addAddress());
   return (
     <View style={{ flex: 1 }}>
       <HeaderNavigation

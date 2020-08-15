@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
-import Color from "../styles/color";
+import Color from "../../styles/color";
 
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import fonts from "../styles/fonts";
-import Counter from "./Counter";
-import color from "../styles/color";
+import fonts from "../../styles/fonts";
+import Counter from "../Counter";
+import color from "../../styles/color";
 
 function Card({ prevPrice, route, navigation, counter }) {
   let data = route.params;

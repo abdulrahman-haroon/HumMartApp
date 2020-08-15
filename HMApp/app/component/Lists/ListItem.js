@@ -12,11 +12,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 
-import AppText from "../component/AppText";
-import color from "../styles/color";
-import font from "../styles/fonts";
+import AppText from "../Form/AppText";
+import color from "../../styles/color";
+import font from "../../styles/fonts";
 
-import SubCategoryList from "./SubCategoryList";
+import SubCategoryList from "../SubCategoryList";
 import {
   TouchableHighlight,
   TouchableNativeFeedback,
