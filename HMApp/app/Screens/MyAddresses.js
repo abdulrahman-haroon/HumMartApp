@@ -1,31 +1,64 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Modal } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
 
 import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import font from "../styles/fonts";
 import AddressesCard from "../component/Cards/AddressesCard";
+import FormAddress from "../component/Form/FormAddress";
 
 
 
 function MyAddresses({ navigation, route }) {
   let data = route.params;
+ 
+  const [visibleModal,setVisibleModal]= useState(false);
 
   const [addressData, setAddressData] = useState([]);
-  const addAddress=()=>(
-    
+  
+  const addAddress=(addNew)=>{
      setAddressData((currentAddress)=>{
-       return [data,...currentAddress]
-     })
-   )
+       return [addNew,...currentAddress]
+     });
+     setVisibleModal(false);
+    }
   
   // console.log(addressData)
   // console.log(addAddress());
   return (
     <View style={{ flex: 1 }}>
+      <Modal visible={visibleModal} >
+      <View>
+      <View
+        style={{
+          height: 50,
+          flexDirection: "row",
+          backgroundColor: color.navigationColor,
+          alignItems: "center",
+        }}
+      >
+        <Ionicons
+          style={{ marginLeft: 20, width: 30 }}
+          name="ios-arrow-back"
+          size={24}
+          color="white"
+         onPress={()=>setVisibleModal(false)}
+        />
+        
+        <Text
+          numberOfLines={1}
+          style={{ flex: 7, color: "white", fontFamily: font.ssl }}
+        >
+          Add Address
+        </Text>
+        </View>
+      </View>
+          <FormAddress addAddress={addAddress} />
+      </Modal>
       <HeaderNavigation
         navigation={navigation}
         title="Choose Address"
@@ -46,7 +79,7 @@ function MyAddresses({ navigation, route }) {
             alignItems: "center",
             marginHorizontal: 15,
           }}
-          onPress={() => navigation.navigate("FormAddress")}
+          onPress={() => setVisibleModal(true)}
         >
           <AntDesign
             name="pluscircleo"

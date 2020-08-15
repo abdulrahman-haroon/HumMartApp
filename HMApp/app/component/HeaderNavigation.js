@@ -31,6 +31,7 @@ function HeaderNavigation({
           color="white"
           onPress={() => navigation.goBack()}
         />
+        
         <Text
           numberOfLines={1}
           style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
