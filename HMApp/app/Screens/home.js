@@ -11,13 +11,14 @@ import {
 } from "react-native";
 import {  Entypo, FontAwesome5 } from "@expo/vector-icons";
 
-
 import color from "../styles/color";
 import ListItem from "../component/Lists/ListItem";
 import OffersCategory from "../component/OffersCategory";
 import fonts from "../styles/fonts";
 
-import { dropDownContainers, offersOuterCategories } from "../Callings/Data";
+import { dropDownContainers, offersOuterCategories ,imagesData} from "../Callings/Data";
+
+import { SliderBox } from "react-native-image-slider-box";
 
 function Home({ navigation, counter }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
@@ -111,7 +112,7 @@ function Home({ navigation, counter }) {
         style={{
           flex: 1,
           backgroundColor: "green",
-          marginTop: 3,
+          marginTop:3
         }}
       >
         <ScrollView
@@ -121,7 +122,7 @@ function Home({ navigation, counter }) {
             backgroundColor: "#c6c6c6",
           }}
         >
-          <Image
+          {/* <Image
             style={{
               flex: 1,
               width: "100%",
@@ -130,7 +131,13 @@ function Home({ navigation, counter }) {
             }}
             resizeMode="contain"
             source={require("../assets/homeSlider/1.jpg")}
-          />
+          /> */}
+          <SliderBox images={imagesData} 
+          onCurrentImagePressed={(index)=>
+            {index===0?navigation.navigate("OfferTab")
+            :index===1?navigation.navigate("MobileTab"):
+            index===2?navigation.navigate("BathBody"):null}}
+           dotColor={color.orangeDark} inactiveDotColor="#90A4AE" autoplay={true} circleLoop={true}/>
           <View style={styles.offer}>
             <Text style={styles.offerText}>Offers</Text>
             <TouchableNativeFeedback
@@ -288,6 +295,7 @@ const styles = StyleSheet.create({
     marginBottom: -1,
     borderTopWidth: 2,
     borderTopColor: color.lightgray,
+    marginTop:7
   },
   offerText: {
     position: "absolute",
