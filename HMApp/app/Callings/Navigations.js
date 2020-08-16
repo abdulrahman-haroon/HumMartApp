@@ -337,10 +337,7 @@ function Navigations({userContact}) {
         component={Home}
       />
       <Drawer.Screen name="Login" component={LoginStackScreen} />
-      {/* <Drawer.Screen
-      name="PracticeFlatscreen"
-      component={PracticeFlatscreen}
-    /> */}
+      
     <Drawer.Screen
         options={{ drawerLabel: () => null, gestureEnabled: false }}
         name="MyOrders"
