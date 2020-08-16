@@ -122,16 +122,7 @@ function Home({ navigation, counter }) {
             backgroundColor: "#c6c6c6",
           }}
         >
-          {/* <Image
-            style={{
-              flex: 1,
-              width: "100%",
-              height: 200,
-              marginBottom: 7,
-            }}
-            resizeMode="contain"
-            source={require("../assets/homeSlider/1.jpg")}
-          /> */}
+        
           <SliderBox images={imagesData} 
           onCurrentImagePressed={(index)=>
             {index===0?navigation.navigate("OfferTab")
