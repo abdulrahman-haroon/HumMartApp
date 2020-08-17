@@ -1,6 +1,8 @@
-export const imagesData=[require("../assets/homeSlider/1.jpg"),require("../assets/homeSlider/2.jpg"),require("../assets/homeSlider/3.jpg")]
-
-
+export const imagesData = [
+  require("../assets/homeSlider/1.jpg"),
+  require("../assets/homeSlider/2.jpg"),
+  require("../assets/homeSlider/3.jpg"),
+];
 export const dropDownContainers = [
   {
     containerId: 1,
@@ -149,7 +151,7 @@ export const offersOuterCategories = [
     price: "Rs 530",
     prevPrice: "635",
     description:
-      "BUY 3  Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
+      "BUY 3 Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
     quantity: "475 gm + 32.5 gm",
     rating: 4.5,
   },
@@ -187,7 +189,7 @@ export const offersOuterCategories = [
   },
 ];
 
-export const CartoonsTabData=[
+export const CartoonsTabData = [
   {
     id: 1,
     image: require("../assets/OfferCategories/SeeAll/Cartoons/1.jpg"),
@@ -271,9 +273,9 @@ export const CartoonsTabData=[
     prevPrice: "Rs 1145",
     rating: "4.5",
   },
-]
+];
 
-export const BundleDealsData=[
+export const BundleDealsData = [
   {
     id: 0,
     image: require("../assets/OfferCategories/offer1.jpg"),
@@ -302,7 +304,7 @@ export const BundleDealsData=[
     price: "Rs 530",
     prevPrice: "635",
     description:
-      "BUY 3  Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
+      "BUY 3 Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
     quantity: "475 gm + 32.5 gm",
     rating: 4.5,
   },
@@ -338,9 +340,9 @@ export const BundleDealsData=[
     quantity: "910 gm",
     rating: 4.5,
   },
-]
+];
 
-export const DiscountedItemData=[
+export const DiscountedItemData = [
   {
     id: 1,
     image: require("../assets/OfferCategories/SeeAll/DiscountedItems/1.jpg"),
@@ -359,9 +361,9 @@ export const DiscountedItemData=[
     quantity: "500 gm",
     price: "Rs 6055",
   },
-]
+];
 
-export const ApplesData=[
+export const ApplesData = [
   {
     id: 0,
     image: require("../assets/SubCategories/Mobile/Tabs/Apple/1.jpg"),
@@ -401,9 +403,9 @@ export const ApplesData=[
     quantity: "64 GB",
     rating: 4.5,
   },
-]
+];
 
-export const HuaweiData=[
+export const HuaweiData = [
   {
     id: 0,
     image: require("../assets/SubCategories/Mobile/Tabs/Huawei/1.jpg"),
@@ -440,9 +442,9 @@ export const HuaweiData=[
     quantity: "3 GB | 64 GB",
     rating: 4.5,
   },
-]
+];
 
-export const ItelData=[
+export const ItelData = [
   {
     id: 0,
     image: require("../assets/SubCategories/Mobile/Tabs/Itel/1.jpg"),
@@ -474,9 +476,9 @@ export const ItelData=[
     quantity: "2 GB| 32 GB",
     rating: 4.5,
   },
-]
+];
 
-export const MobileAccessoriesData=[
+export const MobileAccessoriesData = [
   {
     id: 0,
     image: require("../assets/SubCategories/electronic/Accessories/1.jpg"),
@@ -520,9 +522,9 @@ export const MobileAccessoriesData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const GroomingProductsData=[
+export const GroomingProductsData = [
   {
     id: 0,
     image: require("../assets/SubCategories/electronic/Grooming/1.jpg"),
@@ -570,9 +572,9 @@ export const GroomingProductsData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const ShowerGelData=[
+export const ShowerGelData = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/ShowerGel/1.jpg"),
@@ -606,9 +608,9 @@ export const ShowerGelData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const SoapData=[
+export const SoapData = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/Soups/1.jpg"),
@@ -646,9 +648,9 @@ export const SoapData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const HandwashData=[
+export const HandwashData = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/BathBody/Handwash/1.jpg"),
@@ -685,9 +687,9 @@ export const HandwashData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const ShampooData=[
+export const ShampooData = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/HairCare/Shampoo/1.jpg"),
@@ -716,9 +718,9 @@ export const ShampooData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const ConditionerData=[
+export const ConditionerData = [
   {
     id: 0,
     image: require("../assets/SubCategories/personalCare/HairCare/Conditioner/1.jpg"),
@@ -747,9 +749,9 @@ export const ConditionerData=[
 
     rating: 4.5,
   },
-]
+];
 
-export const ListItemSearchData=[
+export const ListItemSearchData = [
   {
     id: 0,
     image: require("../assets/OfferCategories/offer1.jpg"),
@@ -778,7 +780,7 @@ export const ListItemSearchData=[
     price: "Rs 530",
     prevPrice: "635",
     description:
-      "BUY 3  Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
+      "BUY 3 Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
     quantity: "475 gm + 32.5 gm",
     rating: 4.5,
   },
@@ -925,7 +927,7 @@ export const ListItemSearchData=[
     price: "Rs 530",
     prevPrice: "635",
     description:
-      "BUY 3  Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
+      "BUY 3 Lipton Yellow Label Tea 475 gm GET Lipton Green Tea Jasmine Aura 32.5 gm FREE",
     quantity: "475 gm + 32.5 gm",
     rating: 4.5,
   },
@@ -1017,7 +1019,8 @@ export const ListItemSearchData=[
     description: "Apple Iphone SE2020 | Black | With Official Warranty",
     quantity: "64 GB",
     rating: 4.5,
-  }, {
+  },
+  {
     id: 26,
     image: require("../assets/SubCategories/Mobile/Tabs/Huawei/1.jpg"),
     image2: require("../assets/SubCategories/Mobile/Tabs/Huawei/BiggerImages/1.jpg"),
@@ -1128,7 +1131,7 @@ export const ListItemSearchData=[
     rating: 4.5,
   },
   {
-    id:37,
+    id: 37,
     image: require("../assets/SubCategories/electronic/Grooming/1.jpg"),
     image2: require("../assets/SubCategories/electronic/Grooming/BiggerImages/1.jpg"),
     price: "Rs 10323",
@@ -1328,7 +1331,7 @@ export const ListItemSearchData=[
     rating: 4.5,
   },
   {
-    id:55,
+    id: 55,
     image: require("../assets/SubCategories/personalCare/HairCare/Conditioner/3.jpg"),
     price: "Rs 270",
     description: "Tresemme Color Revitalise With Camelia Oil Conditioner",
@@ -1336,4 +1339,4 @@ export const ListItemSearchData=[
 
     rating: 4.5,
   },
-]
+];

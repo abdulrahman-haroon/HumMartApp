@@ -18,12 +18,28 @@ import { AntDesign } from "@expo/vector-icons";
 
 import ListItemsDataDisplay from "./ListItemsDataDisplay";
 
-import {ListItemSearchData} from "../../Callings/Data";
+import { ListItemSearchData } from "../../Callings/Data";
 
+function ListItemSearch({
+  counter,
+  counterItems,
+  navigation,
+  setCounterItems,
+}) {
+  const [products, setProducts] = useState(ListItemSearchData);
+  const [inMemoryProducts, setInMemoryProducts] = useState(ListItemSearchData);
 
-function ListItemSearch({ counter,counterItems, navigation ,setCounterItems}) {
-  const [text, setText] = useState();
+  const searchProducts = (value) => {
+    const filteredProducts = inMemoryProducts.filter((product) => {
+      let titleLowerCase = product.description.toLocaleLowerCase();
+      let searchLowerCase = value.toLocaleLowerCase();
+      return titleLowerCase.indexOf(searchLowerCase) > -1;
+    });
+    setProducts(filteredProducts);
+  };
+
   setCounterItems(ListItemSearchData.length);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -57,8 +73,8 @@ function ListItemSearch({ counter,counterItems, navigation ,setCounterItems}) {
               fontWeight: "bold",
               fontFamily: font.sst,
             }}
-            placeholder="Search for products"
-            onChangeText={(text) => setText(text)}
+            placeholder="Search For Products"
+            onChangeText={(value) => searchProducts(value)}
           />
           <AntDesign
             name="close"
@@ -67,32 +83,31 @@ function ListItemSearch({ counter,counterItems, navigation ,setCounterItems}) {
             onPress={() => console.log("text removed")}
           />
         </View>
-        <View style={{ flexDirection: "row",marginLeft:5 }}>
-            <FontAwesome5
-              name="shopping-cart"
-              size={24}
-              color="white"
-              style={{ paddingRight: 5}}
-              onPress={() => navigation.navigate("Cart")}
-            />
-            <View
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 18 / 2,
-                backgroundColor: color.orangeDark,
-                right: 10,
-                bottom: 6,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text style={{ color: "white", fontFamily: font.ssl }}>
-                {counter}
-              </Text>
-            </View>
+        <View style={{ flexDirection: "row", marginLeft: 5 }}>
+          <FontAwesome5
+            name="shopping-cart"
+            size={24}
+            color="white"
+            style={{ paddingRight: 5 }}
+            onPress={() => navigation.navigate("Cart")}
+          />
+          <View
+            style={{
+              width: 18,
+              height: 18,
+              borderRadius: 18 / 2,
+              backgroundColor: color.orangeDark,
+              right: 10,
+              bottom: 6,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "white", fontFamily: font.ssl }}>
+              {counter}
+            </Text>
           </View>
-      
+        </View>
       </View>
 
       <View>
@@ -106,7 +121,7 @@ function ListItemSearch({ counter,counterItems, navigation ,setCounterItems}) {
         </Text>
       </View>
       <FlatList
-        data={ListItemSearchData}
+        data={products}
         keyExtractor={(dataSearch) => dataSearch.id.toString()}
         renderItem={({ item }) => (
           <ListItemsDataDisplay
@@ -114,17 +129,18 @@ function ListItemSearch({ counter,counterItems, navigation ,setCounterItems}) {
             title={item.description}
             grams={item.quantity}
             price={item.price}
-          
             sameDayDelievery
-            onPress={()=>navigation.navigate("Card",{
-              image: item.image2,
-              price: item.price,
-              prevPrice: item.prevPrice,
-              title: item.description,
-              quantity: item.quantity,
-              rating: item.rating,
-              sameDayDelievery: true,
-            })}
+            onPress={() =>
+              navigation.navigate("Card", {
+                image: item.image2,
+                price: item.price,
+                prevPrice: item.prevPrice,
+                title: item.description,
+                quantity: item.quantity,
+                rating: item.rating,
+                sameDayDelievery: true,
+              })
+            }
           />
         )}
       />
