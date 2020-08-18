@@ -10,54 +10,53 @@ import color from "../styles/color";
 import font from "../styles/fonts";
 import AddressesCard from "../component/Cards/AddressesCard";
 import FormAddress from "../component/Form/FormAddress";
+import { ScrollView } from "react-native-gesture-handler";
 
-
-
-function MyAddresses({ navigation, route }) {
-  let data = route.params;
- 
-  const [visibleModal,setVisibleModal]= useState(false);
-
+function MyAddresses({ navigation }) {
+  const [visibleModal, setVisibleModal] = useState(false);
   const [addressData, setAddressData] = useState([]);
-  
-  const addAddress=(addNew)=>{
-     setAddressData((currentAddress)=>{
-       return [addNew,...currentAddress]
-     });
-     setVisibleModal(false);
-    }
-  
-  // console.log(addressData)
+  const [selectedItem, setSelectedItem] = useState();
+  const addAddress = (addNew) => {
+    setAddressData(() => [...addressData, addNew]);
+    setVisibleModal(false);
+  };
+
+  const removeAddress = (address) => {
+    setAddressData(
+      addressData.filter((name) => address.houseNo != name.houseNo)
+    );
+  };
+  console.log(addressData);
   // console.log(addAddress());
   return (
     <View style={{ flex: 1 }}>
-      <Modal visible={visibleModal} >
-      <View>
-      <View
-        style={{
-          height: 50,
-          flexDirection: "row",
-          backgroundColor: color.navigationColor,
-          alignItems: "center",
-        }}
-      >
-        <Ionicons
-          style={{ marginLeft: 20, width: 30 }}
-          name="ios-arrow-back"
-          size={24}
-          color="white"
-         onPress={()=>setVisibleModal(false)}
-        />
-        
-        <Text
-          numberOfLines={1}
-          style={{ flex: 7, color: "white", fontFamily: font.ssl }}
-        >
-          Add Address
-        </Text>
+      <Modal visible={visibleModal}>
+        <View>
+          <View
+            style={{
+              height: 50,
+              flexDirection: "row",
+              backgroundColor: color.navigationColor,
+              alignItems: "center",
+            }}
+          >
+            <Ionicons
+              style={{ marginLeft: 20, width: 30 }}
+              name="ios-arrow-back"
+              size={24}
+              color="white"
+              onPress={() => setVisibleModal(false)}
+            />
+
+            <Text
+              numberOfLines={1}
+              style={{ flex: 7, color: "white", fontFamily: font.ssl }}
+            >
+              Add Address
+            </Text>
+          </View>
         </View>
-      </View>
-          <FormAddress addAddress={addAddress} />
+        <FormAddress addAddress={addAddress} selectedItem={selectedItem} />
       </Modal>
       <HeaderNavigation
         navigation={navigation}
@@ -92,19 +91,24 @@ function MyAddresses({ navigation, route }) {
           </Text>
         </TouchableOpacity>
       </View>
-      <View>
-        {data != null && (
-          <AddressesCard
-            respect={data.data}
-            nickName={data.data2}
-            name={data.values.name}
-            email={data.values.email}
-            houseNo={data.values.houseNo}
-            sector={data.values.sector}
-            city={data.values.city}
-          />
-        )}
-      </View>
+      <ScrollView>
+        {addressData != [] &&
+          addressData.map((item, key) => (
+            <AddressesCard
+              key={key}
+              respect={item.respect}
+              nickName={item.nickName}
+              name={item.name}
+              email={item.email}
+              houseNo={item.houseNo}
+              sector={item.sector}
+              city={item.city}
+              removeAddress={() => removeAddress(item, key)}
+              setSelectedItem={() => setSelectedItem(item)}
+              setVisibleModal={(value) => setVisibleModal(value)}
+            />
+          ))}
+      </ScrollView>
     </View>
   );
 }

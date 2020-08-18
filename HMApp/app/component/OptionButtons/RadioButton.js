@@ -1,17 +1,25 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, TextInput } from "react-native";
+
+import { useFormikContext } from "formik";
 
 import { Ionicons } from "@expo/vector-icons";
 
 import color from "../../styles/color";
 import font from "../../styles/fonts";
 
-function RadioButton({ data, checked, setData, setChecked, setSelectedData }) {
+function RadioButton({
+  data,
+  checked,
+  setChecked,
+  setSelectedData,
+  ...otherProps
+}) {
+  const { handleChange } = useFormikContext();
   return (
     <View
       style={{
         flexDirection: "row",
-        marginHorizontal: 20,
         marginVertical: 15,
       }}
     >
@@ -34,6 +42,17 @@ function RadioButton({ data, checked, setData, setChecked, setSelectedData }) {
                 color={color.orangeDark}
                 style={{ marginRight: 10 }}
               />
+              {/* <TextInput
+                placeholderTextColor={color.lightdarkGray}
+                style={{
+                  fontFamily: font.ssl,
+                  fontWeight: "600",
+                  fontSize: 15,
+                }}
+                placeholder={item}
+                //onChange={() => setFieldValue(item)}
+                onChangeText={handleChange("radioButton")}
+              /> */}
               <Text style={{ fontFamily: font.ssl }}>{item}</Text>
             </TouchableOpacity>
           ) : (
