@@ -10,7 +10,12 @@ function AppTextInput({ ...otherProps }) {
     <View style={styles.container}>
       <TextInput
         placeholderTextColor={color.lightdarkGray}
-        style={{ fontFamily: fonts.ssl, fontWeight: "600", fontSize: 15 }}
+        style={{
+          fontFamily: fonts.ssl,
+          fontWeight: "600",
+          fontSize: 15,
+          width: "100%",
+        }}
         {...otherProps}
       />
     </View>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -13,14 +13,30 @@ import RadioButton from "../OptionButtons/RadioButton";
 import OptionsNicknameAddress from "../OptionButtons/OptionsNicknameAddress";
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required().min(1).label("Name"),
-  email: Yup.string().required().email().label("Email"),
+  name: Yup.string()
+    .required()
+    .min(1)
+    .max(255, "You have exceeded the limit of characters that is 255.")
+    .label("Name"),
+  email: Yup.string()
+    .required()
+    .email()
+    .max(100, "You have exceeded the limit of characters that is 100.")
+    .label("Email"),
   houseNo: Yup.string()
     .required()
     .min(1)
+    .max(255, "You have exceeded the limit of characters that is 255.")
     .label("Address should be different from rest of addresses and"),
-  sector: Yup.string().required().min(1).label("Area,Colony,Sector,Street"),
-  city: Yup.string().required().label("City"),
+  sector: Yup.string()
+    .required()
+    .min(1)
+    .max(180, "You have exceeded the limit of characters that is 180.")
+    .label("Area,Colony,Sector,Street"),
+  city: Yup.string()
+    .required()
+    .max(80, "You have exceeded the limit of characters that is 80.")
+    .label("City"),
   radioButton: Yup.string().required().label("This"),
   optionNickName: Yup.string().required().label("This"),
 });
@@ -34,7 +50,7 @@ function FormAddress({ addAddress }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ marginHorizontal: 25, marginVertical: 5 }}>
+      <ScrollView style={{ marginHorizontal: 25, marginVertical: 5 }}>
         <Formik
           initialValues={{
             name: "",
@@ -75,6 +91,7 @@ function FormAddress({ addAddress }) {
                 onChangeText={handleChange("name")}
                 onBlur={() => setFieldTouched("name")}
                 value={values.name}
+                multiline
               />
               <ErrorMessage visible={touched.name} error={errors.name} />
 
@@ -87,6 +104,7 @@ function FormAddress({ addAddress }) {
                 onBlur={() => setFieldTouched("email")}
                 keyboardType="email-address"
                 value={values.email}
+                multiline
               />
               <ErrorMessage visible={touched.email} error={errors.email} />
 
@@ -142,7 +160,7 @@ function FormAddress({ addAddress }) {
             </>
           )}
         </Formik>
-      </View>
+      </ScrollView>
     </View>
   );
 }
