@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 
 import { Formik } from "formik";
@@ -9,12 +9,11 @@ import ErrorMessage from "./ErrorMessage";
 import fonts from "../../styles/fonts";
 import color from "../../styles/color";
 import AppButton from "./AppButton";
+import RadioButton from "../OptionButtons/RadioButton";
+import OptionsNicknameAddress from "../OptionButtons/OptionsNicknameAddress";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label("Name"),
-  respect: Yup.string().required().min(1).label("This"),
-  nickName: Yup.string().required().min(1).label("This"),
-
   email: Yup.string().required().email().label("Email"),
   houseNo: Yup.string()
     .required()
@@ -22,9 +21,17 @@ const validationSchema = Yup.object().shape({
     .label("Address should be different from rest of addresses and"),
   sector: Yup.string().required().min(1).label("Area,Colony,Sector,Street"),
   city: Yup.string().required().label("City"),
+  radioButton: Yup.string().required().label("This"),
+  optionNickName: Yup.string().required().label("This"),
 });
 
 function FormAddress({ addAddress }) {
+  const [data, setData] = useState(["Mr.", "Mrs.", "Miss."]);
+  const [checked, setChecked] = useState(-1);
+
+  const [data2, setData2] = useState(["Home", "Office", "Others"]);
+  const [checked2, setChecked2] = useState(-1);
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ marginHorizontal: 25, marginVertical: 5 }}>
@@ -35,13 +42,13 @@ function FormAddress({ addAddress }) {
             houseNo: "",
             sector: "",
             city: "",
-            respect: "",
-            nickName: "",
+            radioButton: "",
+            optionNickName: "",
           }}
           onSubmit={(values, actions) => {
             addAddress(values);
-            //FIXME:
-            // actions.resetForm();
+            //TODO: (If REQUIRED) if your using different screens not modal.
+            // actions.resetForm(); //this will reset the value
           }}
           validationSchema={validationSchema}
         >
@@ -52,18 +59,14 @@ function FormAddress({ addAddress }) {
             setFieldTouched,
             handleSubmit,
             values,
-            setFieldValue,
           }) => (
             <>
-              <AppTextInput
-                placeholder="Mr, Mrs, Miss"
-                autoCorrect={false}
-                name="respect"
-                onChangeText={handleChange("respect")}
-                onBlur={() => setFieldTouched("respect")}
-                value={values.respect}
+              <RadioButton
+                data={data}
+                checked={checked}
+                setChecked={(item) => setChecked(item)}
+                name="radioButton"
               />
-              <ErrorMessage visible={touched.respect} error={errors.respect} />
 
               <AppTextInput
                 placeholder="Name"
@@ -72,7 +75,6 @@ function FormAddress({ addAddress }) {
                 onChangeText={handleChange("name")}
                 onBlur={() => setFieldTouched("name")}
                 value={values.name}
-                //this will work then you will use action.resetForm()
               />
               <ErrorMessage visible={touched.name} error={errors.name} />
 
@@ -85,7 +87,6 @@ function FormAddress({ addAddress }) {
                 onBlur={() => setFieldTouched("email")}
                 keyboardType="email-address"
                 value={values.email}
-                //this will work then you will use action.resetForm()
               />
               <ErrorMessage visible={touched.email} error={errors.email} />
 
@@ -97,7 +98,6 @@ function FormAddress({ addAddress }) {
                 onBlur={() => setFieldTouched("houseNo")}
                 multiline
                 value={values.houseNo}
-                //this will work then you will use action.resetForm()
               />
               <ErrorMessage visible={touched.houseNo} error={errors.houseNo} />
               <AppTextInput
@@ -108,7 +108,6 @@ function FormAddress({ addAddress }) {
                 onBlur={() => setFieldTouched("sector")}
                 multiline
                 value={values.sector}
-                //this will work then you will use action.resetForm()
               />
               <ErrorMessage visible={touched.sector} error={errors.sector} />
               <AppTextInput
@@ -118,7 +117,6 @@ function FormAddress({ addAddress }) {
                 onChangeText={handleChange("city")}
                 onFocus={() => setFieldTouched("city")}
                 value={values.city}
-                //this will work then you will use action.resetForm()
               />
               {touched.city || errors.city ? (
                 <ErrorMessage visible={touched.city} error={errors.city} />
@@ -133,17 +131,11 @@ function FormAddress({ addAddress }) {
               >
                 Nickname of your address
               </Text>
-              <AppTextInput
-                placeholder="Home, Office, Others"
-                autoCorrect={false}
-                name="nickName"
-                onChangeText={handleChange("nickName")}
-                onBlur={() => setFieldTouched("nickName")}
-                value={values.nickName}
-              />
-              <ErrorMessage
-                visible={touched.nickName}
-                error={errors.nickName}
+              <OptionsNicknameAddress
+                data={data2}
+                checked={checked2}
+                setChecked={(item) => setChecked2(item)}
+                name="optionNickName"
               />
 
               <AppButton title="CONTINUE" onPress={handleSubmit} />

@@ -26,8 +26,6 @@ function MyAddresses({ navigation }) {
       addressData.filter((name) => address.houseNo != name.houseNo)
     );
   };
-  console.log(addressData);
-  // console.log(addAddress());
   return (
     <View style={{ flex: 1 }}>
       <Modal visible={visibleModal}>
@@ -96,8 +94,8 @@ function MyAddresses({ navigation }) {
           addressData.map((item, key) => (
             <AddressesCard
               key={key}
-              respect={item.respect}
-              nickName={item.nickName}
+              respect={item.radioButton}
+              nickName={item.optionNickName}
               name={item.name}
               email={item.email}
               houseNo={item.houseNo}
