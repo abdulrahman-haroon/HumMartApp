@@ -11,11 +11,16 @@ import font from "../styles/fonts";
 import AddressesCard from "../component/Cards/AddressesCard";
 import FormAddress from "../component/Form/FormAddress";
 import { ScrollView } from "react-native-gesture-handler";
+import EditFormAddress from "../component/Form/EditFormAddress";
 
 function MyAddresses({ navigation }) {
   const [visibleModal, setVisibleModal] = useState(false);
+  const [visibleEditModal, setVisibleEditModal] = useState(false);
+
   const [addressData, setAddressData] = useState([]);
-  const [selectedItem, setSelectedItem] = useState();
+
+  const [selectedKey, setSelectedKey] = useState();
+
   const addAddress = (addNew) => {
     setAddressData(() => [...addressData, addNew]);
     setVisibleModal(false);
@@ -54,7 +59,39 @@ function MyAddresses({ navigation }) {
             </Text>
           </View>
         </View>
-        <FormAddress addAddress={addAddress} selectedItem={selectedItem} />
+        <FormAddress addAddress={addAddress} />
+      </Modal>
+      <Modal visible={visibleEditModal}>
+        <View>
+          <View
+            style={{
+              height: 50,
+              flexDirection: "row",
+              backgroundColor: color.navigationColor,
+              alignItems: "center",
+            }}
+          >
+            <Ionicons
+              style={{ marginLeft: 20, width: 30 }}
+              name="ios-arrow-back"
+              size={24}
+              color="white"
+              onPress={() => setVisibleEditModal(false)}
+            />
+
+            <Text
+              numberOfLines={1}
+              style={{ flex: 7, color: "white", fontFamily: font.ssl }}
+            >
+              Edit Address
+            </Text>
+          </View>
+        </View>
+        <EditFormAddress
+          allData={addressData}
+          selectedKey={selectedKey}
+          setVisibleEditModal={(value) => setVisibleEditModal(value)}
+        />
       </Modal>
       <HeaderNavigation
         navigation={navigation}
@@ -94,6 +131,8 @@ function MyAddresses({ navigation }) {
           addressData.map((item, key) => (
             <AddressesCard
               key={key}
+              indexKey={key}
+              item={item}
               respect={item.radioButton}
               nickName={item.optionNickName}
               name={item.name}
@@ -102,8 +141,8 @@ function MyAddresses({ navigation }) {
               sector={item.sector}
               city={item.city}
               removeAddress={() => removeAddress(item, key)}
-              setSelectedItem={() => setSelectedItem(item)}
-              setVisibleModal={(value) => setVisibleModal(value)}
+              setVisibleEditModal={(value) => setVisibleEditModal(value)}
+              setSelectedKey={(key) => setSelectedKey(key)}
             />
           ))}
       </ScrollView>

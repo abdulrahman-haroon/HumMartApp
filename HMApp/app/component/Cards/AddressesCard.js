@@ -15,9 +15,9 @@ function AddressesCard({
   respect,
   nickName,
   removeAddress,
-  item,
-  setVisibleModal,
-  setSelectedItem,
+  setVisibleEditModal,
+  indexKey,
+  setSelectedKey,
 }) {
   return (
     <View
@@ -69,10 +69,14 @@ function AddressesCard({
             }}
           >
             <TouchableOpacity
-              onPress={() => (setVisibleModal(true), setSelectedItem)}
+              onPress={() => (
+                setVisibleEditModal(true), setSelectedKey(indexKey)
+              )}
+              style={{ marginRight: 10 }}
             >
               <MaterialIcons name="edit" size={20} color="black" />
             </TouchableOpacity>
+
             <TouchableOpacity onPress={removeAddress}>
               <MaterialCommunityIcons
                 name="delete-outline"
