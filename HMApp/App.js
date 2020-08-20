@@ -5,7 +5,7 @@ import WelcomeLoad from "./app/Screens/welcomeLoading";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [userContact, setUserContact] = useState("Welcome");
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -16,7 +16,7 @@ export default function App() {
   }
   return (
     <>
-     <Navigations userContact={userContact}/>
+      <Navigations />
       <FlashMessage
         position="bottom"
         style={{

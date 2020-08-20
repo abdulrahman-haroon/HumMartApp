@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  NavigationAction,
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -26,10 +29,22 @@ import fonts from "../styles/fonts";
 import DrawerStyle from "../styles/DrawerStyle";
 import { AntDesign } from "@expo/vector-icons";
 
-import { AppleFunction, BundleDealsFunction, CartoonFunction, ConditionerFunction, DiscountedItemsFunction, GroomingProductsFunction, HandwashFunction, HuaweiFunction, ItelFunction, MobileAccessoriesFunction, ShampooFunction, ShowerGelFunction, SoapFunction } from "../Callings/TabsScreenFunctions";
+import {
+  AppleFunction,
+  BundleDealsFunction,
+  CartoonFunction,
+  ConditionerFunction,
+  DiscountedItemsFunction,
+  GroomingProductsFunction,
+  HandwashFunction,
+  HuaweiFunction,
+  ItelFunction,
+  MobileAccessoriesFunction,
+  ShampooFunction,
+  ShowerGelFunction,
+  SoapFunction,
+} from "../Callings/TabsScreenFunctions";
 import MyOrders from "../Screens/MyOrders";
-
-
 
 const LoginStack = createStackNavigator();
 export const LoginStackScreen = ({ navigation }) => (
@@ -61,6 +76,7 @@ export const OffersTabScreen = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <HeaderNavigation showPromotion navigation={navigation} title="Offers" />
       <OffersTab.Navigator
+        initialRouteName="CartoonsTab"
         tabBarOptions={{
           labelStyle: {
             fontSize: 12,
@@ -316,117 +332,124 @@ export const HairCareTabScreen = ({ navigation }) => {
   );
 };
 
-
 const Drawer = createDrawerNavigator();
-function Navigations({userContact}) {
-  const [counterItems,setCounterItems]=useState(0);
- const ListItemSearchpass = ({ navigation }) => (
-    <ListItemSearch navigation={navigation} counterItems={counterItems} setCounterItems={(item)=>setCounterItems(item)} />
+function Navigations() {
+  const [counterItems, setCounterItems] = useState(0);
+
+  const ListItemSearchpass = ({ navigation }) => (
+    <ListItemSearch
+      navigation={navigation}
+      counterItems={counterItems}
+      setCounterItems={(item) => setCounterItems(item)}
+    />
   );
-    return (
+  return (
     <NavigationContainer>
-    <Drawer.Navigator
-      initialRouteName="Home"
-      drawerContent={({ navigation }) => (
-        <DrawerStyle userContact={userContact} navigation={navigation} />
-      )}
-    >
-      <Drawer.Screen
-        options={{ title: "Welcome" }}
-        name="Home"
-        component={Home}
-      />
-      <Drawer.Screen name="Login" component={LoginStackScreen} />
-      
-    <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="MyOrders"
-        component={MyOrders}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="FormAddress"
-        component={FormAddress}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="MyAddresses"
-        component={MyAddresses}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="Cart"
-        component={Cart}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="HairCare"
-        component={HairCareTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="BathBody"
-        component={BathBodyTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="GroomingProducts"
-        component={GroomingProductsTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="MobileAccessories"
-        component={MobilesAccessoriesTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="MobileTab"
-        component={MobileTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="OfferTab"
-        component={OffersTabScreen}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="PrivacyPolicy"
-        component={PrivacyPolicy}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="AboutUs"
-        component={AboutUs}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="ContactUs"
-        component={ContactUs}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="TermsAndCondition"
-        component={TermsAndCondition}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="NeedHelp"
-        component={NeedHelp}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="Card"
-        component={Card}
-      />
-      <Drawer.Screen
-        options={{ drawerLabel: () => null, gestureEnabled: false }}
-        name="ListItemSearch"
-        component={ListItemSearchpass}
-      />
-    </Drawer.Navigator>
-  </NavigationContainer>
-    );
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerContent={({ navigation }) => (
+          <DrawerStyle navigation={navigation} />
+        )}
+      >
+        <Drawer.Screen
+          options={{ title: "Welcome" }}
+          name="Home"
+          component={Home}
+        />
+        <Drawer.Screen
+          name="Login"
+          component={LoginStackScreen}
+          options={{ gestureEnabled: false }}
+        />
+
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MyOrders"
+          component={MyOrders}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="FormAddress"
+          component={FormAddress}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MyAddresses"
+          component={MyAddresses}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="Cart"
+          component={Cart}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="HairCare"
+          component={HairCareTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="BathBody"
+          component={BathBodyTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="GroomingProducts"
+          component={GroomingProductsTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MobileAccessories"
+          component={MobilesAccessoriesTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="MobileTab"
+          component={MobileTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="OfferTab"
+          component={OffersTabScreen}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="PrivacyPolicy"
+          component={PrivacyPolicy}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="AboutUs"
+          component={AboutUs}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="ContactUs"
+          component={ContactUs}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="TermsAndCondition"
+          component={TermsAndCondition}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="NeedHelp"
+          component={NeedHelp}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="Card"
+          component={Card}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name="ListItemSearch"
+          component={ListItemSearchpass}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default Navigations;
-

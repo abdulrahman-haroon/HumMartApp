@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Linking, Share } from "react-native";
 
 import { FontAwesome } from "@expo/vector-icons";
@@ -11,9 +11,10 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import fonts from "./fonts";
 import color from "./color";
 
-import { showMessage, hideMessage } from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
 
-function DrawerStyle({ userContact, navigation, logout }) {
+function DrawerStyle({ navigation, logout }) {
+  const [userContact, setUserContact] = useState("Welcome");
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -88,7 +89,7 @@ function DrawerStyle({ userContact, navigation, logout }) {
             marginLeft: 10,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("MyOrders",{ordersData:true})}
+          onPress={() => navigation.navigate("MyOrders", { ordersData: true })}
         >
           <MaterialCommunityIcons
             name="hexagon-slice-6"

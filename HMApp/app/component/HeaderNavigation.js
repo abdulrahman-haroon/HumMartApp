@@ -5,6 +5,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
+import { CommonActions } from "@react-navigation/native";
+
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 function HeaderNavigation({
@@ -31,7 +33,13 @@ function HeaderNavigation({
           color="white"
           onPress={() => navigation.goBack()}
         />
-        
+        {/* TODO:
+              navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{ name: "Home" }],
+              })
+            ) */}
         <Text
           numberOfLines={1}
           style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
