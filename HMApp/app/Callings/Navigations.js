@@ -47,28 +47,32 @@ import {
 import MyOrders from "../Screens/MyOrders";
 
 const LoginStack = createStackNavigator();
-export const LoginStackScreen = ({ navigation }) => (
-  <LoginStack.Navigator>
-    <LoginStack.Screen
-      options={{
-        headerTitleAlign: "center",
-        headerStyle: { backgroundColor: "#515151" },
-        headerTitleStyle: { color: "white", fontFamily: fonts.sst },
-        headerLeft: () => (
-          <AntDesign
-            name="close"
-            size={24}
-            color="white"
-            style={{ paddingLeft: 15 }}
-            onPress={() => navigation.goBack()}
-          />
-        ),
-      }}
-      name="Login"
-      component={Login}
-    />
-  </LoginStack.Navigator>
-);
+export const LoginStackScreen = ({ navigation, route }) => {
+  //FIXME:
+  //const LoginRoute = () => <Login route={route} />;
+  return (
+    <LoginStack.Navigator>
+      <LoginStack.Screen
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#515151" },
+          headerTitleStyle: { color: "white", fontFamily: fonts.sst },
+          headerLeft: () => (
+            <AntDesign
+              name="close"
+              size={24}
+              color="white"
+              style={{ paddingLeft: 15 }}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        }}
+        name="Login"
+        component={Login}
+      />
+    </LoginStack.Navigator>
+  );
+};
 
 const OffersTab = createMaterialTopTabNavigator();
 export const OffersTabScreen = ({ navigation }) => {

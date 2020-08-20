@@ -9,14 +9,18 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
 } from "react-native";
-import {  Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import ListItem from "../component/Lists/ListItem";
 import OffersCategory from "../component/OffersCategory";
 import fonts from "../styles/fonts";
 
-import { dropDownContainers, offersOuterCategories ,imagesData} from "../Callings/Data";
+import {
+  dropDownContainers,
+  offersOuterCategories,
+  imagesData,
+} from "../Callings/Data";
 
 import { SliderBox } from "react-native-image-slider-box";
 
@@ -100,7 +104,6 @@ function Home({ navigation, counter }) {
               borderRadius: 5,
               padding: 5,
               fontWeight: "bold",
-              
             }}
             caretHidden={true}
             placeholder=" Search for Products"
@@ -112,7 +115,7 @@ function Home({ navigation, counter }) {
         style={{
           flex: 1,
           backgroundColor: "green",
-          marginTop:3
+          marginTop: 3,
         }}
       >
         <ScrollView
@@ -122,13 +125,22 @@ function Home({ navigation, counter }) {
             backgroundColor: "#c6c6c6",
           }}
         >
-        
-          <SliderBox images={imagesData} 
-          onCurrentImagePressed={(index)=>
-            {index===0?navigation.navigate("OfferTab")
-            :index===1?navigation.navigate("MobileTab"):
-            index===2?navigation.navigate("BathBody"):null}}
-           dotColor={color.orangeDark} inactiveDotColor="#90A4AE" autoplay={true} circleLoop={true}/>
+          <SliderBox
+            images={imagesData}
+            onCurrentImagePressed={(index) => {
+              index === 0
+                ? navigation.navigate("OfferTab")
+                : index === 1
+                ? navigation.navigate("MobileTab")
+                : index === 2
+                ? navigation.navigate("BathBody")
+                : null;
+            }}
+            dotColor={color.orangeDark}
+            inactiveDotColor="#90A4AE"
+            autoplay={true}
+            circleLoop={true}
+          />
           <View style={styles.offer}>
             <Text style={styles.offerText}>Offers</Text>
             <TouchableNativeFeedback
@@ -178,6 +190,7 @@ function Home({ navigation, counter }) {
                     quantity={item.quantity}
                     onPress={() => {
                       navigation.navigate("Card", {
+                        id: 1,
                         image: item.image2,
                         price: item.price,
                         prevPrice: item.prevPrice,
@@ -286,7 +299,7 @@ const styles = StyleSheet.create({
     marginBottom: -1,
     borderTopWidth: 2,
     borderTopColor: color.lightgray,
-    marginTop:7
+    marginTop: 7,
   },
   offerText: {
     position: "absolute",

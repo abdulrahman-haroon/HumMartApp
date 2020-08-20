@@ -13,7 +13,11 @@ import color from "./color";
 
 import { showMessage } from "react-native-flash-message";
 
-function DrawerStyle({ navigation, logout }) {
+function DrawerStyle({
+  navigation,
+  loginSuccessfully = false,
+  disableAddressNOrders = true,
+}) {
   const [userContact, setUserContact] = useState("Welcome");
   return (
     <View style={{ flex: 1 }}>
@@ -42,70 +46,132 @@ function DrawerStyle({ navigation, logout }) {
         >
           My Information
         </Text>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginLeft: 15,
-            marginBottom: 20,
-          }}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <FontAwesome name="user" size={22} color="black" />
-          <Text
+        {loginSuccessfully === false ? (
+          <TouchableOpacity
             style={{
-              fontFamily: fonts.ssl,
-              marginHorizontal: 10,
-              fontSize: 12,
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 15,
+              marginBottom: 20,
+            }}
+            onPress={() => {
+              navigation.navigate("Login");
             }}
           >
-            Login
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginLeft: 12,
-            marginBottom: 20,
-          }}
-          onPress={() => navigation.navigate("MyAddresses")}
-        >
-          <Entypo name="location" size={22} color="black" />
-          <Text
+            <FontAwesome name="user" size={22} color="black" />
+            <Text
+              style={{
+                fontFamily: fonts.ssl,
+                marginHorizontal: 10,
+                fontSize: 12,
+              }}
+            >
+              Login
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+        {loginSuccessfully ? (
+          <TouchableOpacity
             style={{
-              fontFamily: fonts.ssl,
-              marginHorizontal: 10,
-              fontSize: 12,
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 12,
+              marginBottom: 20,
             }}
+            onPress={() => navigation.navigate("MyAddresses")}
           >
-            My Addresses
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginLeft: 10,
-            marginBottom: 20,
-          }}
-          onPress={() => navigation.navigate("MyOrders", { ordersData: true })}
-        >
-          <MaterialCommunityIcons
-            name="hexagon-slice-6"
-            size={24}
-            color="black"
-          />
-          <Text
+            <Entypo name="location" size={22} color="black" />
+            <Text
+              style={{
+                fontFamily: fonts.ssl,
+                marginHorizontal: 10,
+                fontSize: 12,
+              }}
+            >
+              My Addresses
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
             style={{
-              fontFamily: fonts.ssl,
-              marginHorizontal: 10,
-              fontSize: 12,
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 12,
+              marginBottom: 20,
             }}
+            disabled={disableAddressNOrders}
+            onPress={() => navigation.navigate("MyAddresses")}
           >
-            My Orders
-          </Text>
-        </TouchableOpacity>
+            <Entypo name="location" size={22} color={color.lightdarkGray} />
+            <Text
+              style={{
+                color: color.lightdarkGray,
+                fontFamily: fonts.ssl,
+                marginHorizontal: 10,
+                fontSize: 12,
+              }}
+            >
+              My Addresses
+            </Text>
+          </TouchableOpacity>
+        )}
+        {loginSuccessfully ? (
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 10,
+              marginBottom: 20,
+            }}
+            onPress={() =>
+              navigation.navigate("MyOrders", { ordersData: true })
+            }
+          >
+            <MaterialCommunityIcons
+              name="hexagon-slice-6"
+              size={24}
+              color="black"
+            />
+            <Text
+              style={{
+                fontFamily: fonts.ssl,
+                marginHorizontal: 10,
+                fontSize: 12,
+              }}
+            >
+              My Orders
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 10,
+              marginBottom: 20,
+            }}
+            disabled={disableAddressNOrders}
+            onPress={() =>
+              navigation.navigate("MyOrders", { ordersData: true })
+            }
+          >
+            <MaterialCommunityIcons
+              name="hexagon-slice-6"
+              size={24}
+              color={color.lightdarkGray}
+            />
+            <Text
+              style={{
+                color: color.lightdarkGray,
+                fontFamily: fonts.ssl,
+                marginHorizontal: 10,
+                fontSize: 12,
+              }}
+            >
+              My Orders
+            </Text>
+          </TouchableOpacity>
+        )}
         <TouchableOpacity
           style={{
             flexDirection: "row",
@@ -293,7 +359,7 @@ function DrawerStyle({ navigation, logout }) {
             About Us
           </Text>
         </TouchableOpacity>
-        {logout && (
+        {loginSuccessfully && (
           <TouchableOpacity
             style={{
               flexDirection: "row",

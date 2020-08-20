@@ -12,6 +12,7 @@ import color from "../../styles/color";
 
 function Card({ prevPrice, route, navigation, counter }) {
   let data = route.params;
+  // console.log(data);
   return (
     <View style={styles.container}>
       <View

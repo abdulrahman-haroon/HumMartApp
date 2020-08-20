@@ -32,8 +32,9 @@ const validationScheme = Yup.object().shape({
 });
 
 export default function Login({ navigation, route }) {
-  // let data = route.params;
-  // console.log(data);
+  //FIXME: SET STATE USER CONTANT
+  // const data = route.params;
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
