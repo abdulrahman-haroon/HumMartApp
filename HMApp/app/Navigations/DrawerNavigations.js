@@ -22,6 +22,7 @@ import HomeNavigations from "./HomeNavigations";
 import routes from "./routes";
 import PTCNavigations from "./PTCNavigations";
 import Cart from "../Screens/Cart";
+import PTC_ViewDetails from "../Screens/ProceedToCheckout/PTC_ViewDetails";
 
 const LoginStack = createStackNavigator();
 export const LoginStackScreen = ({ navigation, route }) => {
@@ -86,6 +87,11 @@ function DrawerNavigations() {
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name={routes.MY_ORDERS}
           component={MyOrders}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name={routes.VIEWDETAILS}
+          component={PTC_ViewDetails}
         />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}

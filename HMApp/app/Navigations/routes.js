@@ -26,4 +26,5 @@ export default Object.freeze({
   CASH_ON_DELIVERY: "CashOnDelivery",
   EASYPAISA: "EasyPaisa",
   JAZZ_CASH_MOBILE: "JazzCashMobile",
+  VIEWDETAILS: "ViewDetails",
 });
