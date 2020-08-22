@@ -12,10 +12,11 @@ import fonts from "./fonts";
 import color from "./color";
 
 import { showMessage } from "react-native-flash-message";
+import routes from "../Navigations/routes";
 
 function DrawerStyle({
   navigation,
-  loginSuccessfully = false,
+  loginSuccessfully = true,
   disableAddressNOrders = true,
 }) {
   const [userContact, setUserContact] = useState("Welcome");
@@ -55,7 +56,7 @@ function DrawerStyle({
               marginBottom: 20,
             }}
             onPress={() => {
-              navigation.navigate("Login");
+              navigation.navigate(routes.LOGIN);
             }}
           >
             <FontAwesome name="user" size={22} color="black" />
@@ -78,7 +79,7 @@ function DrawerStyle({
               marginLeft: 12,
               marginBottom: 20,
             }}
-            onPress={() => navigation.navigate("MyAddresses")}
+            onPress={() => navigation.navigate(routes.MY_ADDRESS)}
           >
             <Entypo name="location" size={22} color="black" />
             <Text
@@ -100,7 +101,7 @@ function DrawerStyle({
               marginBottom: 20,
             }}
             disabled={disableAddressNOrders}
-            onPress={() => navigation.navigate("MyAddresses")}
+            onPress={() => navigation.navigate(routes.MY_ADDRESS)}
           >
             <Entypo name="location" size={22} color={color.lightdarkGray} />
             <Text
@@ -124,7 +125,7 @@ function DrawerStyle({
               marginBottom: 20,
             }}
             onPress={() =>
-              navigation.navigate("MyOrders", { ordersData: true })
+              navigation.navigate(routes.MY_ORDERS, { ordersData: true })
             }
           >
             <MaterialCommunityIcons
@@ -152,7 +153,7 @@ function DrawerStyle({
             }}
             disabled={disableAddressNOrders}
             onPress={() =>
-              navigation.navigate("MyOrders", { ordersData: true })
+              navigation.navigate(routes.MY_ORDERS, { ordersData: true })
             }
           >
             <MaterialCommunityIcons
@@ -179,7 +180,12 @@ function DrawerStyle({
             marginLeft: 10,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("Cart")}
+          onPress={() =>
+            navigation.navigate(routes.CART, {
+              NotProceedShow: false,
+              NotShowTotal: false,
+            })
+          }
         >
           <FontAwesome5 name="shopping-cart" size={20} color="black" />
           <Text
@@ -241,7 +247,7 @@ function DrawerStyle({
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("NeedHelp")}
+          onPress={() => navigation.navigate(routes.NEED_HELP)}
         >
           <FontAwesome5 name="fist-raised" size={20} color="black" />
           <Text
@@ -301,7 +307,7 @@ function DrawerStyle({
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("TermsAndCondition")}
+          onPress={() => navigation.navigate(routes.TERMS_AND_CONDITION)}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
           <Text
@@ -317,7 +323,7 @@ function DrawerStyle({
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("PrivacyPolicy")}
+          onPress={() => navigation.navigate(routes.PRIVATE_POLICY)}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
           <Text
@@ -333,7 +339,7 @@ function DrawerStyle({
             marginLeft: 15,
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("ContactUs")}
+          onPress={() => navigation.navigate(routes.CONTACT_US)}
         >
           <FontAwesome name="code-fork" size={24} color="black" />
           <Text
@@ -350,7 +356,7 @@ function DrawerStyle({
 
             marginBottom: 20,
           }}
-          onPress={() => navigation.navigate("AboutUs")}
+          onPress={() => navigation.navigate(routes.ABOUTUS)}
         >
           <FontAwesome5 name="info" size={18} color="black" />
           <Text
@@ -370,7 +376,7 @@ function DrawerStyle({
               borderTopWidth: 0.8,
               borderTopColor: color.lightdarkGray,
             }}
-            onPress={() => console.log("LogOut")}
+            onPress={() => console.log(routes.LOGOUT)}
           >
             <SimpleLineIcons name="logout" size={18} color="black" />
 

@@ -23,6 +23,7 @@ import {
 } from "../Callings/Data";
 
 import { SliderBox } from "react-native-image-slider-box";
+import routes from "../Navigations/routes";
 
 function Home({ navigation, counter }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
@@ -73,7 +74,12 @@ function Home({ navigation, counter }) {
               size={24}
               color="white"
               style={{ paddingRight: 10 }}
-              onPress={() => navigation.navigate("Cart")}
+              onPress={() =>
+                navigation.navigate(routes.CART, {
+                  NotProceedShow: false,
+                  NotShowTotal: false,
+                })
+              }
             />
             <View
               style={{

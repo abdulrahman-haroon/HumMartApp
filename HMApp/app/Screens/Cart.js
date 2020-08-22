@@ -1,5 +1,12 @@
-import React from "react";
-import { View, StyleSheet, Text, Image, FlatList } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 
 import Color from "../styles/color";
 import fonts from "../styles/fonts";
@@ -10,8 +17,10 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import OffersCategory from "../component/OffersCategory";
 import MyCartComponent from "../component/MyCartComponent";
 import { offersOuterCategories } from "../Callings/Data";
+import routes from "../Navigations/routes";
 
-function Cart({ counter, subTotal, total, navigation }) {
+function Cart({ counter, subTotal, total, navigation, route }) {
+  const notProceed = route.params;
   return (
     <View style={styles.container}>
       <View
@@ -32,7 +41,6 @@ function Cart({ counter, subTotal, total, navigation }) {
         <View
           style={{
             height: 50,
-
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -49,40 +57,26 @@ function Cart({ counter, subTotal, total, navigation }) {
           </Text>
         </View>
       </View>
-      <View
-        style={{
-          marginVertical: 10,
-          marginHorizontal: 10,
-          width: "95%",
-          height: 90,
-          backgroundColor: "white",
-          borderWidth: 0.8,
-          borderColor: Color.lightgray,
-          elevation: 1,
-        }}
-      >
+      {notProceed.NotShowTotal === false ||
+      notProceed.NotShowTotal === undefined ? (
         <View
           style={{
-            flex: 1,
-            flexDirection: "row",
             marginVertical: 10,
             marginHorizontal: 10,
+            width: "95%",
+            height: 90,
+            backgroundColor: "white",
+            borderWidth: 0.8,
+            borderColor: Color.lightgray,
+            elevation: 1,
           }}
         >
-          <Text
-            style={{
-              fontFamily: fonts.ssl,
-              color: Color.darkishLight,
-              fontSize: 15,
-            }}
-          >
-            Sub total
-          </Text>
           <View
             style={{
               flex: 1,
               flexDirection: "row",
-              justifyContent: "flex-end",
+              marginVertical: 10,
+              marginHorizontal: 10,
             }}
           >
             <Text
@@ -90,50 +84,67 @@ function Cart({ counter, subTotal, total, navigation }) {
                 fontFamily: fonts.ssl,
                 color: Color.darkishLight,
                 fontSize: 15,
-                fontWeight: "700",
               }}
             >
-              Rs {subTotal}
+              Sub total
             </Text>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: fonts.ssl,
+                  color: Color.darkishLight,
+                  fontSize: 15,
+                  fontWeight: "700",
+                }}
+              >
+                Rs {subTotal}
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            marginVertical: 10,
-            marginHorizontal: 10,
-          }}
-        >
-          <Text
-            style={{
-              fontFamily: fonts.ssl,
-              color: Color.darkishLight,
-              fontSize: 15,
-            }}
-          >
-            Delivery charges
-          </Text>
           <View
             style={{
               flex: 1,
               flexDirection: "row",
-              justifyContent: "flex-end",
+              marginVertical: 10,
+              marginHorizontal: 10,
             }}
           >
             <Text
               style={{
                 fontFamily: fonts.ssl,
-                color: Color.lightdarkGray,
+                color: Color.darkishLight,
                 fontSize: 15,
-                fontWeight: "100",
               }}
             >
-              Rs 100
+              Delivery charges
             </Text>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: fonts.ssl,
+                  color: Color.lightdarkGray,
+                  fontSize: 15,
+                  fontWeight: "100",
+                }}
+              >
+                Rs 100
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
+      ) : null}
       <View
         style={{
           flex: 1,
@@ -157,58 +168,67 @@ function Cart({ counter, subTotal, total, navigation }) {
           )}
         />
       </View>
-      <View
-        style={{
-          height: 50,
-          flexDirection: "row",
-          backgroundColor: Color.orangeDark,
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            marginVertical: 10,
-            marginHorizontal: 10,
-          }}
+
+      {notProceed.NotProceedShow === false ||
+      notProceed.NotProceedShow === undefined ? (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate(routes.PTC)}
         >
-          <Text
-            style={{
-              fontFamily: fonts.ssl,
-              color: "white",
-              fontSize: 15,
-            }}
-          >
-            Proceed To Checkout
-          </Text>
           <View
             style={{
-              flex: 1,
+              height: 50,
               flexDirection: "row",
-              justifyContent: "flex-end",
+              backgroundColor: Color.orangeDark,
+              alignItems: "center",
             }}
           >
-            <Text
+            <View
               style={{
-                fontFamily: fonts.ssl,
-                color: "white",
-                fontSize: 15,
-                fontWeight: "700",
-                marginRight: 15,
+                flex: 1,
+                flexDirection: "row",
+                marginVertical: 10,
+                marginHorizontal: 10,
               }}
             >
-              Rs {total}
-            </Text>
-            <Ionicons
-              name="ios-arrow-forward"
-              size={22}
-              color="white"
-              style={{ marginRight: 15 }}
-            />
+              <Text
+                style={{
+                  fontFamily: fonts.ssl,
+                  color: "white",
+                  fontSize: 15,
+                }}
+              >
+                Proceed To Checkout
+              </Text>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: fonts.ssl,
+                    color: "white",
+                    fontSize: 15,
+                    fontWeight: "700",
+                    marginRight: 15,
+                  }}
+                >
+                  Rs {total}
+                </Text>
+                <Ionicons
+                  name="ios-arrow-forward"
+                  size={22}
+                  color="white"
+                  style={{ marginRight: 15 }}
+                />
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 }

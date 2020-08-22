@@ -18,6 +18,7 @@ function AddressesCard({
   setVisibleEditModal,
   indexKey,
   setSelectedKey,
+  removeDelete,
 }) {
   return (
     <View
@@ -77,14 +78,16 @@ function AddressesCard({
               <MaterialIcons name="edit" size={20} color="black" />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={removeAddress}>
-              <MaterialCommunityIcons
-                name="delete-outline"
-                size={24}
-                color="black"
-                style={{ marginHorizontal: 10 }}
-              />
-            </TouchableOpacity>
+            {!removeDelete ? (
+              <TouchableOpacity onPress={removeDelete}>
+                <MaterialCommunityIcons
+                  name="delete-outline"
+                  size={24}
+                  color="black"
+                  style={{ marginHorizontal: 10 }}
+                />
+              </TouchableOpacity>
+            ) : null}
           </View>
         </View>
 

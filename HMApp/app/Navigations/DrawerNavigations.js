@@ -6,7 +6,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Login from "../Screens/login";
 import AboutUs from "../Screens/AboutUs";
-import Cart from "../Screens/Cart";
 import ContactUs from "../Screens/ContactUs";
 import MyAddresses from "../Screens/MyAddresses";
 import NeedHelp from "../Screens/NeedHelp";
@@ -21,6 +20,8 @@ import { AntDesign } from "@expo/vector-icons";
 import MyOrders from "../Screens/MyOrders";
 import HomeNavigations from "./HomeNavigations";
 import routes from "./routes";
+import PTCNavigations from "./PTCNavigations";
+import Cart from "../Screens/Cart";
 
 const LoginStack = createStackNavigator();
 export const LoginStackScreen = ({ navigation, route }) => {
@@ -90,6 +91,11 @@ function DrawerNavigations() {
           options={{ drawerLabel: () => null, gestureEnabled: false }}
           name={routes.CART}
           component={Cart}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name={routes.PTC}
+          component={PTCNavigations}
         />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
