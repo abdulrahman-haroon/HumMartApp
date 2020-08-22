@@ -187,7 +187,7 @@ function EditFormAddress({ allData, selectedKey, setVisibleEditModal }) {
                     name="optionNickName"
                   />
 
-                  <AppButton title="CONTINUE" onPress={handleSubmit} />
+                  <AppButton title="UPDATE" onPress={handleSubmit} />
                 </>
               )}
             </Formik>

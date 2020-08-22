@@ -47,7 +47,7 @@ export default function Login({ navigation, route }) {
             mobileNumber: "",
           }}
           validationSchema={validationScheme}
-          onSubmit={(values) => navigation.navigate("Home")}
+          onSubmit={(values) => navigation.goBack()}
         >
           {({ values, handleChange, errors, touched, handleSubmit }) => (
             <>

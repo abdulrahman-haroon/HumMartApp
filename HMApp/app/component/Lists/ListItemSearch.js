@@ -38,7 +38,7 @@ function ListItemSearch({
     setProducts(filteredProducts);
   };
 
-  setCounterItems(ListItemSearchData.length);
+  // setCounterItems(ListItemSearchData.length);
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,7 @@ function ListItemSearch({
           name="ios-arrow-back"
           size={24}
           color="white"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.goBack()}
           style={{
             marginTop: 5,
             marginLeft: 20,

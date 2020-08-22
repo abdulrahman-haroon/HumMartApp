@@ -97,7 +97,9 @@ function MyAddresses({ navigation }) {
         navigation={navigation}
         title="Choose Address"
         showIcons={false}
+        drawer
       />
+
       <View
         style={{
           width: "100%",

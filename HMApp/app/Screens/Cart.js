@@ -9,8 +9,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import OffersCategory from "../component/OffersCategory";
 import MyCartComponent from "../component/MyCartComponent";
-import {offersOuterCategories} from "../Callings/Data"
-
+import { offersOuterCategories } from "../Callings/Data";
 
 function Cart({ counter, subTotal, total, navigation }) {
   return (

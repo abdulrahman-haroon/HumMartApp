@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FlashMessage from "react-native-flash-message";
-import Navigations from "./app/Callings/Navigations";
+import DrawerNavigations from "./app/Navigations/DrawerNavigations";
 import WelcomeLoad from "./app/Screens/welcomeLoading";
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   }
   return (
     <>
-      <Navigations />
+      <DrawerNavigations />
       <FlashMessage
         position="bottom"
         style={{

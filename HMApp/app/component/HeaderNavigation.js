@@ -15,6 +15,7 @@ function HeaderNavigation({
   title,
   counter,
   showIcons = true,
+  drawer,
 }) {
   return (
     <View>
@@ -31,7 +32,7 @@ function HeaderNavigation({
           name="ios-arrow-back"
           size={24}
           color="white"
-          onPress={() => navigation.goBack()}
+          onPress={() => (!drawer ? navigation.pop() : navigation.goBack())}
         />
         {/* TODO:
               navigation.dispatch(
@@ -53,6 +54,7 @@ function HeaderNavigation({
               name="md-search"
               size={24}
               color="white"
+              onPress={() => navigation.navigate("ListItemSearch")}
             />
             <FontAwesome5
               style={{ flex: 1 }}
