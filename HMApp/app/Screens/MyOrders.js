@@ -1,11 +1,10 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
 import color from "../styles/color";
 import fonts from "../styles/fonts";
-import MyCartComponent from "../component/MyCartComponent";
-import { offersOuterCategories } from "../Callings/Data";
+import OrdersComponent from "../component/OrdersComponent";
 
 function MyOrders({ navigation, route }) {
   let ordersData = route.params;
@@ -34,30 +33,8 @@ function MyOrders({ navigation, route }) {
           </Text>
         </View>
       ) : (
-        <View
-          style={{
-            flex: 1,
-            marginHorizontal: 10,
-          }}
-        >
-          <FlatList
-            data={offersOuterCategories}
-            keyExtractor={(offersOuterCategory) =>
-              offersOuterCategory.id.toString()
-            }
-            renderItem={({ item }) => (
-              <MyCartComponent
-                key={item.id}
-                image={item.image}
-                price={item.price}
-                prevPrice={item.prevPrice}
-                title={item.description}
-                grams={item.quantity}
-                add={false}
-                cross={false}
-              />
-            )}
-          />
+        <View style={{ flex: 1 }}>
+          <OrdersComponent navigation={navigation} data={ordersData} />
         </View>
       )}
     </View>

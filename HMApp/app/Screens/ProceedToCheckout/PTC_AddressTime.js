@@ -28,7 +28,6 @@ function PTC_AddressTime({ navigation, cartItemCounter }) {
 
   const handleConfirm = (date) => {
     setDateData(date.toString());
-    console.log(date);
     hideDatePicker();
   };
   return (
@@ -151,7 +150,13 @@ function PTC_AddressTime({ navigation, cartItemCounter }) {
       </View>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => navigation.navigate(routes.PTC_PLACE_ORDER)}
+        onPress={() => {
+          dateData !== undefined
+            ? navigation.navigate(routes.PTC_PLACE_ORDER, {
+                dateTime: dateData,
+              })
+            : alert("Please Fill the Date and Time");
+        }}
       >
         <View
           style={{

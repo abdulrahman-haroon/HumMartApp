@@ -17,15 +17,7 @@ export default function App() {
   return (
     <>
       <DrawerNavigations />
-      <FlashMessage
-        position="bottom"
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: 50,
-          marginBottom: 10,
-        }}
-      />
+      <FlashMessage />
     </>
   );
 }

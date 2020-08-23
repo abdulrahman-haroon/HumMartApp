@@ -16,7 +16,7 @@ import routes from "../Navigations/routes";
 
 function DrawerStyle({
   navigation,
-  loginSuccessfully = true,
+  loginSuccessfully = false,
   disableAddressNOrders = true,
 }) {
   const [userContact, setUserContact] = useState("Welcome");
@@ -213,6 +213,13 @@ function DrawerStyle({
               type: "info",
               backgroundColor: color.lightgray,
               color: "black",
+              position: "bottom",
+              style: {
+                borderRadius: 50,
+                marginBottom: 10,
+                justifyContent: "center",
+                alignItems: "center",
+              },
             });
           }}
         >

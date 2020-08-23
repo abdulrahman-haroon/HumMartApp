@@ -78,7 +78,11 @@ export default function Login({ navigation, route }) {
                 />
               </View>
               <View style={{ marginTop: 10 }}>
-                <FlatButton text="next" onPress={handleSubmit} />
+                <FlatButton
+                  text="next"
+                  onPress={handleSubmit}
+                  addColor="darkishLight"
+                />
               </View>
             </>
           )}
