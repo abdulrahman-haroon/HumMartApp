@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Button, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  TouchableOpacity,
+  Modal,
+} from "react-native";
 import HeaderNavigation from "../../component/HeaderNavigation";
 
 import color from "../../styles/color";
 import fonts from "../../styles/fonts";
-
-import AddressesCard from "../../component/Cards/AddressesCard";
 
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -14,7 +19,15 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { date } from "yup";
 import routes from "../../Navigations/routes";
 
-function PTC_AddressTime({ navigation, cartItemCounter }) {
+import { connect } from "react-redux";
+import PTC_Address from "../../component/Cards/PTC_Address";
+import AddressSelection from "../AddressSelection";
+
+import { showMessage } from "react-native-flash-message";
+
+function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
+  const [showSelection, setShowSelection] = useState(false);
+
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [dateData, setDateData] = useState();
 
@@ -52,8 +65,17 @@ function PTC_AddressTime({ navigation, cartItemCounter }) {
           Delivery Address
         </Text>
         <View style={{ width: "100%", backgroundColor: "white" }}>
-          {/* FIXME: this addressCard is wrong make a new component to get data from the storage of address.*/}
-          <AddressesCard removeDelete />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setShowSelection(true)}
+          >
+            <PTC_Address />
+          </TouchableOpacity>
+          <Modal visible={showSelection} animated={true}>
+            <AddressSelection
+              setShowSelection={(value) => setShowSelection(value)}
+            />
+          </Modal>
         </View>
         <Text
           style={{
@@ -134,7 +156,7 @@ function PTC_AddressTime({ navigation, cartItemCounter }) {
           }
         >
           <Text style={{ color: color.orangeDark }}>
-            View {cartItemCounter} Item
+            View {cartItem.length} Item
           </Text>
           <Ionicons
             name="ios-arrow-down"
@@ -155,7 +177,17 @@ function PTC_AddressTime({ navigation, cartItemCounter }) {
             ? navigation.navigate(routes.PTC_PLACE_ORDER, {
                 dateTime: dateData,
               })
-            : alert("Please Fill the Date and Time");
+            : showMessage({
+                message: "Please select data and time!",
+                type: "warning",
+                color: "white",
+                position: "center",
+                style: {
+                  borderRadius: 50,
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              });
         }}
       >
         <View
@@ -198,5 +230,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#ddd",
   },
 });
-
-export default PTC_AddressTime;
+const mapStateToProps = (state) => {
+  return {
+    cartItem: state.cartItem,
+    sTotal: state.subTotal,
+    Total: state.sumTotal,
+  };
+};
+export default connect(mapStateToProps)(PTC_AddressTime);

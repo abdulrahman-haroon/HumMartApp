@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal } from "react-native";
+import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
 
@@ -13,7 +13,9 @@ import FormAddress from "../component/Form/FormAddress";
 import { ScrollView } from "react-native-gesture-handler";
 import EditFormAddress from "../component/Form/EditFormAddress";
 
-function MyAddresses({ navigation }) {
+import { connect } from "react-redux";
+
+function MyAddresses({ navigation, dataAddresses, addressSend }) {
   const [visibleModal, setVisibleModal] = useState(false);
   const [visibleEditModal, setVisibleEditModal] = useState(false);
 
@@ -31,6 +33,9 @@ function MyAddresses({ navigation }) {
       addressData.filter((name) => address.houseNo != name.houseNo)
     );
   };
+  if (visibleModal === false || visibleEditModal === false)
+    dataAddresses(addressData);
+  // console.log(addressSend);
   return (
     <View style={{ flex: 1 }}>
       <Modal visible={visibleModal}>
@@ -151,5 +156,18 @@ function MyAddresses({ navigation }) {
     </View>
   );
 }
-
-export default MyAddresses;
+const mapStateToProps = (state) => {
+  return {
+    addressSend: state.address,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dataAddresses: (address) =>
+      dispatch({
+        type: "ADDRESSES",
+        payload: address,
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MyAddresses);

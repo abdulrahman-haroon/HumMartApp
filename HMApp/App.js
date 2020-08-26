@@ -3,6 +3,9 @@ import FlashMessage from "react-native-flash-message";
 import DrawerNavigations from "./app/Navigations/DrawerNavigations";
 import WelcomeLoad from "./app/Screens/welcomeLoading";
 
+import { Provider } from "react-redux";
+import store from "./app/src/store";
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,10 +17,13 @@ export default function App() {
   if (isLoading) {
     return <WelcomeLoad />;
   }
+
   return (
     <>
-      <DrawerNavigations />
-      <FlashMessage />
+      <Provider store={store}>
+        <DrawerNavigations />
+        <FlashMessage />
+      </Provider>
     </>
   );
 }

@@ -1,12 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList, ScrollView } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 import OrdersComponent from "../component/OrdersComponent";
 
-function MyOrders({ navigation, route }) {
+import { connect } from "react-redux";
+
+function MyOrders({ navigation, route, ordersDetails }) {
   let ordersData = route.params;
 
   return (
@@ -34,11 +36,30 @@ function MyOrders({ navigation, route }) {
         </View>
       ) : (
         <View style={{ flex: 1 }}>
-          <OrdersComponent navigation={navigation} data={ordersData} />
+          <ScrollView>
+            {ordersDetails.map((item, key) => (
+              <OrdersComponent
+                key={key}
+                data={item}
+                navigation={navigation}
+                date={item.date}
+                time={item.time}
+                schedule={item.schedule}
+                subtotal={item.subTotal}
+                total={item.total}
+                orderNumber={item.orderNumber}
+              />
+            ))}
+          </ScrollView>
         </View>
       )}
     </View>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    ordersDetails: state.ordersDetails,
+  };
+};
 
-export default MyOrders;
+export default connect(mapStateToProps)(MyOrders);

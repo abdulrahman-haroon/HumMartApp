@@ -7,10 +7,16 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import FlatButton from "../styles/button";
 import routes from "../Navigations/routes";
 
-function OrdersComponent({ navigation, data, subtotal = 0, total = 0 }) {
-  const [orderId, setOrderId] = useState(
-    (Math.round(Math.random() * 10000000000) + 1).toString()
-  );
+function OrdersComponent({
+  data,
+  navigation,
+  date,
+  time,
+  schedule,
+  subtotal,
+  total,
+  orderNumber,
+}) {
   return (
     <View style={styles.container}>
       <View style={{ alignSelf: "center", marginVertical: 10 }}>
@@ -22,7 +28,7 @@ function OrdersComponent({ navigation, data, subtotal = 0, total = 0 }) {
             color: color.darkishLight,
           }}
         >
-          Placed {data.date} {data.time}
+          Placed {date} {time}
         </Text>
       </View>
       <View
@@ -40,7 +46,7 @@ function OrdersComponent({ navigation, data, subtotal = 0, total = 0 }) {
               fontSize: 13,
             }}
           >
-            Scheduled for {data.schedule}
+            Scheduled for {schedule}
           </Text>
         </View>
         <View
@@ -92,7 +98,7 @@ function OrdersComponent({ navigation, data, subtotal = 0, total = 0 }) {
                 <Text
                   style={{ fontFamily: fonts.ssl, color: color.darkishLight }}
                 >
-                  Order ID: {orderId}
+                  Order ID: {orderNumber}
                 </Text>
               </View>
               <View
@@ -138,12 +144,7 @@ function OrdersComponent({ navigation, data, subtotal = 0, total = 0 }) {
         >
           <FlatButton
             text="View Details"
-            onPress={() =>
-              navigation.navigate(routes.VIEWDETAILS, {
-                orderData: data,
-                orderId: orderId,
-              })
-            }
+            onPress={() => navigation.navigate(routes.VIEWDETAILS, data)}
           />
         </View>
       </View>

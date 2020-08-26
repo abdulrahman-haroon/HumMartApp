@@ -17,20 +17,17 @@ import font from "../../styles/fonts";
 import Counter from "../Counter";
 
 function ListItemsDataDisplay({
-  title,
+  data,
+  description,
   grams,
   price,
   image,
   prevPrice,
   sameDayDelievery,
   onPress,
-
-}) 
-{
-
+}) {
   return (
     <View styles={styles.container}>
-    
       <View
         activeOpacity={0.7}
         style={styles.innerContainer}
@@ -55,7 +52,7 @@ function ListItemsDataDisplay({
                   fontSize: 16,
                 }}
               >
-                {title}
+                {description}
               </Text>
             </TouchableOpacity>
             <Text
@@ -74,7 +71,7 @@ function ListItemsDataDisplay({
                 alignItems: "center",
               }}
             >
-              <Text style={{ marginLeft: 10, fontSize: 13 }}>{price}</Text>
+              <Text style={{ marginLeft: 10, fontSize: 13 }}>Rs {price}</Text>
               {prevPrice && (
                 <Text
                   style={{
@@ -108,7 +105,7 @@ function ListItemsDataDisplay({
                   alignItems: "center",
                 }}
               >
-                <Counter />
+                <Counter item={data} />
               </TouchableOpacity>
             </View>
             {sameDayDelievery && (

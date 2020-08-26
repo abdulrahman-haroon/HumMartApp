@@ -13,6 +13,7 @@ import color from "../styles/color";
 import Counter from "./Counter";
 
 function OffersCategory({
+  data,
   image,
   price,
   prevPrice,
@@ -61,14 +62,14 @@ function OffersCategory({
                   alignItems: "center",
                 }}
               >
-                <Text>{price} </Text>
+                <Text>Rs {price} </Text>
                 <Text
                   style={{
                     textDecorationLine: "line-through",
                     color: "gray",
                   }}
                 >
-                  {prevPrice}
+                  Rs {prevPrice}
                 </Text>
               </View>
 
@@ -98,7 +99,7 @@ function OffersCategory({
               </View>
             </View>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Counter />
+              <Counter item={data} />
             </View>
           </View>
         </View>

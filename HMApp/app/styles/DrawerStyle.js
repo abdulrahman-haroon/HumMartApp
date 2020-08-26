@@ -16,7 +16,7 @@ import routes from "../Navigations/routes";
 
 function DrawerStyle({
   navigation,
-  loginSuccessfully = false,
+  loginSuccessfully = true,
   disableAddressNOrders = true,
 }) {
   const [userContact, setUserContact] = useState("Welcome");

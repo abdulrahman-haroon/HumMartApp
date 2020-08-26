@@ -9,10 +9,11 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import fonts from "../../styles/fonts";
 import Counter from "../Counter";
 import color from "../../styles/color";
+import ShoppingCart from "../ShoppingCart";
 
 function Card({ prevPrice, route, navigation, counter }) {
   let data = route.params;
-  // console.log(data);
+  console.log(data);
   return (
     <View style={styles.container}>
       <View
@@ -34,7 +35,7 @@ function Card({ prevPrice, route, navigation, counter }) {
           numberOfLines={1}
           style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
         >
-          {data.title}
+          {data.description}
         </Text>
         <Ionicons
           style={{ flex: 1, marginLeft: 10 }}
@@ -42,29 +43,7 @@ function Card({ prevPrice, route, navigation, counter }) {
           size={24}
           color="white"
         />
-        <FontAwesome5
-          style={{ flex: 1 }}
-          name="shopping-cart"
-          size={20}
-          color="white"
-          onPress={() => navigation.navigate("Cart")}
-        />
-        <View
-          style={{
-            width: 18,
-            height: 18,
-            borderRadius: 18 / 2,
-            backgroundColor: color.orangeDark,
-            right: 18,
-            bottom: 6,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontFamily: fonts.ssl }}>
-            {counter}
-          </Text>
-        </View>
+        <ShoppingCart navigation={navigation} />
       </View>
       <View
         style={{
@@ -126,9 +105,10 @@ function Card({ prevPrice, route, navigation, counter }) {
             fontFamily: fonts.ssl,
             fontSize: 18,
             color: "#2c2c2c",
+            marginBottom: 10,
           }}
         >
-          {data.title}
+          {data.description}
         </Text>
 
         <Text
@@ -144,7 +124,7 @@ function Card({ prevPrice, route, navigation, counter }) {
           <Text
             style={{ fontFamily: fonts.sst, fontWeight: "bold", fontSize: 15 }}
           >
-            {data.price}
+            Rs {data.price}
           </Text>
           {prevPrice && (
             <Text
@@ -154,7 +134,7 @@ function Card({ prevPrice, route, navigation, counter }) {
                 marginHorizontal: 5,
               }}
             >
-              {data.prevPrice}
+              Rs {data.prevPrice}
             </Text>
           )}
           <View
@@ -173,7 +153,7 @@ function Card({ prevPrice, route, navigation, counter }) {
                 alignItems: "center",
               }}
             >
-              <Counter />
+              <Counter item={data} />
             </TouchableOpacity>
           </View>
         </View>

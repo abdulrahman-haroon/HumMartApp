@@ -19,6 +19,7 @@ import { AntDesign } from "@expo/vector-icons";
 import ListItemsDataDisplay from "./ListItemsDataDisplay";
 
 import { ListItemSearchData } from "../../Callings/Data";
+import ShoppingCart from "../ShoppingCart";
 
 function ListItemSearch({
   counter,
@@ -37,8 +38,6 @@ function ListItemSearch({
     });
     setProducts(filteredProducts);
   };
-
-  // setCounterItems(ListItemSearchData.length);
 
   return (
     <View style={styles.container}>
@@ -62,6 +61,7 @@ function ListItemSearch({
             backgroundColor: "white",
             height: 40,
             borderRadius: 7,
+            marginRight: 10,
             alignItems: "center",
           }}
         >
@@ -83,31 +83,7 @@ function ListItemSearch({
             onPress={() => console.log("text removed")}
           />
         </View>
-        <View style={{ flexDirection: "row", marginLeft: 5 }}>
-          <FontAwesome5
-            name="shopping-cart"
-            size={24}
-            color="white"
-            style={{ paddingRight: 5 }}
-            onPress={() => navigation.navigate("Cart")}
-          />
-          <View
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 18 / 2,
-              backgroundColor: color.orangeDark,
-              right: 10,
-              bottom: 6,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ color: "white", fontFamily: font.ssl }}>
-              {counter}
-            </Text>
-          </View>
-        </View>
+        <ShoppingCart navigation={navigation} />
       </View>
 
       <View>
@@ -117,7 +93,7 @@ function ListItemSearch({
             fontFamily: font.sst,
           }}
         >
-          {counterItems} result(s) found
+          {products.length} result(s) found
         </Text>
       </View>
       <FlatList
@@ -125,8 +101,9 @@ function ListItemSearch({
         keyExtractor={(dataSearch) => dataSearch.id.toString()}
         renderItem={({ item }) => (
           <ListItemsDataDisplay
+            data={item}
             image={item.image}
-            title={item.description}
+            description={item.description}
             grams={item.quantity}
             price={item.price}
             sameDayDelievery
@@ -135,7 +112,7 @@ function ListItemSearch({
                 image: item.image2,
                 price: item.price,
                 prevPrice: item.prevPrice,
-                title: item.description,
+                description: item.description,
                 quantity: item.quantity,
                 rating: item.rating,
                 sameDayDelievery: true,

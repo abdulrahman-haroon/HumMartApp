@@ -17,20 +17,19 @@ import font from "../styles/fonts";
 import Counter from "./Counter";
 
 function MyCartComponent({
-  title,
+  description,
   grams,
   price,
   image,
   prevPrice,
   sameDayDelievery,
   onPress,
-  add=true,
-  cross=true
+  add = true,
+  cross = true,
 }) {
   return (
     <View styles={styles.container}>
       <View
-        activeOpacity={0.7}
         style={styles.innerContainer}
         //onPress={onPress}
       >
@@ -51,7 +50,7 @@ function MyCartComponent({
                   fontSize: 16,
                 }}
               >
-                {title}
+                {description}
               </Text>
             </View>
             <Text
@@ -85,28 +84,30 @@ function MyCartComponent({
               )}
             </View>
 
-           {add ===true&& <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                bottom: 25,
-              }}
-            >
+            {add === true && (
               <View
                 style={{
-                  width: "34%",
-                  height: 30,
-                  top: 10,
-                  left: 30,
-                  justifyContent: "center",
+                  flex: 1,
+                  flexDirection: "row",
                   alignItems: "center",
+                  justifyContent: "flex-end",
+                  bottom: 25,
                 }}
               >
-                <Counter />
+                <View
+                  style={{
+                    width: "34%",
+                    height: 30,
+                    top: 10,
+                    left: 30,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Counter />
+                </View>
               </View>
-            </View>}
+            )}
             {sameDayDelievery && (
               <View
                 style={{ flexDirection: "row", marginLeft: 10, bottom: 20 }}
@@ -122,17 +123,23 @@ function MyCartComponent({
             )}
           </View>
         </View>
-        {cross===true &&<View onPress={onPress} style={{ height: 50 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              marginHorizontal: 14,
-              marginVertical: 10,
-            }}
-          >
-            <Ionicons name="ios-close" size={24} color={color.lightdarkGray} />
-          </View>
-        </View>}
+        {cross === true && (
+          <TouchableOpacity onPress={onPress} style={{ height: 50 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                marginHorizontal: 14,
+                marginVertical: 10,
+              }}
+            >
+              <Ionicons
+                name="ios-close"
+                size={24}
+                color={color.lightdarkGray}
+              />
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -154,4 +161,5 @@ const styles = StyleSheet.create({
     height: 100,
   },
 });
+
 export default MyCartComponent;

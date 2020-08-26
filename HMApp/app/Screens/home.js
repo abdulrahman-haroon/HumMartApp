@@ -24,6 +24,7 @@ import {
 
 import { SliderBox } from "react-native-image-slider-box";
 import routes from "../Navigations/routes";
+import ShoppingCart from "../component/ShoppingCart";
 
 function Home({ navigation, counter }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
@@ -67,37 +68,7 @@ function Home({ navigation, counter }) {
               source={require("../assets/WelcomeLoading.png")}
             />
           </View>
-
-          <View style={{ flexDirection: "row" }}>
-            <FontAwesome5
-              name="shopping-cart"
-              size={24}
-              color="white"
-              style={{ paddingRight: 10 }}
-              onPress={() =>
-                navigation.navigate(routes.CART, {
-                  NotProceedShow: false,
-                  NotShowTotal: false,
-                })
-              }
-            />
-            <View
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 18 / 2,
-                backgroundColor: color.orangeDark,
-                right: 15,
-                bottom: 6,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text style={{ color: "white", fontFamily: fonts.ssl }}>
-                {counter}
-              </Text>
-            </View>
-          </View>
+          <ShoppingCart navigation={navigation} />
         </View>
 
         <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -113,7 +84,7 @@ function Home({ navigation, counter }) {
             }}
             caretHidden={true}
             placeholder=" Search for Products"
-            onTouchStart={() => navigation.navigate("ListItemSearch")}
+            onTouchStart={() => navigation.navigate(routes.LIST_ITEM_SEARCH)}
           />
         </View>
       </View>
@@ -188,6 +159,7 @@ function Home({ navigation, counter }) {
               >
                 {offersOuterCategories.map((item, key) => (
                   <OffersCategory
+                    data={item}
                     key={item.id}
                     image={item.image}
                     price={item.price}
@@ -196,11 +168,11 @@ function Home({ navigation, counter }) {
                     quantity={item.quantity}
                     onPress={() => {
                       navigation.navigate("Card", {
-                        id: 1,
+                        // id: item.id,
                         image: item.image2,
                         price: item.price,
                         prevPrice: item.prevPrice,
-                        title: item.description,
+                        description: item.description,
                         quantity: item.quantity,
                         rating: item.rating,
                         sameDayDelievery: true,

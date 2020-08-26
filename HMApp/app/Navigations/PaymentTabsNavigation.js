@@ -75,8 +75,6 @@ const PaymentTabsNavigation = () => (
       component={COD}
       options={{ title: "Cash on Delivery" }}
     />
-    <Tab.Screen name={routes.EASYPAISA} component={Easypaisa} />
-    <Tab.Screen name={routes.JAZZ_CASH_MOBILE} component={JazzCashMobile} />
   </Tab.Navigator>
 );
 export default PaymentTabsNavigation;

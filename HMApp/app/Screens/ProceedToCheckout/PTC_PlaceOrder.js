@@ -10,7 +10,22 @@ import routes from "../../Navigations/routes";
 import { showMessage } from "react-native-flash-message";
 import AwesomeAlert from "react-native-awesome-alerts";
 
-function PTC_PlaceOrder({ navigation, total, route }) {
+import { connect } from "react-redux";
+
+function PTC_PlaceOrder({
+  navigation,
+  Total,
+  route,
+  addOrdersDetails,
+  sTotal,
+  addressSend,
+  keySelect,
+  ordersDetails,
+  cartItem,
+}) {
+  const [orderId, setOrderId] = useState(
+    (Math.round(Math.random() * 10000000000) + 1).toString()
+  );
   const [showAlert, setShowAlert] = useState(false);
 
   const [ptcDate, setPtcDate] = useState("");
@@ -50,7 +65,6 @@ function PTC_PlaceOrder({ navigation, total, route }) {
         TimeType
     );
   };
-
   return (
     <>
       <View style={styles.container}>
@@ -104,7 +118,7 @@ function PTC_PlaceOrder({ navigation, total, route }) {
                 marginRight: 10,
               }}
             >
-              <Text>PKR {total}</Text>
+              <Text>PKR {Total.totalPrice}</Text>
             </View>
           </View>
         </View>
@@ -159,12 +173,28 @@ function PTC_PlaceOrder({ navigation, total, route }) {
           activeOpacity={0.8}
           onPress={() =>
             isConfirmed === "Yes"
-              ? navigation.navigate(routes.MY_ORDERS, {
+              ? (addOrdersDetails({
+                  optionNickName: addressSend[keySelect].optionNickName,
+                  city: addressSend[keySelect].city,
+                  email: addressSend[keySelect].email,
+                  houseNo: addressSend[keySelect].houseNo,
+                  name: addressSend[keySelect].name,
+                  radioButton: addressSend[keySelect].radioButton,
+                  sector: addressSend[keySelect].sector,
+                  total: Total.totalPrice,
+                  subTotal: sTotal.sTotal,
+                  date: ptcDate,
+                  time: ptcTime,
+                  schedule: route.params.dateTime,
+                  orderNumber: orderId,
+                  cartItem: cartItem,
+                }),
+                navigation.navigate(routes.MY_ORDERS, {
                   ordersData: true,
                   date: ptcDate,
                   time: ptcTime,
                   schedule: route.params.dateTime,
-                })
+                }))
               : showMessage({
                   message: "Please Confirm before you proceed!",
                   type: "warning",
@@ -252,5 +282,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#ddd",
   },
 });
-
-export default PTC_PlaceOrder;
+const mapStateToProps = (state) => {
+  return {
+    cartItem: state.cartItem,
+    sTotal: state.subTotal,
+    Total: state.sumTotal,
+    ordersDetails: state.ordersDetails,
+    addressSend: state.address,
+    keySelect: state.keySelection,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addOrdersDetails: (details) =>
+      dispatch({
+        type: "ADD_ORDERS_DETAILS",
+        payload: details,
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PTC_PlaceOrder);

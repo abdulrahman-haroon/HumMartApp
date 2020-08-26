@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import ListItemsDataDisplay from "./Lists/ListItemsDataDisplay";
 
-function TabsListItems({ navigation ,products}) {
+function TabsListItems({ navigation, products }) {
   return (
     <View style={{ flex: 1, marginHorizontal: 15 }}>
       <FlatList
@@ -11,8 +11,9 @@ function TabsListItems({ navigation ,products}) {
         keyExtractor={(deal) => deal.id.toString()}
         renderItem={({ item }) => (
           <ListItemsDataDisplay
+            data={item}
             image={item.image}
-            title={item.description}
+            description={item.description}
             price={item.price}
             prevPrice={item.prevPrice}
             grams={item.quantity}
@@ -21,7 +22,7 @@ function TabsListItems({ navigation ,products}) {
                 image: item.image2,
                 price: item.price,
                 prevPrice: item.prevPrice,
-                title: item.description,
+                description: item.description,
                 quantity: item.quantity,
                 rating: item.rating,
                 sameDayDelievery: false,
@@ -34,4 +35,3 @@ function TabsListItems({ navigation ,products}) {
   );
 }
 export default TabsListItems;
-

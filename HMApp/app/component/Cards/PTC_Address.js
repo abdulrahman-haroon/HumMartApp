@@ -1,43 +1,18 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+
 import color from "../../styles/color";
 import fonts from "../../styles/fonts";
 
-import { MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import { connect } from "react-redux";
 
-function AddressesCard({
-  name,
-  email,
-  houseNo,
-  sector,
-  city,
-  respect,
-  nickName,
-  removeAddress,
-  setVisibleEditModal,
-  indexKey,
-  setSelectedKey,
-  removeDelete,
-  notShowEdit,
-  notShowDelete,
-  keySelected,
-  setShowSelection,
-}) {
+function PTC_Address({ addressSend, keySelect }) {
   return (
-    <TouchableOpacity
+    <View
       style={{
         marginHorizontal: 20,
         marginVertical: 15,
       }}
-      onPress={() => (keySelected(indexKey), setShowSelection(false))}
     >
       <View
         style={{
@@ -73,35 +48,8 @@ function AddressesCard({
                 textAlign: "center",
               }}
             >
-              {nickName}
+              {addressSend[keySelect].optionNickName}
             </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-            }}
-          >
-            {!notShowEdit && (
-              <TouchableOpacity
-                onPress={() => (
-                  setVisibleEditModal(true), setSelectedKey(indexKey)
-                )}
-                style={{ marginRight: 10 }}
-              >
-                <MaterialIcons name="edit" size={20} color="black" />
-              </TouchableOpacity>
-            )}
-
-            {!removeDelete && !notShowDelete ? (
-              <TouchableOpacity onPress={removeAddress}>
-                <MaterialCommunityIcons
-                  name="delete-outline"
-                  size={24}
-                  color="black"
-                  style={{ marginHorizontal: 10 }}
-                />
-              </TouchableOpacity>
-            ) : null}
           </View>
         </View>
 
@@ -114,7 +62,7 @@ function AddressesCard({
               numberOfLines={2}
               style={{ fontFamily: fonts.ssl, width: "80%" }}
             >
-              {respect} {name}
+              {addressSend[keySelect].radioButton} {addressSend[keySelect].name}
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
@@ -125,7 +73,7 @@ function AddressesCard({
               style={{ fontFamily: fonts.ssl, width: "80%" }}
               numberOfLines={1}
             >
-              {email}
+              {addressSend[keySelect].email}
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
@@ -139,7 +87,7 @@ function AddressesCard({
               }}
               numberOfLines={3}
             >
-              {houseNo} , {sector}
+              {addressSend[keySelect].houseNo} , {addressSend[keySelect].sector}
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
@@ -150,12 +98,12 @@ function AddressesCard({
               style={{ fontFamily: fonts.ssl, width: "80%" }}
               numberOfLines={1}
             >
-              {city}
+              {addressSend[keySelect].city}
             </Text>
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 const mapStateToProps = (state) => {
@@ -164,18 +112,4 @@ const mapStateToProps = (state) => {
     keySelect: state.keySelection,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dataAddresses: (address) =>
-      dispatch({
-        type: "ADDRESSES",
-        payload: address,
-      }),
-    keySelected: (key) =>
-      dispatch({
-        type: "ADDRESS_SELECTION",
-        addressSelected: key,
-      }),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(AddressesCard);
+export default connect(mapStateToProps)(PTC_Address);
