@@ -259,6 +259,7 @@ function PTC_PlaceOrder({
         confirmText="Yes"
         confirmButtonColor={color.orangeDark}
         onCancelPressed={() => {
+          isConfirmation("No"),
           setShowAlert(false);
         }}
         onConfirmPressed={() => {
