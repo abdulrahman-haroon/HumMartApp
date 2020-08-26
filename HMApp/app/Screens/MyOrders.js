@@ -2,24 +2,64 @@ import React from "react";
 import { View, Text, FlatList, ScrollView } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
+import { CommonActions, NavigationAction } from "@react-navigation/native";
+
 import color from "../styles/color";
 import fonts from "../styles/fonts";
+
 import OrdersComponent from "../component/OrdersComponent";
 
 import { connect } from "react-redux";
 
-function MyOrders({ navigation, route, ordersDetails }) {
-  let ordersData = route.params;
+import { Ionicons } from "@expo/vector-icons";
+import routes from "../Navigations/routes";
 
+function MyOrders({
+  navigation,
+  route,
+  ordersDetails,
+  cartItem,
+  emptyCart,
+  onSuccessPTC,
+  onConfirmation,
+  emptyDateTime,
+  noConfirmation,
+}) {
+  let ordersData = route.params;
   return (
     <View style={{ flex: 1 }}>
-      <HeaderNavigation
-        title="My Orders"
-        showIcons={false}
-        navigation={navigation}
-        drawer
-      />
-      {ordersData.ordersData === false ? (
+      <View
+        style={{
+          height: 50,
+          flexDirection: "row",
+          backgroundColor: color.navigationColor,
+          alignItems: "center",
+        }}
+      >
+        <Ionicons
+          style={{ marginLeft: 20, width: 30 }}
+          name="ios-arrow-back"
+          size={24}
+          color="white"
+          onPress={() =>
+            onSuccessPTC === true
+              ? (emptyCart(),
+                emptyDateTime(),
+                noConfirmation(),
+                onConfirmation(false),
+                navigation.jumpTo(routes.HOME))
+              : navigation.jumpTo(routes.HOME)
+          }
+        />
+
+        <Text
+          numberOfLines={1}
+          style={{ flex: 7, color: "white", fontFamily: fonts.ssl }}
+        >
+          My Orders
+        </Text>
+      </View>
+      {ordersDetails.length === 0 ? (
         <View
           style={{
             flex: 1,
@@ -59,7 +99,31 @@ function MyOrders({ navigation, route, ordersDetails }) {
 const mapStateToProps = (state) => {
   return {
     ordersDetails: state.ordersDetails,
+    cartItem: state.cartItem,
+    onSuccessPTC: state.onSuccessPTC,
+    dateTime: state.dateTime,
+    confirmationPTC: state.confirmationPTC,
   };
 };
-
-export default connect(mapStateToProps)(MyOrders);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    emptyCart: () =>
+      dispatch({
+        type: "EMPTY_CART",
+      }),
+    onConfirmation: (confirm) =>
+      dispatch({
+        type: "SUCCESS",
+        Confirmation: confirm,
+      }),
+    emptyDateTime: () =>
+      dispatch({
+        type: "EMPTY_STRING",
+      }),
+    noConfirmation: () =>
+      dispatch({
+        type: "NO_CONFIRM",
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MyOrders);

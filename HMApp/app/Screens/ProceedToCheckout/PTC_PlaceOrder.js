@@ -22,6 +22,10 @@ function PTC_PlaceOrder({
   keySelect,
   ordersDetails,
   cartItem,
+  onSuccessPTC,
+  onConfirmation,
+  confirmationPTC,
+  isConfirmation,
 }) {
   const [orderId, setOrderId] = useState(
     (Math.round(Math.random() * 10000000000) + 1).toString()
@@ -133,7 +137,9 @@ function PTC_PlaceOrder({
         >
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => (isConfirmed === "No" ? setShowAlert(true) : null)}
+            onPress={() =>
+              confirmationPTC === "No" ? setShowAlert(true) : null
+            }
           >
             <View
               style={{
@@ -172,7 +178,7 @@ function PTC_PlaceOrder({
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() =>
-            isConfirmed === "Yes"
+            confirmationPTC === "Yes"
               ? (addOrdersDetails({
                   optionNickName: addressSend[keySelect].optionNickName,
                   city: addressSend[keySelect].city,
@@ -189,6 +195,7 @@ function PTC_PlaceOrder({
                   orderNumber: orderId,
                   cartItem: cartItem,
                 }),
+                onConfirmation(true),
                 navigation.navigate(routes.MY_ORDERS, {
                   ordersData: true,
                   date: ptcDate,
@@ -256,7 +263,7 @@ function PTC_PlaceOrder({
         }}
         onConfirmPressed={() => {
           showDateTime();
-          setIsConfirmed("Yes");
+          isConfirmation("Yes");
           showMessage({
             message: "Successfully Confirmed ! Click on Place Orders",
             type: "success",
@@ -290,6 +297,8 @@ const mapStateToProps = (state) => {
     ordersDetails: state.ordersDetails,
     addressSend: state.address,
     keySelect: state.keySelection,
+    onSuccessPTC: state.onSuccessPTC,
+    confirmationPTC: state.confirmationPTC,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -298,6 +307,16 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "ADD_ORDERS_DETAILS",
         payload: details,
+      }),
+    onConfirmation: (confirm) =>
+      dispatch({
+        type: "SUCCESS",
+        Confirmation: confirm,
+      }),
+    isConfirmation: (isConfirm) =>
+      dispatch({
+        type: "ADD_CONFIRMATION",
+        confirmYes: isConfirm,
       }),
   };
 };

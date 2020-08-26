@@ -20,10 +20,12 @@ import { AntDesign } from "@expo/vector-icons";
 import MyOrders from "../Screens/MyOrders";
 import HomeNavigations from "./HomeNavigations";
 import routes from "./routes";
-import PTCNavigations from "./PTCNavigations";
 import Cart from "../Screens/Cart";
 import PTC_ViewDetails from "../Screens/ProceedToCheckout/PTC_ViewDetails";
 import AddressSelection from "../Screens/AddressSelection";
+import PTC_AddressTime from "../Screens/ProceedToCheckout/PTC_AddressTime";
+import PTC_PlaceOrder from "../Screens/ProceedToCheckout/PTC_PlaceOrder";
+import ViewCartItemsSelected from "../component/ViewCartItemsSelected";
 
 const LoginStack = createStackNavigator();
 export const LoginStackScreen = ({ navigation, route }) => {
@@ -101,8 +103,18 @@ function DrawerNavigations() {
         />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}
-          name={routes.PTC}
-          component={PTCNavigations}
+          name={routes.PTC_ADDRESS_TIME}
+          component={PTC_AddressTime}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name={routes.PTC_PLACE_ORDER}
+          component={PTC_PlaceOrder}
+        />
+        <Drawer.Screen
+          options={{ drawerLabel: () => null, gestureEnabled: false }}
+          name={routes.VIEW_CART_ITEM_SELECTED}
+          component={ViewCartItemsSelected}
         />
         <Drawer.Screen
           options={{ drawerLabel: () => null, gestureEnabled: false }}

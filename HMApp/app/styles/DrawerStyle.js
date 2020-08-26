@@ -14,10 +14,13 @@ import color from "./color";
 import { showMessage } from "react-native-flash-message";
 import routes from "../Navigations/routes";
 
+import { connect } from "react-redux";
+
 function DrawerStyle({
   navigation,
-  loginSuccessfully = true,
+  login,
   disableAddressNOrders = true,
+  addLoginCredentials,
 }) {
   const [userContact, setUserContact] = useState("Welcome");
   return (
@@ -31,9 +34,15 @@ function DrawerStyle({
           justifyContent: "center",
         }}
       >
-        <Text style={{ marginLeft: 15, fontSize: 20, fontFamily: fonts.ssl }}>
-          {userContact}
-        </Text>
+        {login.mobileNumber === 0 && login.loginSuccess === false ? (
+          <Text style={{ marginLeft: 15, fontSize: 20, fontFamily: fonts.ssl }}>
+            {userContact}
+          </Text>
+        ) : (
+          <Text style={{ marginLeft: 15, fontSize: 20, fontFamily: fonts.ssl }}>
+            {login.mobileNumber}
+          </Text>
+        )}
       </View>
       <View>
         <Text
@@ -47,7 +56,7 @@ function DrawerStyle({
         >
           My Information
         </Text>
-        {loginSuccessfully === false ? (
+        {login.loginSuccess === false ? (
           <TouchableOpacity
             style={{
               flexDirection: "row",
@@ -71,7 +80,7 @@ function DrawerStyle({
             </Text>
           </TouchableOpacity>
         ) : null}
-        {loginSuccessfully ? (
+        {login.loginSuccess === true ? (
           <TouchableOpacity
             style={{
               flexDirection: "row",
@@ -116,7 +125,7 @@ function DrawerStyle({
             </Text>
           </TouchableOpacity>
         )}
-        {loginSuccessfully ? (
+        {login.loginSuccess === true ? (
           <TouchableOpacity
             style={{
               flexDirection: "row",
@@ -124,9 +133,7 @@ function DrawerStyle({
               marginLeft: 10,
               marginBottom: 20,
             }}
-            onPress={() =>
-              navigation.navigate(routes.MY_ORDERS, { ordersData: true })
-            }
+            onPress={() => navigation.navigate(routes.MY_ORDERS)}
           >
             <MaterialCommunityIcons
               name="hexagon-slice-6"
@@ -372,7 +379,7 @@ function DrawerStyle({
             About Us
           </Text>
         </TouchableOpacity>
-        {loginSuccessfully && (
+        {login.loginSuccess && (
           <TouchableOpacity
             style={{
               flexDirection: "row",
@@ -383,7 +390,13 @@ function DrawerStyle({
               borderTopWidth: 0.8,
               borderTopColor: color.lightdarkGray,
             }}
-            onPress={() => console.log(routes.LOGOUT)}
+            onPress={() => (
+              addLoginCredentials({
+                mobileNumber: 0,
+                loginSuccess: false,
+              }),
+              navigation.navigate(routes.HOME)
+            )}
           >
             <SimpleLineIcons name="logout" size={18} color="black" />
 
@@ -417,5 +430,18 @@ function DrawerStyle({
     </View>
   );
 }
-
-export default DrawerStyle;
+const mapStateToProps = (state) => {
+  return {
+    login: state.login,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addLoginCredentials: (credential) =>
+      dispatch({
+        type: "CREDENTIALS",
+        payload: credential,
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerStyle);

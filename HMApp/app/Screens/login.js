@@ -23,6 +23,9 @@ import fonts from "../styles/fonts";
 import color from "../styles/color";
 import ErrorMessage from "../component/Form/ErrorMessage";
 
+import { connect } from "react-redux";
+import routes from "../Navigations/routes";
+
 const validationScheme = Yup.object().shape({
   mobileNumber: Yup.string()
     .required()
@@ -31,10 +34,9 @@ const validationScheme = Yup.object().shape({
     .label("Mobile Number"),
 });
 
-export default function Login({ navigation, route }) {
+function Login({ navigation, route, login, addLoginCredentials }) {
   //FIXME: SET STATE USER CONTANT
   // const data = route.params;
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -47,7 +49,14 @@ export default function Login({ navigation, route }) {
             mobileNumber: "",
           }}
           validationSchema={validationScheme}
-          onSubmit={(values) => navigation.goBack()}
+          onSubmit={(values, action) => (
+            addLoginCredentials({
+              mobileNumber: values.mobileNumber,
+              loginSuccess: true,
+            }),
+            action.resetForm(),
+            navigation.navigate(routes.HOME)
+          )}
         >
           {({ values, handleChange, errors, touched, handleSubmit }) => (
             <>
@@ -137,3 +146,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 });
+const mapStateToProps = (state) => {
+  return {
+    login: state.login,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addLoginCredentials: (credential) =>
+      dispatch({
+        type: "CREDENTIALS",
+        payload: credential,
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

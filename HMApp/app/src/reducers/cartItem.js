@@ -6,6 +6,8 @@ const cartItems = (state = [], action) => {
       return state.filter(
         (cartItem) => cartItem.description !== action.payload.description
       );
+    case "EMPTY_CART":
+      return (state = []);
   }
   return state;
 };

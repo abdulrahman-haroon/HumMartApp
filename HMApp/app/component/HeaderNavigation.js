@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { CommonActions } from "@react-navigation/native";
+import { CommonActions, NavigationAction } from "@react-navigation/native";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";

@@ -25,7 +25,7 @@ import AddressSelection from "../AddressSelection";
 
 import { showMessage } from "react-native-flash-message";
 
-function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
+function PTC_AddressTime({ navigation, cartItem, dateTime, setDate_Time }) {
   const [showSelection, setShowSelection] = useState(false);
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -41,6 +41,7 @@ function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
 
   const handleConfirm = (date) => {
     setDateData(date.toString());
+    setDate_Time(date.toString());
     hideDatePicker();
   };
   return (
@@ -104,7 +105,7 @@ function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
               marginHorizontal: 15,
             }}
           >
-            {dateData == undefined ? (
+            {dateTime == "" ? (
               <Text
                 style={{
                   fontFamily: fonts.sst,
@@ -122,7 +123,7 @@ function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
                   fontSize: 16,
                 }}
               >
-                {dateData}
+                {dateTime}
               </Text>
             )}
           </View>
@@ -148,12 +149,7 @@ function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
         <TouchableOpacity
           activeOpacity={0.5}
           style={{ marginHorizontal: 15, flexDirection: "row" }}
-          onPress={() =>
-            navigation.navigate(routes.CART, {
-              NotProceedShow: true,
-              NotShowTotal: true,
-            })
-          }
+          onPress={() => navigation.navigate(routes.VIEW_CART_ITEM_SELECTED)}
         >
           <Text style={{ color: color.orangeDark }}>
             View {cartItem.length} Item
@@ -173,7 +169,7 @@ function PTC_AddressTime({ navigation, cartItem, Total, sTotal }) {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          dateData !== undefined
+          dateTime != ""
             ? navigation.navigate(routes.PTC_PLACE_ORDER, {
                 dateTime: dateData,
               })
@@ -235,6 +231,16 @@ const mapStateToProps = (state) => {
     cartItem: state.cartItem,
     sTotal: state.subTotal,
     Total: state.sumTotal,
+    dateTime: state.dateTime,
   };
 };
-export default connect(mapStateToProps)(PTC_AddressTime);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setDate_Time: (dateTime) =>
+      dispatch({
+        type: "ADD_DATE_TIME",
+        dateTime: dateTime,
+      }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PTC_AddressTime);

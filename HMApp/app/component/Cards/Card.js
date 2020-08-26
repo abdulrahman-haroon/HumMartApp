@@ -13,7 +13,6 @@ import ShoppingCart from "../ShoppingCart";
 
 function Card({ prevPrice, route, navigation, counter }) {
   let data = route.params;
-  console.log(data);
   return (
     <View style={styles.container}>
       <View

@@ -216,7 +216,7 @@ function Cart({
             sumSubTotal(sumPrice),
             totalPrice(sumPrice + 100),
             cartItem.length > 0 && addressSend.length > 0
-              ? navigation.navigate(routes.PTC)
+              ? navigation.navigate(routes.PTC_ADDRESS_TIME)
               : showMessage({
                   message:
                     cartItem.length <= 0
