@@ -4,6 +4,7 @@ import HeaderNavigation from "../../component/HeaderNavigation";
 
 import color from "../../styles/color";
 import fonts from "../../styles/fonts";
+
 import PaymentTabsNavigation from "../../Navigations/PaymentTabsNavigation";
 import routes from "../../Navigations/routes";
 
@@ -259,8 +260,7 @@ function PTC_PlaceOrder({
         confirmText="Yes"
         confirmButtonColor={color.orangeDark}
         onCancelPressed={() => {
-          isConfirmation("No"),
-          setShowAlert(false);
+          isConfirmation("No"), setShowAlert(false);
         }}
         onConfirmPressed={() => {
           showDateTime();

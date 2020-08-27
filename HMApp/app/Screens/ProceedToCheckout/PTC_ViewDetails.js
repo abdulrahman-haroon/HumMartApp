@@ -8,8 +8,6 @@ import fonts from "../../styles/fonts";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 
-import ListItemsDataDisplay from "../../component/Lists/ListItemsDataDisplay";
-
 function PTC_ViewDetails({ navigation, route, savings = 0 }) {
   const data = route.params;
 

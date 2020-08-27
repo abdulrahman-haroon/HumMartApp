@@ -4,23 +4,17 @@ import {
   View,
   Image,
   TouchableOpacity,
-  ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
 
 import AppText from "../Form/AppText";
 import color from "../../styles/color";
 import font from "../../styles/fonts";
 
 import SubCategoryList from "../SubCategoryList";
-import {
-  TouchableHighlight,
-  TouchableNativeFeedback,
-} from "react-native-gesture-handler";
+import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 function ListItem({ title, subTitle, image, index, navigation, onPress }) {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  ScrollView,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { View, Image, Text, TouchableOpacity } from "react-native";
 import fonts from "../styles/fonts";
 import color from "../styles/color";
 import Counter from "./Counter";

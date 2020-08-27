@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -22,7 +22,6 @@ import HomeNavigations from "./HomeNavigations";
 import routes from "./routes";
 import Cart from "../Screens/Cart";
 import PTC_ViewDetails from "../Screens/ProceedToCheckout/PTC_ViewDetails";
-import AddressSelection from "../Screens/AddressSelection";
 import PTC_AddressTime from "../Screens/ProceedToCheckout/PTC_AddressTime";
 import PTC_PlaceOrder from "../Screens/ProceedToCheckout/PTC_PlaceOrder";
 import ViewCartItemsSelected from "../component/ViewCartItemsSelected";
@@ -57,15 +56,6 @@ export const LoginStackScreen = ({ navigation, route }) => {
 
 const Drawer = createDrawerNavigator();
 function DrawerNavigations() {
-  // const [counterItems, setCounterItems] = useState(0);
-
-  // const ListItemSearchpass = ({ navigation }) => (
-  //   <ListItemSearch
-  //     navigation={navigation}
-  //     counterItems={counterItems}
-  //     setCounterItems={(item) => setCounterItems(item)}
-  //   />
-  // );
   return (
     <NavigationContainer>
       <Drawer.Navigator

@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 
-import { Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import { connect } from "react-redux";
 import routes from "../Navigations/routes";

@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-} from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 
 import client from "../api/client";
 

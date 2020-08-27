@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Button,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
 import HeaderNavigation from "../../component/HeaderNavigation";
 
 import color from "../../styles/color";
@@ -16,7 +9,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { date } from "yup";
 import routes from "../../Navigations/routes";
 
 import { connect } from "react-redux";

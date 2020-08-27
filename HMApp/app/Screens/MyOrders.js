@@ -1,8 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, ScrollView } from "react-native";
-
-import HeaderNavigation from "../component/HeaderNavigation";
-import { CommonActions, NavigationAction } from "@react-navigation/native";
+import { View, Text, ScrollView } from "react-native";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";
@@ -18,14 +15,12 @@ function MyOrders({
   navigation,
   route,
   ordersDetails,
-  cartItem,
   emptyCart,
   onSuccessPTC,
   onConfirmation,
   emptyDateTime,
   noConfirmation,
 }) {
-  let ordersData = route.params;
   return (
     <View style={{ flex: 1 }}>
       <View

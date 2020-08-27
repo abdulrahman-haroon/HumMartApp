@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
+import { View, Text, TouchableOpacity, Modal } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
 
@@ -35,7 +35,6 @@ function MyAddresses({ navigation, dataAddresses, addressSend }) {
   };
   if (visibleModal === false || visibleEditModal === false)
     dataAddresses(addressData);
-  // console.log(addressSend);
   return (
     <View style={{ flex: 1 }}>
       <Modal visible={visibleModal}>

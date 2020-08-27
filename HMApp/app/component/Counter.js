@@ -3,8 +3,6 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import color from "../styles/color";
 
-import { Entypo } from "@expo/vector-icons";
-
 import { connect } from "react-redux";
 
 import { showMessage } from "react-native-flash-message";
@@ -13,7 +11,6 @@ function Counter({ item, addItemToCart, removeItem }) {
   const [count, setCount] = useState(1);
   const [visible, setVisible] = useState(true);
   const [visibleCounter, setVisibleCounter] = useState(false);
-  // console.log(item);
   return (
     <View
       style={{
@@ -52,7 +49,7 @@ function Counter({ item, addItemToCart, removeItem }) {
       >
         <Text style={{ color: "white" }}>ADD</Text>
       </TouchableOpacity>
-
+      {/* TODO: this is just a animation that i was working on. */}
       {/* {visible === true ? (
         <TouchableOpacity
           style={{

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import color from "../styles/color";
 import fonts from "../styles/fonts";

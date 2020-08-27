@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
   View,
   StatusBar,
-  Image,
-  ActivityIndicator,
-  Button,
   TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  Modal,
-  TouchableHighlight,
 } from "react-native";
 
 import { Formik } from "formik";
@@ -34,9 +28,7 @@ const validationScheme = Yup.object().shape({
     .label("Mobile Number"),
 });
 
-function Login({ navigation, route, login, addLoginCredentials }) {
-  //FIXME: SET STATE USER CONTANT
-  // const data = route.params;
+function Login({ navigation, addLoginCredentials }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -96,22 +88,6 @@ function Login({ navigation, route, login, addLoginCredentials }) {
             </>
           )}
         </Formik>
-        {/* <View style={{ paddingRight: 10 }}>
-            <TextInput
-              style={styles.tiStyle1}
-              placeholder="+92"
-              keyboardType="numeric"
-              editable={false}
-              placeholderTextColor="black"
-            />
-          </View>
-          <View>
-            <TextInput
-              style={styles.tiStyle2}
-              placeholder="Mobile"
-              keyboardType="numeric"
-            />
-          </View> */}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -121,7 +97,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    //   justifyContent: "flex-end",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   textStyle: {

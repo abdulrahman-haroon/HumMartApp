@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   StyleSheet,
   Text,
   TouchableOpacity,
   ScrollView,
-  TouchableWithoutFeedback,
 } from "react-native";
 
 import Color from "../styles/color";
 import fonts from "../styles/fonts";
 
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 
-import OffersCategory from "../component/OffersCategory";
 import MyCartComponent from "../component/MyCartComponent";
-import { offersOuterCategories } from "../Callings/Data";
 import routes from "../Navigations/routes";
 
 import { connect } from "react-redux";
-import color from "../styles/color";
 
 import { showMessage } from "react-native-flash-message";
 
@@ -197,7 +192,7 @@ function Cart({
               style={{
                 fontFamily: fonts.ssl,
                 fontSize: 18,
-                color: color.darkishLight,
+                color: Color.darkishLight,
                 fontWeight: "bold",
                 marginBottom: 10,
               }}

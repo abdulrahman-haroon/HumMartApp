@@ -10,21 +10,22 @@ import {
   TouchableNativeFeedback,
   ActivityIndicator,
 } from "react-native";
+
+import client from "../api/client";
+import routes from "../Navigations/routes";
+import ShoppingCart from "../component/ShoppingCart";
+
 import { Entypo } from "@expo/vector-icons";
 
-import { create } from "apisauce";
-import client from "../api/client";
-
 import color from "../styles/color";
+import fonts from "../styles/fonts";
+
 import ListItem from "../component/Lists/ListItem";
 import OffersCategory from "../component/OffersCategory";
-import fonts from "../styles/fonts";
 
 import { imagesData } from "../Callings/Data";
 
 import { SliderBox } from "react-native-image-slider-box";
-import routes from "../Navigations/routes";
-import ShoppingCart from "../component/ShoppingCart";
 
 function Home({ navigation }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());

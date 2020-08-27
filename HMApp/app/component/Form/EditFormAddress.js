@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TextInput } from "react-native";
+import { View, Text } from "react-native";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -11,7 +11,6 @@ import color from "../../styles/color";
 import AppButton from "./AppButton";
 import RadioButton from "../OptionButtons/RadioButton";
 import OptionsNicknameAddress from "../OptionButtons/OptionsNicknameAddress";
-import { set } from "react-native-reanimated";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()

@@ -3,19 +3,15 @@ import { View, Text } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-
-import { CommonActions, NavigationAction } from "@react-navigation/native";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 import ShoppingCart from "./ShoppingCart";
-import routes from "../Navigations/routes";
+
 function HeaderNavigation({
   showPromotion,
   navigation,
   title,
-  counter,
   showIcons = true,
   drawer,
 }) {

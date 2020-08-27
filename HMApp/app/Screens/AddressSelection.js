@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
+import React from "react";
+import { View, Text } from "react-native";
 
-import HeaderNavigation from "../component/HeaderNavigation";
-
-import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
 
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 import AddressesCard from "../component/Cards/AddressesCard";
-import FormAddress from "../component/Form/FormAddress";
 import { ScrollView } from "react-native-gesture-handler";
-import EditFormAddress from "../component/Form/EditFormAddress";
 
 import { connect } from "react-redux";
 

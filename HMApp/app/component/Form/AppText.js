@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Platform } from "react-native";
+import { StyleSheet, Text, Platform } from "react-native";
 
 function AppText({ title, style }) {
   return (

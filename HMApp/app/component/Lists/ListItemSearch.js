@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Platform,
-  StatusBar,
-  Text,
-  TextInput,
-  FlatList,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, TextInput, FlatList } from "react-native";
 
 import font from "../../styles/fonts";
-import color from "../../styles/color";
 
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 import ListItemsDataDisplay from "./ListItemsDataDisplay";
 
-// import { ListItemSearchData } from "../../Callings/Data";
 import ShoppingCart from "../ShoppingCart";
-import client from "../../api/client";
 
 function ListItemSearch({ navigation, route }) {
   const [products, setProducts] = useState(route.params.item);

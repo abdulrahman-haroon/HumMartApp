@@ -8,7 +8,6 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import fonts from "../../styles/fonts";
 import Counter from "../Counter";
-import color from "../../styles/color";
 import ShoppingCart from "../ShoppingCart";
 
 function Card({ prevPrice, route, navigation, counter }) {
