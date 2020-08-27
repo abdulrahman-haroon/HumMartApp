@@ -65,7 +65,7 @@ function ViewCartItemsSelected({ onPress, navigation, cartItem }) {
               <Image
                 resizeMode="contain"
                 style={styles.image}
-                source={item.image}
+                source={{ uri: item.image }}
               />
             )}
             <View style={{ flex: 1 }}>

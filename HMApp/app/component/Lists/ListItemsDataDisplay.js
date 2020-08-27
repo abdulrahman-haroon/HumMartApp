@@ -35,7 +35,11 @@ function ListItemsDataDisplay({
       >
         <TouchableOpacity onPress={onPress}>
           {image && (
-            <Image resizeMode="contain" style={styles.image} source={image} />
+            <Image
+              resizeMode="contain"
+              style={styles.image}
+              source={{ uri: image }}
+            />
           )}
         </TouchableOpacity>
         <View style={{ flex: 1 }}>

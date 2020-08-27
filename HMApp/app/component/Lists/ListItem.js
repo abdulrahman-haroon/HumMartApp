@@ -44,7 +44,7 @@ function ListItem({ title, subTitle, image, index, navigation, onPress }) {
             }
           }}
         >
-          {image && <Image style={styles.image} source={image} />}
+          {image && <Image style={styles.image} source={{ uri: image }} />}
           <View style={styles.detailsContainer}>
             <AppText
               title={title}

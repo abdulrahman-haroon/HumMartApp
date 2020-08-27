@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -18,17 +18,13 @@ import { AntDesign } from "@expo/vector-icons";
 
 import ListItemsDataDisplay from "./ListItemsDataDisplay";
 
-import { ListItemSearchData } from "../../Callings/Data";
+// import { ListItemSearchData } from "../../Callings/Data";
 import ShoppingCart from "../ShoppingCart";
+import client from "../../api/client";
 
-function ListItemSearch({
-  counter,
-  counterItems,
-  navigation,
-  setCounterItems,
-}) {
-  const [products, setProducts] = useState(ListItemSearchData);
-  const [inMemoryProducts, setInMemoryProducts] = useState(ListItemSearchData);
+function ListItemSearch({ navigation, route }) {
+  const [products, setProducts] = useState(route.params.item);
+  const [inMemoryProducts, setInMemoryProducts] = useState(route.params.item);
 
   const searchProducts = (value) => {
     const filteredProducts = inMemoryProducts.filter((product) => {

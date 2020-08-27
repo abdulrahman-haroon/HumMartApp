@@ -94,7 +94,7 @@ function Card({ prevPrice, route, navigation, counter }) {
             width: "100%",
             height: "100%",
           }}
-          source={data.image}
+          source={{ uri: data.image }}
         />
       </View>
       <View style={{ width: "100%", backgroundColor: "white", padding: 20 }}>

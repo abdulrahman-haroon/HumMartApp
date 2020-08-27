@@ -125,7 +125,7 @@ function PTC_ViewDetails({ navigation, route, savings = 0 }) {
               }}
             >
               <Image
-                source={item.image}
+                source={{ uri: item.image }}
                 style={{ width: 100, height: 100, marginBottom: 10 }}
               />
               <View

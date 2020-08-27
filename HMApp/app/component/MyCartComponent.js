@@ -34,7 +34,11 @@ function MyCartComponent({
         //onPress={onPress}
       >
         {image && (
-          <Image resizeMode="contain" style={styles.image} source={image} />
+          <Image
+            resizeMode="contain"
+            style={styles.image}
+            source={{ uri: image }}
+          />
         )}
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, width: "98%" }}>

@@ -50,7 +50,7 @@ function OffersCategory({
                   resizeMode: "contain",
                   overflow: "hidden",
                 }}
-                source={image}
+                source={{ uri: image }}
               />
             </View>
             <View style={{ flex: 2 }}>

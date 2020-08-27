@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,29 +8,47 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableNativeFeedback,
+  ActivityIndicator,
 } from "react-native";
-import { Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+
+import { create } from "apisauce";
+import client from "../api/client";
 
 import color from "../styles/color";
 import ListItem from "../component/Lists/ListItem";
 import OffersCategory from "../component/OffersCategory";
 import fonts from "../styles/fonts";
 
-import {
-  dropDownContainers,
-  offersOuterCategories,
-  imagesData,
-} from "../Callings/Data";
+import { imagesData } from "../Callings/Data";
 
 import { SliderBox } from "react-native-image-slider-box";
 import routes from "../Navigations/routes";
 import ShoppingCart from "../component/ShoppingCart";
 
-function Home({ navigation, counter }) {
+function Home({ navigation }) {
   const [scrollViewRef, setScrollViewReff] = useState(React.createRef());
+
+  const { data: offersOuterCategories, request: request1 } = client(
+    "/offersOuterCategories"
+  );
+  const { data: dropDownContainers, request: request2 } = client(
+    "/dropDownContainers"
+  );
+  const { data: ListItemSearchData, request: request3 } = client(
+    "/completeData"
+  );
+
+  useEffect(() => {
+    request1();
+    request2();
+    request3();
+  }, []);
+
   const scrollToBottom = () => {
     return scrollViewRef.current.scrollToEnd({ animated: true });
   };
+
   return (
     <View style={styles.container}>
       <View
@@ -84,7 +102,11 @@ function Home({ navigation, counter }) {
             }}
             caretHidden={true}
             placeholder=" Search for Products"
-            onTouchStart={() => navigation.navigate(routes.LIST_ITEM_SEARCH)}
+            onTouchStart={() =>
+              navigation.navigate(routes.LIST_ITEM_SEARCH, {
+                item: ListItemSearchData.data,
+              })
+            }
           />
         </View>
       </View>
@@ -120,6 +142,7 @@ function Home({ navigation, counter }) {
           />
           <View style={styles.offer}>
             <Text style={styles.offerText}>Offers</Text>
+
             <TouchableNativeFeedback
               onPress={() => navigation.navigate("OfferTab")}
             >
@@ -157,29 +180,41 @@ function Home({ navigation, counter }) {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
               >
-                {offersOuterCategories.map((item, key) => (
-                  <OffersCategory
-                    data={item}
-                    key={item.id}
-                    image={item.image}
-                    price={item.price}
-                    prevPrice={item.prevPrice}
-                    description={item.description}
-                    quantity={item.quantity}
-                    onPress={() => {
-                      navigation.navigate("Card", {
-                        // id: item.id,
-                        image: item.image2,
-                        price: item.price,
-                        prevPrice: item.prevPrice,
-                        description: item.description,
-                        quantity: item.quantity,
-                        rating: item.rating,
-                        sameDayDelievery: true,
-                      });
-                    }}
-                  />
-                ))}
+                {offersOuterCategories.data !== undefined ? (
+                  offersOuterCategories.data.map((item, key) => (
+                    <OffersCategory
+                      data={item}
+                      key={item.id}
+                      image={item.image}
+                      price={item.price}
+                      prevPrice={item.prevPrice}
+                      description={item.description}
+                      quantity={item.quantity}
+                      onPress={() => {
+                        navigation.navigate("Card", {
+                          // id: item.id,
+                          image: item.image2,
+                          price: item.price,
+                          prevPrice: item.prevPrice,
+                          description: item.description,
+                          quantity: item.quantity,
+                          rating: item.rating,
+                          sameDayDelievery: true,
+                        });
+                      }}
+                    />
+                  ))
+                ) : (
+                  <View
+                    style={{ justifyContent: "center", alignItems: "center" }}
+                  >
+                    <ActivityIndicator
+                      style={styles.ActivityIndicatorStyle}
+                      size="large"
+                      color={color.orangeDark}
+                    />
+                  </View>
+                )}
 
                 <TouchableOpacity
                   style={{ height: 265, width: 150 }}
@@ -221,25 +256,41 @@ function Home({ navigation, counter }) {
               marginVertical: 10,
             }}
           >
-            {dropDownContainers.map((item, key) => (
+            {dropDownContainers.data !== undefined ? (
+              dropDownContainers.data.map((item, key) => (
+                <View
+                  key={key}
+                  style={{
+                    flexDirection: "row",
+                    borderTopWidth: 1,
+                    borderTopColor: color.lightgray,
+                  }}
+                >
+                  <ListItem
+                    title={item.title}
+                    subTitle={item.subtitle}
+                    image={item.image}
+                    index={key}
+                    navigation={navigation}
+                    onPress={() => scrollToBottom()}
+                  />
+                </View>
+              ))
+            ) : (
               <View
-                key={key}
                 style={{
-                  flexDirection: "row",
-                  borderTopWidth: 1,
-                  borderTopColor: color.lightgray,
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <ListItem
-                  title={item.title}
-                  subTitle={item.subtitle}
-                  image={item.image}
-                  index={key}
-                  navigation={navigation}
-                  onPress={() => scrollToBottom()}
+                <ActivityIndicator
+                  style={styles.ActivityIndicatorStyle}
+                  size="large"
+                  color={color.orangeDark}
                 />
               </View>
-            ))}
+            )}
           </View>
         </ScrollView>
       </View>

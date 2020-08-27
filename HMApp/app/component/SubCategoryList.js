@@ -1,48 +1,29 @@
-import React from "react";
-import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
+import React, { useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+} from "react-native";
+
+import client from "../api/client";
+
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 
-const Mobiles = [
-  {
-    id: 0,
-    title: "Mobiles",
-    image: require("../assets/SubCategories/Mobile/mobile.jpg"),
-    screen: "MobileTab",
-  },
-];
-const Electornics = [
-  {
-    id: 0,
-    title: "Mobiles Accessories",
-    image: require("../assets/SubCategories/electronic/1.jpg"),
-    screen: "MobileAccessories",
-  },
-  {
-    id: 1,
-    title: "Grooming Products",
-    image: require("../assets/SubCategories/electronic/2.jpg"),
-    screen: "GroomingProducts",
-  },
-];
-
-const Personal = [
-  {
-    id: 1,
-    title: "Bath & Body",
-    image: require("../assets/SubCategories/personalCare/1.jpg"),
-    screen: "BathBody",
-  },
-  {
-    id: 2,
-    title: "Hair Care",
-    image: require("../assets/SubCategories/personalCare/2.jpg"),
-    screen: "HairCare",
-  },
-];
-function SubCategoryList({ index, navigation }) {
+function SubCategoryList({ index, navigation, onPress }) {
+  const { data: Mobiles, request: request1 } = client("/mobileSub");
+  const { data: Electornics, request: request2 } = client("/electronicSub");
+  const { data: Personal, request: request3 } = client("/personalSub");
+  useEffect(() => {
+    request1();
+    request2();
+    request3();
+  }, []);
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       {index === 0 && (
         <View
           style={{
@@ -53,43 +34,45 @@ function SubCategoryList({ index, navigation }) {
             alignItems: "center",
           }}
         >
-          {Mobiles.map((items, key) => (
-            <TouchableOpacity
-              key={items.id}
-              style={{
-                width: 150,
-                height: 150,
+          {Mobiles.data !== undefined
+            ? Mobiles.data.map((items, key) => (
+                <TouchableOpacity
+                  key={items.id}
+                  style={{
+                    width: 150,
+                    height: 150,
 
-                justifyContent: "center",
-                alignItems: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
 
-                borderWidth: 0.8,
-                borderColor: color.lightgray,
-                marginHorizontal: 5,
-                marginVertical: 5,
-              }}
-              onPress={() => navigation.navigate(items.screen)}
-            >
-              <Image
-                resizeMode="contain"
-                style={{
-                  width: 70,
-                  height: 70,
-                  alignSelf: "center",
-                }}
-                source={items.image}
-              />
-              <Text
-                style={{
-                  fontFamily: fonts.sst,
-                  fontSize: 12,
-                  textAlign: "center",
-                }}
-              >
-                {items.title}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                    borderWidth: 0.8,
+                    borderColor: color.lightgray,
+                    marginHorizontal: 5,
+                    marginVertical: 5,
+                  }}
+                  onPress={() => navigation.navigate(items.screen)}
+                >
+                  <Image
+                    resizeMode="contain"
+                    style={{
+                      width: 70,
+                      height: 70,
+                      alignSelf: "center",
+                    }}
+                    source={{ uri: items.image }}
+                  />
+                  <Text
+                    style={{
+                      fontFamily: fonts.sst,
+                      fontSize: 12,
+                      textAlign: "center",
+                    }}
+                  >
+                    {items.title}
+                  </Text>
+                </TouchableOpacity>
+              ))
+            : null}
         </View>
       )}
       {index === 1 && (
@@ -102,42 +85,44 @@ function SubCategoryList({ index, navigation }) {
             alignItems: "center",
           }}
         >
-          {Electornics.map((items, key) => (
-            <TouchableOpacity
-              key={items.id}
-              style={{
-                width: 150,
-                height: 150,
+          {Electornics.data !== undefined
+            ? Electornics.data.map((items, key) => (
+                <TouchableOpacity
+                  key={items.id}
+                  style={{
+                    width: 150,
+                    height: 150,
 
-                justifyContent: "center",
-                alignItems: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
 
-                borderWidth: 0.8,
-                borderColor: color.lightgray,
-                marginHorizontal: 5,
-                marginVertical: 5,
-              }}
-              onPress={() => navigation.navigate(items.screen)}
-            >
-              <Image
-                style={{
-                  width: 70,
-                  height: 70,
-                  alignSelf: "center",
-                }}
-                source={items.image}
-              />
-              <Text
-                style={{
-                  fontFamily: fonts.sst,
-                  fontSize: 12,
-                  textAlign: "center",
-                }}
-              >
-                {items.title}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                    borderWidth: 0.8,
+                    borderColor: color.lightgray,
+                    marginHorizontal: 5,
+                    marginVertical: 5,
+                  }}
+                  onPress={() => navigation.navigate(items.screen)}
+                >
+                  <Image
+                    style={{
+                      width: 70,
+                      height: 70,
+                      alignSelf: "center",
+                    }}
+                    source={{ uri: items.image }}
+                  />
+                  <Text
+                    style={{
+                      fontFamily: fonts.sst,
+                      fontSize: 12,
+                      textAlign: "center",
+                    }}
+                  >
+                    {items.title}
+                  </Text>
+                </TouchableOpacity>
+              ))
+            : null}
         </View>
       )}
       {index === 2 && (
@@ -150,46 +135,48 @@ function SubCategoryList({ index, navigation }) {
             alignItems: "center",
           }}
         >
-          {Personal.map((items, key) => (
-            <TouchableOpacity
-              key={items.id}
-              style={{
-                width: 150,
-                height: 150,
+          {Personal.data !== undefined
+            ? Personal.data.map((items, key) => (
+                <TouchableOpacity
+                  key={items.id}
+                  style={{
+                    width: 150,
+                    height: 150,
 
-                justifyContent: "center",
-                alignItems: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
 
-                borderWidth: 0.8,
-                borderColor: color.lightgray,
-                marginHorizontal: 5,
-                marginVertical: 5,
-              }}
-              onPress={() => navigation.navigate(items.screen)}
-            >
-              <Image
-                resizeMode="contain"
-                style={{
-                  width: 80,
-                  height: 70,
-                  alignSelf: "center",
-                }}
-                source={items.image}
-              />
-              <Text
-                style={{
-                  fontFamily: fonts.sst,
-                  fontSize: 12,
-                  textAlign: "center",
-                }}
-              >
-                {items.title}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                    borderWidth: 0.8,
+                    borderColor: color.lightgray,
+                    marginHorizontal: 5,
+                    marginVertical: 5,
+                  }}
+                  onPress={() => navigation.navigate(items.screen)}
+                >
+                  <Image
+                    resizeMode="contain"
+                    style={{
+                      width: 80,
+                      height: 70,
+                      alignSelf: "center",
+                    }}
+                    source={{ uri: items.image }}
+                  />
+                  <Text
+                    style={{
+                      fontFamily: fonts.sst,
+                      fontSize: 12,
+                      textAlign: "center",
+                    }}
+                  >
+                    {items.title}
+                  </Text>
+                </TouchableOpacity>
+              ))
+            : null}
         </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
