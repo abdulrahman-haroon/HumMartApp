@@ -52,6 +52,7 @@ function AddressSelection({ setShowSelection, addressSend }) {
             notShowDelete
             notShowEdit
             setShowSelection={(value) => setShowSelection(value)}
+            onClickMe={true}
           />
         ))}
       </ScrollView>

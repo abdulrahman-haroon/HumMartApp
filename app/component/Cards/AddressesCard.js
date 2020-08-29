@@ -25,14 +25,20 @@ function AddressesCard({
   notShowDelete,
   keySelected,
   setShowSelection,
+  onClickMe,
 }) {
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       style={{
         marginHorizontal: 20,
         marginVertical: 15,
       }}
-      onPress={() => (keySelected(indexKey), setShowSelection(false))}
+      onPress={() =>
+        onClickMe === true
+          ? (keySelected(indexKey), setShowSelection(false))
+          : null
+      }
     >
       <View
         style={{

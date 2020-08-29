@@ -4,7 +4,7 @@ import { useState } from "react";
 const client = (endpoint) => {
   const [data, setData] = useState([]);
   const apiClient = create({
-    baseURL: "http://192.168.10.4:9000/api",
+    baseURL: "http://192.168.10.5:9000/api",
   });
 
   const getListings = () => apiClient.get(endpoint);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
 import HeaderNavigation from "../../component/HeaderNavigation";
 
@@ -36,6 +36,7 @@ function PTC_AddressTime({ navigation, cartItem, dateTime, setDate_Time }) {
     setDate_Time(date.toString());
     hideDatePicker();
   };
+
   return (
     <View style={styles.container}>
       <HeaderNavigation

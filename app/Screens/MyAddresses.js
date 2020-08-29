@@ -15,7 +15,7 @@ import EditFormAddress from "../component/Form/EditFormAddress";
 
 import { connect } from "react-redux";
 
-function MyAddresses({ navigation, dataAddresses, addressSend }) {
+function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
   const [visibleModal, setVisibleModal] = useState(false);
   const [visibleEditModal, setVisibleEditModal] = useState(false);
 
@@ -133,8 +133,8 @@ function MyAddresses({ navigation, dataAddresses, addressSend }) {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        {addressData != [] &&
-          addressData.map((item, key) => (
+        {addressSend.length != 0 &&
+          addressSend.map((item, key) => (
             <AddressesCard
               key={key}
               indexKey={key}
@@ -149,6 +149,7 @@ function MyAddresses({ navigation, dataAddresses, addressSend }) {
               removeAddress={() => removeAddress(item, key)}
               setVisibleEditModal={(value) => setVisibleEditModal(value)}
               setSelectedKey={(key) => setSelectedKey(key)}
+              onClickMe={false}
             />
           ))}
       </ScrollView>

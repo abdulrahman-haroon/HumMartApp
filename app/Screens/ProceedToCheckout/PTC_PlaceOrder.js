@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Alert } from "react-native";
 import HeaderNavigation from "../../component/HeaderNavigation";
 
@@ -12,6 +12,7 @@ import { showMessage } from "react-native-flash-message";
 import AwesomeAlert from "react-native-awesome-alerts";
 
 import { connect } from "react-redux";
+import localIndex from "../../src/reducers/localIndex";
 
 function PTC_PlaceOrder({
   navigation,
@@ -27,6 +28,13 @@ function PTC_PlaceOrder({
   onConfirmation,
   confirmationPTC,
   isConfirmation,
+  usersData,
+  addUserDetails,
+  login,
+  sameMobileNo,
+  checkSame,
+  updateUserCompleteData,
+  localIndex,
 }) {
   const [orderId, setOrderId] = useState(
     (Math.round(Math.random() * 10000000000) + 1).toString()
@@ -56,7 +64,7 @@ function PTC_PlaceOrder({
   var seconds = new Date().getSeconds();
   if (seconds < 10) seconds = "0" + seconds.toString();
 
-  const showDateTime = () => {
+  useEffect(() => {
     setPtcDate(
       date.toString() + "-" + month.toString() + "-" + year.toString()
     );
@@ -69,7 +77,10 @@ function PTC_PlaceOrder({
         " " +
         TimeType
     );
-  };
+  }, []);
+  // console.log(sameMobileNo);
+  // console.log(usersData);
+  // console.log(ordersDetails[0]);
   return (
     <>
       <View style={styles.container}>
@@ -139,7 +150,26 @@ function PTC_PlaceOrder({
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() =>
-              confirmationPTC === "No" ? setShowAlert(true) : null
+              confirmationPTC === "No"
+                ? (setShowAlert(true),
+                  addOrdersDetails({
+                    optionNickName: addressSend[keySelect].optionNickName,
+                    city: addressSend[keySelect].city,
+                    email: addressSend[keySelect].email,
+                    houseNo: addressSend[keySelect].houseNo,
+                    name: addressSend[keySelect].name,
+                    radioButton: addressSend[keySelect].radioButton,
+                    sector: addressSend[keySelect].sector,
+                    total: Total.totalPrice,
+                    subTotal: sTotal.sTotal,
+                    date: ptcDate,
+                    time: ptcTime,
+                    schedule: route.params.dateTime,
+                    orderNumber: orderId,
+                    cartItem: cartItem,
+                    userAllAddress: addressSend,
+                  }))
+                : null
             }
           >
             <View
@@ -180,22 +210,16 @@ function PTC_PlaceOrder({
           activeOpacity={0.8}
           onPress={() =>
             confirmationPTC === "Yes"
-              ? (addOrdersDetails({
-                  optionNickName: addressSend[keySelect].optionNickName,
-                  city: addressSend[keySelect].city,
-                  email: addressSend[keySelect].email,
-                  houseNo: addressSend[keySelect].houseNo,
-                  name: addressSend[keySelect].name,
-                  radioButton: addressSend[keySelect].radioButton,
-                  sector: addressSend[keySelect].sector,
-                  total: Total.totalPrice,
-                  subTotal: sTotal.sTotal,
-                  date: ptcDate,
-                  time: ptcTime,
-                  schedule: route.params.dateTime,
-                  orderNumber: orderId,
-                  cartItem: cartItem,
-                }),
+              ? (sameMobileNo === false
+                  ? (addUserDetails({
+                      mobileNumber: login.mobileNumber,
+                      orderDetailsData: ordersDetails,
+                    }),
+                    checkSame(true))
+                  : updateUserCompleteData(
+                      login.mobileNumber,
+                      ordersDetails[0]
+                    ),
                 onConfirmation(true),
                 navigation.navigate(routes.MY_ORDERS, {
                   ordersData: true,
@@ -263,7 +287,6 @@ function PTC_PlaceOrder({
           isConfirmation("No"), setShowAlert(false);
         }}
         onConfirmPressed={() => {
-          showDateTime();
           isConfirmation("Yes");
           showMessage({
             message: "Successfully Confirmed ! Click on Place Orders",
@@ -292,6 +315,7 @@ const styles = StyleSheet.create({
 });
 const mapStateToProps = (state) => {
   return {
+    login: state.login,
     cartItem: state.cartItem,
     sTotal: state.subTotal,
     Total: state.sumTotal,
@@ -300,6 +324,9 @@ const mapStateToProps = (state) => {
     keySelect: state.keySelection,
     onSuccessPTC: state.onSuccessPTC,
     confirmationPTC: state.confirmationPTC,
+    usersData: state.usersData,
+    sameMobileNo: state.sameMobileNo,
+    localIndex: state.localIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -318,6 +345,22 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "ADD_CONFIRMATION",
         confirmYes: isConfirm,
+      }),
+    addUserDetails: (allData) =>
+      dispatch({
+        type: "ADD_USER_DETAILS",
+        payload: allData,
+      }),
+    checkSame: (same) =>
+      dispatch({
+        type: "CHECK",
+        check: same,
+      }),
+    updateUserCompleteData: (phoneNo, data) =>
+      dispatch({
+        type: "UPDATE_USER_DETAILS",
+        payload: data,
+        phoneNo: phoneNo,
       }),
   };
 };

@@ -20,7 +20,14 @@ function MyOrders({
   onConfirmation,
   emptyDateTime,
   noConfirmation,
+  usersData,
+  globalIndexAuth,
+  localIndex,
+  emptyOrderDetails,
 }) {
+  // console.log(usersData[globalIndexAuth].orderDetailsData);
+  // console.log(usersData[0].orderDetailsData[0]);
+  // console.log(usersData);
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -40,6 +47,7 @@ function MyOrders({
             onSuccessPTC === true
               ? (emptyCart(),
                 emptyDateTime(),
+                emptyOrderDetails(),
                 noConfirmation(),
                 onConfirmation(false),
                 navigation.jumpTo(routes.HOME))
@@ -54,7 +62,7 @@ function MyOrders({
           My Orders
         </Text>
       </View>
-      {ordersDetails.length === 0 ? (
+      {usersData[localIndex] === undefined ? (
         <View
           style={{
             flex: 1,
@@ -72,19 +80,21 @@ function MyOrders({
       ) : (
         <View style={{ flex: 1 }}>
           <ScrollView>
-            {ordersDetails.map((item, key) => (
-              <OrdersComponent
-                key={key}
-                data={item}
-                navigation={navigation}
-                date={item.date}
-                time={item.time}
-                schedule={item.schedule}
-                subtotal={item.subTotal}
-                total={item.total}
-                orderNumber={item.orderNumber}
-              />
-            ))}
+            {localIndex !== null
+              ? usersData[localIndex].orderDetailsData.map((item, key) => (
+                  <OrdersComponent
+                    key={key}
+                    data={item}
+                    navigation={navigation}
+                    date={item.date}
+                    time={item.time}
+                    schedule={item.schedule}
+                    subtotal={item.subTotal}
+                    total={item.total}
+                    orderNumber={item.orderNumber}
+                  />
+                ))
+              : null}
           </ScrollView>
         </View>
       )}
@@ -98,6 +108,9 @@ const mapStateToProps = (state) => {
     onSuccessPTC: state.onSuccessPTC,
     dateTime: state.dateTime,
     confirmationPTC: state.confirmationPTC,
+    usersData: state.usersData,
+    globalIndexAuth: state.globalIndexAuth,
+    localIndex: state.localIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -118,6 +131,10 @@ const mapDispatchToProps = (dispatch) => {
     noConfirmation: () =>
       dispatch({
         type: "NO_CONFIRM",
+      }),
+    emptyOrderDetails: () =>
+      dispatch({
+        type: "EMPTY_ORDERS",
       }),
   };
 };

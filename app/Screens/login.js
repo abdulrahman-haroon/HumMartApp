@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -23,12 +23,60 @@ import routes from "../Navigations/routes";
 const validationScheme = Yup.object().shape({
   mobileNumber: Yup.string()
     .required()
-    .min(11, "Mobile number must be atleast 11 digits")
-    .max(11, "Sorry Please Enter Correct Number")
+    .min(10, "Mobile number must be atleast 10 digits")
+    .max(10, "Sorry Please Enter Correct Number")
     .label("Mobile Number"),
 });
 
-function Login({ navigation, addLoginCredentials }) {
+function Login({
+  navigation,
+  addLoginCredentials,
+  usersData,
+  storeIndex,
+  globalIndexAuth,
+  localIndex,
+  localIndexStore,
+  innerIndex,
+  innerIncrement,
+  checkSame,
+}) {
+  // console.log(usersData[0].orderDeatilsData[0].cartItem[0].description);
+  // console.log(usersData[0].orderDeatilsData[0].city);
+  // console.log(usersData);
+  const handleSubmit = ({ mobileNumber }, action) => {
+    {
+      let valid = false;
+
+      usersData.forEach((item, index) => {
+        if (mobileNumber === item.mobileNumber) {
+          valid = true;
+          checkSame(true);
+          globalIndexAuth.forEach((item) => {
+            if (index == item) localIndexStore(index);
+          });
+        }
+      });
+      if (valid == true) {
+        addLoginCredentials({
+          mobileNumber: mobileNumber,
+          loginSuccess: true,
+        }),
+          action.resetForm(),
+          navigation.navigate(routes.HOME);
+      } else {
+        // New data
+        storeIndex(innerIncrement);
+        localIndexStore(innerIncrement);
+        addLoginCredentials({
+          mobileNumber: mobileNumber,
+          loginSuccess: true,
+        }),
+          action.resetForm();
+        navigation.navigate(routes.HOME);
+        innerIndex();
+      }
+    }
+  };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -41,14 +89,7 @@ function Login({ navigation, addLoginCredentials }) {
             mobileNumber: "",
           }}
           validationSchema={validationScheme}
-          onSubmit={(values, action) => (
-            addLoginCredentials({
-              mobileNumber: values.mobileNumber,
-              loginSuccess: true,
-            }),
-            action.resetForm(),
-            navigation.navigate(routes.HOME)
-          )}
+          onSubmit={handleSubmit}
         >
           {({ values, handleChange, errors, touched, handleSubmit }) => (
             <>
@@ -124,6 +165,10 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     login: state.login,
+    usersData: state.usersData,
+    globalIndexAuth: state.globalIndexAuth,
+    localIndex: state.localIndex,
+    innerIncrement: state.innerIncrement,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -132,6 +177,25 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "CREDENTIALS",
         payload: credential,
+      }),
+    storeIndex: (index) =>
+      dispatch({
+        type: "GET_INDEX",
+        index: index,
+      }),
+    localIndexStore: (localKey) =>
+      dispatch({
+        type: "LOCAL_INDEX",
+        localkey: localKey,
+      }),
+    innerIndex: () =>
+      dispatch({
+        type: "INCREAMENT",
+      }),
+    checkSame: (same) =>
+      dispatch({
+        type: "CHECK",
+        check: same,
       }),
   };
 };

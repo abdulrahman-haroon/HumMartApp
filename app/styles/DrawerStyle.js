@@ -8,6 +8,8 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
+import { CommonActions } from "@react-navigation/native";
+
 import fonts from "./fonts";
 import color from "./color";
 
@@ -21,8 +23,23 @@ function DrawerStyle({
   login,
   disableAddressNOrders = true,
   addLoginCredentials,
+  addUserDetails,
+  ordersDetails,
+  usersData,
+  globalIndexAuth,
+  localIndex,
+  localIndexStore,
+  emptyOrderDetails,
+  emptyCart,
+  checkSame,
+  sameMobileNo,
 }) {
   const [userContact, setUserContact] = useState("Welcome");
+  // console.log(globalIndexAuth);
+  // console.log(localIndex);
+  // console.log(ordersDetails.length);
+  console.log(usersData);
+
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -40,7 +57,7 @@ function DrawerStyle({
           </Text>
         ) : (
           <Text style={{ marginLeft: 15, fontSize: 20, fontFamily: fonts.ssl }}>
-            {login.mobileNumber}
+            +92 {login.mobileNumber}
           </Text>
         )}
       </View>
@@ -395,6 +412,16 @@ function DrawerStyle({
                 mobileNumber: 0,
                 loginSuccess: false,
               }),
+              localIndexStore(null),
+              emptyOrderDetails(),
+              emptyCart(),
+              checkSame(false),
+              ordersDetails.length === 0 && sameMobileNo === false
+                ? addUserDetails({
+                    mobileNumber: login.mobileNumber,
+                    orderDetailsData: ordersDetails,
+                  })
+                : null,
               navigation.navigate(routes.HOME)
             )}
           >
@@ -433,6 +460,11 @@ function DrawerStyle({
 const mapStateToProps = (state) => {
   return {
     login: state.login,
+    usersData: state.usersData,
+    ordersDetails: state.ordersDetails,
+    globalIndexAuth: state.globalIndexAuth,
+    localIndex: state.localIndex,
+    sameMobileNo: state.sameMobileNo,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -441,6 +473,29 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "CREDENTIALS",
         payload: credential,
+      }),
+    addUserDetails: (allData) =>
+      dispatch({
+        type: "ADD_USER_DETAILS",
+        payload: allData,
+      }),
+    localIndexStore: (localKey) =>
+      dispatch({
+        type: "LOCAL_INDEX",
+        localkey: localKey,
+      }),
+    emptyOrderDetails: () =>
+      dispatch({
+        type: "EMPTY_ORDERS",
+      }),
+    emptyCart: () =>
+      dispatch({
+        type: "EMPTY_CART",
+      }),
+    checkSame: (same) =>
+      dispatch({
+        type: "CHECK",
+        check: same,
       }),
   };
 };

@@ -10,6 +10,11 @@ import login from "./login";
 import onSuccessPTC from "./onSuccessPTC";
 import dateTime from "./dateTime";
 import confirmationPTC from "./confirmationPTC";
+import usersData from "./usersData";
+import globalIndexAuth from "./globalIndexAuth";
+import localIndex from "./localIndex";
+import innerIncrement from "./innerIncrement";
+import sameMobileNo from "./sameMobileNo";
 
 export default combineReducers({
   cartItem,
@@ -22,4 +27,9 @@ export default combineReducers({
   onSuccessPTC,
   dateTime,
   confirmationPTC,
+  usersData,
+  globalIndexAuth,
+  localIndex,
+  innerIncrement,
+  sameMobileNo,
 });

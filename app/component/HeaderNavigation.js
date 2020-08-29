@@ -4,6 +4,8 @@ import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 
+import { CommonActions } from "@react-navigation/native";
+
 import color from "../styles/color";
 import fonts from "../styles/fonts";
 import ShoppingCart from "./ShoppingCart";
@@ -30,7 +32,16 @@ function HeaderNavigation({
           name="ios-arrow-back"
           size={24}
           color="white"
-          onPress={() => (!drawer ? navigation.goBack() : navigation.goBack())}
+          onPress={() =>
+            !drawer
+              ? navigation.dispatch(
+                  CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: "Home" }],
+                  })
+                )
+              : navigation.goBack()
+          }
         />
         {/* TODO:
               navigation.dispatch(
