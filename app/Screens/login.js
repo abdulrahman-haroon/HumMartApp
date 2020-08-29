@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -39,12 +39,22 @@ function Login({
   innerIndex,
   innerIncrement,
   checkSame,
+  addUserDetails,
+  login,
+  ordersDetails,
+  addressSend,
 }) {
   // console.log(usersData[0].orderDeatilsData[0].cartItem[0].description);
   // console.log(usersData[0].orderDeatilsData[0].city);
   // console.log(usersData);
+  // console.log(login);
+
   const handleSubmit = ({ mobileNumber }, action) => {
     {
+      addLoginCredentials({
+        mobileNumber: mobileNumber,
+        loginSuccess: true,
+      });
       let valid = false;
 
       usersData.forEach((item, index) => {
@@ -64,13 +74,18 @@ function Login({
           action.resetForm(),
           navigation.navigate(routes.HOME);
       } else {
-        // New data
+        // New user
         storeIndex(innerIncrement);
         localIndexStore(innerIncrement);
         addLoginCredentials({
           mobileNumber: mobileNumber,
           loginSuccess: true,
         }),
+          addUserDetails({
+            mobileNumber: mobileNumber,
+            orderDetailsData: ordersDetails,
+            userAllAddress: addressSend,
+          }),
           action.resetForm();
         navigation.navigate(routes.HOME);
         innerIndex();
@@ -169,6 +184,8 @@ const mapStateToProps = (state) => {
     globalIndexAuth: state.globalIndexAuth,
     localIndex: state.localIndex,
     innerIncrement: state.innerIncrement,
+    ordersDetails: state.ordersDetails,
+    addressSend: state.address,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -196,6 +213,11 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "CHECK",
         check: same,
+      }),
+    addUserDetails: (allData) =>
+      dispatch({
+        type: "ADD_USER_DETAILS",
+        payload: allData,
       }),
   };
 };

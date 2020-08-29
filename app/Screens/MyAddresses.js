@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Modal } from "react-native";
 
 import HeaderNavigation from "../component/HeaderNavigation";
@@ -15,7 +15,17 @@ import EditFormAddress from "../component/Form/EditFormAddress";
 
 import { connect } from "react-redux";
 
-function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
+function MyAddresses({
+  navigation,
+  dataAddresses,
+  addressSend,
+  usersData,
+  localIndex,
+  addAddressData,
+  updateAddressData,
+  login,
+  removeAddressData,
+}) {
   const [visibleModal, setVisibleModal] = useState(false);
   const [visibleEditModal, setVisibleEditModal] = useState(false);
 
@@ -24,7 +34,8 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
   const [selectedKey, setSelectedKey] = useState();
 
   const addAddress = (addNew) => {
-    setAddressData(() => [...addressData, addNew]);
+    // addAddressData(addNew);
+    updateAddressData(login.mobileNumber, addNew);
     setVisibleModal(false);
   };
 
@@ -32,9 +43,9 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
     setAddressData(
       addressData.filter((name) => address.houseNo != name.houseNo)
     );
+    removeAddressData(login.mobileNumber, address.houseNo);
   };
-  if (visibleModal === false || visibleEditModal === false)
-    dataAddresses(addressData);
+
   return (
     <View style={{ flex: 1 }}>
       <Modal visible={visibleModal}>
@@ -91,18 +102,37 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
             </Text>
           </View>
         </View>
-        <EditFormAddress
-          allData={addressData}
-          selectedKey={selectedKey}
-          setVisibleEditModal={(value) => setVisibleEditModal(value)}
-        />
+        {usersData[localIndex] === undefined ? null : (
+          <EditFormAddress
+            allData={usersData[localIndex].userAllAddress}
+            selectedKey={selectedKey}
+            setVisibleEditModal={(value) => setVisibleEditModal(value)}
+          />
+        )}
       </Modal>
-      <HeaderNavigation
-        navigation={navigation}
-        title="Choose Address"
-        showIcons={false}
-        drawer
-      />
+      <View
+        style={{
+          height: 50,
+          flexDirection: "row",
+          backgroundColor: color.navigationColor,
+          alignItems: "center",
+        }}
+      >
+        <Ionicons
+          style={{ marginLeft: 20, width: 30 }}
+          name="ios-arrow-back"
+          size={24}
+          color="white"
+          onPress={() => navigation.goBack()}
+        />
+
+        <Text
+          numberOfLines={1}
+          style={{ flex: 7, color: "white", fontFamily: font.ssl }}
+        >
+          Choose Address
+        </Text>
+      </View>
 
       <View
         style={{
@@ -133,7 +163,29 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        {addressSend.length != 0 &&
+        {/* after PTC this will show  */}
+        {usersData[localIndex] === undefined || localIndex === null
+          ? null
+          : usersData[localIndex].userAllAddress.map((item, key) => (
+              <AddressesCard
+                key={key}
+                indexKey={key}
+                item={item}
+                respect={item.radioButton}
+                nickName={item.optionNickName}
+                name={item.name}
+                email={item.email}
+                houseNo={item.houseNo}
+                sector={item.sector}
+                city={item.city}
+                removeAddress={() => removeAddress(item, key)}
+                setVisibleEditModal={(value) => setVisibleEditModal(value)}
+                setSelectedKey={(key) => setSelectedKey(key)}
+                onClickMe={false}
+              />
+            ))}
+        {/* this is current data in the array */}
+        {/* {addressSend.length != 0 &&
           addressSend.map((item, key) => (
             <AddressesCard
               key={key}
@@ -151,7 +203,7 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
               setSelectedKey={(key) => setSelectedKey(key)}
               onClickMe={false}
             />
-          ))}
+          ))} */}
       </ScrollView>
     </View>
   );
@@ -159,6 +211,9 @@ function MyAddresses({ navigation, dataAddresses, addressSend, onClickMe }) {
 const mapStateToProps = (state) => {
   return {
     addressSend: state.address,
+    usersData: state.usersData,
+    localIndex: state.localIndex,
+    login: state.login,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -167,6 +222,23 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "ADDRESSES",
         payload: address,
+      }),
+    addAddressData: (address) =>
+      dispatch({
+        type: "ADDRESSES_ADD",
+        payload: address,
+      }),
+    updateAddressData: (phoneNo, address) =>
+      dispatch({
+        type: "UPDATE_ADDRESS_DETAILS",
+        phoneNo: phoneNo,
+        allAddress: address,
+      }),
+    removeAddressData: (phoneNo, houseNo) =>
+      dispatch({
+        type: "DELETE_ADDRESS_DETAILS",
+        phoneNo: phoneNo,
+        houseNo: houseNo,
       }),
   };
 };

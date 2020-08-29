@@ -10,7 +10,12 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import { connect } from "react-redux";
 
-function AddressSelection({ setShowSelection, addressSend }) {
+function AddressSelection({
+  setShowSelection,
+  addressSend,
+  usersData,
+  localIndex,
+}) {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View
@@ -36,26 +41,28 @@ function AddressSelection({ setShowSelection, addressSend }) {
           Choose Address
         </Text>
       </View>
-      <ScrollView>
-        {addressSend.map((item, key) => (
-          <AddressesCard
-            key={key}
-            indexKey={key}
-            item={item}
-            respect={item.radioButton}
-            nickName={item.optionNickName}
-            name={item.name}
-            email={item.email}
-            houseNo={item.houseNo}
-            sector={item.sector}
-            city={item.city}
-            notShowDelete
-            notShowEdit
-            setShowSelection={(value) => setShowSelection(value)}
-            onClickMe={true}
-          />
-        ))}
-      </ScrollView>
+      {usersData[localIndex] === undefined ? null : (
+        <ScrollView>
+          {usersData[localIndex].userAllAddress.map((item, key) => (
+            <AddressesCard
+              key={key}
+              indexKey={key}
+              item={item}
+              respect={item.radioButton}
+              nickName={item.optionNickName}
+              name={item.name}
+              email={item.email}
+              houseNo={item.houseNo}
+              sector={item.sector}
+              city={item.city}
+              notShowDelete
+              notShowEdit
+              setShowSelection={(value) => setShowSelection(value)}
+              onClickMe={true}
+            />
+          ))}
+        </ScrollView>
+      )}
     </View>
   );
 }
@@ -63,6 +70,8 @@ const mapStateToProps = (state) => {
   return {
     addressSend: state.address,
     keySelect: state.keySelection,
+    usersData: state.usersData,
+    localIndex: state.localIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -12,6 +12,28 @@ const usersData = (state = [], action) => {
         }
         return item;
       });
+    case "UPDATE_ADDRESS_DETAILS":
+      return state.map((item, index) => {
+        if (item.mobileNumber === action.phoneNo) {
+          return {
+            ...item,
+            userAllAddress: [...item.userAllAddress, action.allAddress],
+          };
+        }
+        return item;
+      });
+    case "DELETE_ADDRESS_DETAILS":
+      return state.map((item, index) => {
+        if (item.mobileNumber === action.phoneNo) {
+          return {
+            ...item,
+            userAllAddress: item.userAllAddress.filter(
+              (name) => action.houseNo != name.houseNo
+            ),
+          };
+        }
+        return item;
+      });
   }
   return state;
 };

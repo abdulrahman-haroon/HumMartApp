@@ -24,10 +24,8 @@ function MyOrders({
   globalIndexAuth,
   localIndex,
   emptyOrderDetails,
+  emptyAddress,
 }) {
-  // console.log(usersData[globalIndexAuth].orderDetailsData);
-  // console.log(usersData[0].orderDetailsData[0]);
-  // console.log(usersData);
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -49,6 +47,7 @@ function MyOrders({
                 emptyDateTime(),
                 emptyOrderDetails(),
                 noConfirmation(),
+                emptyAddress(),
                 onConfirmation(false),
                 navigation.jumpTo(routes.HOME))
               : navigation.jumpTo(routes.HOME)
@@ -135,6 +134,10 @@ const mapDispatchToProps = (dispatch) => {
     emptyOrderDetails: () =>
       dispatch({
         type: "EMPTY_ORDERS",
+      }),
+    emptyAddress: () =>
+      dispatch({
+        type: "EMPTY_ADDRESSES",
       }),
   };
 };

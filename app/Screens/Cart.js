@@ -18,6 +18,8 @@ import routes from "../Navigations/routes";
 import { connect } from "react-redux";
 
 import { showMessage } from "react-native-flash-message";
+import usersData from "../src/reducers/usersData";
+import localIndex from "../src/reducers/localIndex";
 
 function Cart({
   navigation,
@@ -27,6 +29,8 @@ function Cart({
   sumSubTotal,
   totalPrice,
   addressSend,
+  usersData,
+  localIndex,
 }) {
   const notProceed = route.params;
 
@@ -210,7 +214,7 @@ function Cart({
           onPress={() => (
             sumSubTotal(sumPrice),
             totalPrice(sumPrice + 100),
-            cartItem.length > 0 && addressSend.length > 0
+            cartItem.length > 0 && usersData[localIndex] !== undefined
               ? navigation.navigate(routes.PTC_ADDRESS_TIME)
               : showMessage({
                   message:
@@ -315,6 +319,8 @@ const mapStateToProps = (state) => {
     sTotal: state.subTotal,
     Total: state.sumTotal,
     addressSend: state.address,
+    usersData: state.usersData,
+    localIndex: state.localIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -78,9 +78,7 @@ function PTC_PlaceOrder({
         TimeType
     );
   }, []);
-  // console.log(sameMobileNo);
-  // console.log(usersData);
-  // console.log(ordersDetails[0]);
+
   return (
     <>
       <View style={styles.container}>
@@ -152,14 +150,21 @@ function PTC_PlaceOrder({
             onPress={() =>
               confirmationPTC === "No"
                 ? (setShowAlert(true),
-                  addOrdersDetails({
-                    optionNickName: addressSend[keySelect].optionNickName,
-                    city: addressSend[keySelect].city,
-                    email: addressSend[keySelect].email,
-                    houseNo: addressSend[keySelect].houseNo,
-                    name: addressSend[keySelect].name,
-                    radioButton: addressSend[keySelect].radioButton,
-                    sector: addressSend[keySelect].sector,
+                  updateUserCompleteData(login.mobileNumber, {
+                    optionNickName:
+                      usersData[localIndex].userAllAddress[keySelect]
+                        .optionNickName,
+                    city: usersData[localIndex].userAllAddress[keySelect].city,
+                    email:
+                      usersData[localIndex].userAllAddress[keySelect].email,
+                    houseNo:
+                      usersData[localIndex].userAllAddress[keySelect].houseNo,
+                    name: usersData[localIndex].userAllAddress[keySelect].name,
+                    radioButton:
+                      usersData[localIndex].userAllAddress[keySelect]
+                        .radioButton,
+                    sector:
+                      usersData[localIndex].userAllAddress[keySelect].sector,
                     total: Total.totalPrice,
                     subTotal: sTotal.sTotal,
                     date: ptcDate,
@@ -167,7 +172,6 @@ function PTC_PlaceOrder({
                     schedule: route.params.dateTime,
                     orderNumber: orderId,
                     cartItem: cartItem,
-                    userAllAddress: addressSend,
                   }))
                 : null
             }
@@ -210,16 +214,7 @@ function PTC_PlaceOrder({
           activeOpacity={0.8}
           onPress={() =>
             confirmationPTC === "Yes"
-              ? (sameMobileNo === false
-                  ? (addUserDetails({
-                      mobileNumber: login.mobileNumber,
-                      orderDetailsData: ordersDetails,
-                    }),
-                    checkSame(true))
-                  : updateUserCompleteData(
-                      login.mobileNumber,
-                      ordersDetails[0]
-                    ),
+              ? (sameMobileNo === false ? checkSame(true) : null,
                 onConfirmation(true),
                 navigation.navigate(routes.MY_ORDERS, {
                   ordersData: true,

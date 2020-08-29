@@ -17,6 +17,7 @@ import { showMessage } from "react-native-flash-message";
 import routes from "../Navigations/routes";
 
 import { connect } from "react-redux";
+import address from "../src/reducers/address";
 
 function DrawerStyle({
   navigation,
@@ -33,12 +34,12 @@ function DrawerStyle({
   emptyCart,
   checkSame,
   sameMobileNo,
+  emptyAddress,
+  addressSend,
+  addAddressData,
+  updateAddressData,
 }) {
   const [userContact, setUserContact] = useState("Welcome");
-  // console.log(globalIndexAuth);
-  // console.log(localIndex);
-  // console.log(ordersDetails.length);
-  console.log(usersData);
 
   return (
     <View style={{ flex: 1 }}>
@@ -415,13 +416,8 @@ function DrawerStyle({
               localIndexStore(null),
               emptyOrderDetails(),
               emptyCart(),
+              emptyAddress(),
               checkSame(false),
-              ordersDetails.length === 0 && sameMobileNo === false
-                ? addUserDetails({
-                    mobileNumber: login.mobileNumber,
-                    orderDetailsData: ordersDetails,
-                  })
-                : null,
               navigation.navigate(routes.HOME)
             )}
           >
@@ -465,6 +461,7 @@ const mapStateToProps = (state) => {
     globalIndexAuth: state.globalIndexAuth,
     localIndex: state.localIndex,
     sameMobileNo: state.sameMobileNo,
+    addressSend: state.address,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -496,6 +493,21 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "CHECK",
         check: same,
+      }),
+    emptyAddress: () =>
+      dispatch({
+        type: "EMPTY_ADDRESSES",
+      }),
+    addAddressData: (address) =>
+      dispatch({
+        type: "ADDRESSES_ADD",
+        payload: address,
+      }),
+    updateAddressData: (phoneNo, allAddress) =>
+      dispatch({
+        type: "UPDATE_ADDRESS_DETAILS",
+        phoneNo: phoneNo,
+        allAddress: allAddress,
       }),
   };
 };
