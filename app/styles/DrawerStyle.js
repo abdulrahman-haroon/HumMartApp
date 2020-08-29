@@ -418,6 +418,17 @@ function DrawerStyle({
               emptyCart(),
               emptyAddress(),
               checkSame(false),
+              showMessage({
+                message: "Successfully Logout!",
+                type: "success",
+                color: "white",
+                position: "center",
+                style: {
+                  borderRadius: 50,
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              }),
               navigation.navigate(routes.HOME)
             )}
           >

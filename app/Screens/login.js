@@ -20,6 +20,8 @@ import ErrorMessage from "../component/Form/ErrorMessage";
 import { connect } from "react-redux";
 import routes from "../Navigations/routes";
 
+import { showMessage } from "react-native-flash-message";
+
 const validationScheme = Yup.object().shape({
   mobileNumber: Yup.string()
     .required()
@@ -72,6 +74,17 @@ function Login({
           loginSuccess: true,
         }),
           action.resetForm(),
+          showMessage({
+            message: "Successfully Login!",
+            type: "success",
+            color: "white",
+            position: "center",
+            style: {
+              borderRadius: 50,
+              justifyContent: "center",
+              alignItems: "center",
+            },
+          }),
           navigation.navigate(routes.HOME);
       } else {
         // New user
@@ -87,6 +100,17 @@ function Login({
             userAllAddress: addressSend,
           }),
           action.resetForm();
+        showMessage({
+          message: "Successfully Login!",
+          type: "success",
+          color: "white",
+          position: "center",
+          style: {
+            borderRadius: 50,
+            justifyContent: "center",
+            alignItems: "center",
+          },
+        });
         navigation.navigate(routes.HOME);
         innerIndex();
       }
