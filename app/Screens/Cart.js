@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import { showMessage } from "react-native-flash-message";
 import usersData from "../src/reducers/usersData";
 import localIndex from "../src/reducers/localIndex";
+import AwesomeAlert from "react-native-awesome-alerts";
 
 function Cart({
   navigation,
@@ -31,8 +32,10 @@ function Cart({
   addressSend,
   usersData,
   localIndex,
+  loginConfirm,
 }) {
   const notProceed = route.params;
+  const [showAlert, setShowAlert] = useState(false);
 
   let sumPrice = 0;
   cartItem.forEach((item) => {
@@ -40,85 +43,69 @@ function Cart({
   });
 
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          height: 50,
-          flexDirection: "row",
-          backgroundColor: Color.navigationColor,
-          alignItems: "center",
-        }}
-      >
-        <Ionicons
-          style={{ marginLeft: 20, width: 30 }}
-          name="ios-arrow-back"
-          size={24}
-          color="white"
-          onPress={() => navigation.goBack()}
-        />
+    <>
+      <View style={styles.container}>
         <View
           style={{
             height: 50,
-            justifyContent: "center",
+            flexDirection: "row",
+            backgroundColor: Color.navigationColor,
             alignItems: "center",
           }}
         >
-          <Text
+          <Ionicons
+            style={{ marginLeft: 20, width: 30 }}
+            name="ios-arrow-back"
+            size={24}
+            color="white"
+            onPress={() => navigation.goBack()}
+          />
+          <View
             style={{
-              color: "white",
-              fontSize: 13,
-              fontFamily: fonts.ssl,
+              height: 50,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            My Cart {"\n"}
-            {cartItem.length} Items
-          </Text>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 13,
+                fontFamily: fonts.ssl,
+              }}
+            >
+              My Cart {"\n"}
+              {cartItem.length} Items
+            </Text>
+          </View>
         </View>
-      </View>
 
-      <View
-        style={{
-          flex: 1,
-          marginHorizontal: 10,
-        }}
-      >
-        {cartItem.length > 0 ? (
-          <>
-            {notProceed.NotShowTotal === false ||
-            notProceed.NotShowTotal === undefined ? (
-              <View
-                style={{
-                  marginVertical: 10,
-                  height: 90,
-                  backgroundColor: "white",
-                  borderWidth: 0.8,
-                  borderColor: Color.lightgray,
-                  elevation: 1,
-                }}
-              >
+        <View
+          style={{
+            flex: 1,
+            marginHorizontal: 10,
+          }}
+        >
+          {cartItem.length > 0 ? (
+            <>
+              {notProceed.NotShowTotal === false ||
+              notProceed.NotShowTotal === undefined ? (
                 <View
                   style={{
-                    flex: 1,
-                    flexDirection: "row",
                     marginVertical: 10,
-                    marginHorizontal: 10,
+                    height: 90,
+                    backgroundColor: "white",
+                    borderWidth: 0.8,
+                    borderColor: Color.lightgray,
+                    elevation: 1,
                   }}
                 >
-                  <Text
-                    style={{
-                      fontFamily: fonts.ssl,
-                      color: Color.darkishLight,
-                      fontSize: 15,
-                      fontWeight: "700",
-                    }}
-                  >
-                    Sub total
-                  </Text>
                   <View
                     style={{
                       flex: 1,
                       flexDirection: "row",
-                      justifyContent: "flex-end",
+                      marginVertical: 10,
+                      marginHorizontal: 10,
                     }}
                   >
                     <Text
@@ -129,181 +116,219 @@ function Cart({
                         fontWeight: "700",
                       }}
                     >
-                      Rs {sumPrice}
+                      Sub total
                     </Text>
+                    <View
+                      style={{
+                        flex: 1,
+                        flexDirection: "row",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: fonts.ssl,
+                          color: Color.darkishLight,
+                          fontSize: 15,
+                          fontWeight: "700",
+                        }}
+                      >
+                        Rs {sumPrice}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: "row",
-                    marginVertical: 10,
-                    marginHorizontal: 10,
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontFamily: fonts.ssl,
-                      color: Color.darkishLight,
-                      fontSize: 15,
-                    }}
-                  >
-                    Delivery charges
-                  </Text>
                   <View
                     style={{
                       flex: 1,
                       flexDirection: "row",
-                      justifyContent: "flex-end",
+                      marginVertical: 10,
+                      marginHorizontal: 10,
                     }}
                   >
                     <Text
                       style={{
                         fontFamily: fonts.ssl,
-                        color: Color.lightdarkGray,
+                        color: Color.darkishLight,
                         fontSize: 15,
-                        fontWeight: "100",
                       }}
                     >
-                      Rs 100
+                      Delivery charges
                     </Text>
+                    <View
+                      style={{
+                        flex: 1,
+                        flexDirection: "row",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontFamily: fonts.ssl,
+                          color: Color.lightdarkGray,
+                          fontSize: 15,
+                          fontWeight: "100",
+                        }}
+                      >
+                        Rs 100
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-            ) : null}
-            <ScrollView>
-              {cartItem.map((item, key) => (
-                <MyCartComponent
-                  key={key}
-                  positionIndex={key}
-                  id={item.id}
-                  image={item.image}
-                  price={item.price}
-                  prevPrice={item.prevPrice}
-                  description={item.description}
-                  grams={item.quantity}
-                  onPress={() => removeItem(item)}
-                  add={false}
-                />
-              ))}
-            </ScrollView>
-          </>
-        ) : (
-          <View
-            style={{ flex: 1, alignSelf: "center", justifyContent: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: fonts.ssl,
-                fontSize: 18,
-                color: Color.darkishLight,
-                fontWeight: "bold",
-                marginBottom: 10,
-              }}
-            >
-              Cart is empty.
-            </Text>
-          </View>
-        )}
-      </View>
-
-      {notProceed.NotProceedShow === false ||
-      notProceed.NotProceedShow === undefined ? (
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => (
-            sumSubTotal(sumPrice),
-            totalPrice(sumPrice + 100),
-            cartItem.length > 0 && usersData[localIndex] !== undefined
-              ? navigation.navigate(routes.PTC_ADDRESS_TIME)
-              : showMessage({
-                  message:
-                    cartItem.length <= 0
-                      ? "Please add items to cart to proceed!"
-                      : "Please add address to proceed!",
-                  type: "warning",
-                  color: "white",
-                  position: "center",
-                  style: {
-                    borderRadius: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  },
-                  textStyle: {
-                    alignSelf: "center",
-                  },
-                })
-          )}
-        >
-          <View
-            style={{
-              height: 50,
-              flexDirection: "row",
-              backgroundColor: Color.orangeDark,
-              alignItems: "center",
-            }}
-          >
+              ) : null}
+              <ScrollView>
+                {cartItem.map((item, key) => (
+                  <MyCartComponent
+                    key={key}
+                    positionIndex={key}
+                    id={item.id}
+                    image={item.image}
+                    price={item.price}
+                    prevPrice={item.prevPrice}
+                    description={item.description}
+                    grams={item.quantity}
+                    onPress={() => removeItem(item)}
+                    add={false}
+                  />
+                ))}
+              </ScrollView>
+            </>
+          ) : (
             <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                marginVertical: 10,
-                marginHorizontal: 10,
-              }}
+              style={{ flex: 1, alignSelf: "center", justifyContent: "center" }}
             >
               <Text
                 style={{
                   fontFamily: fonts.ssl,
-                  color: "white",
-                  fontSize: 15,
+                  fontSize: 18,
+                  color: Color.darkishLight,
+                  fontWeight: "bold",
+                  marginBottom: 10,
                 }}
               >
-                Proceed To Checkout
+                Cart is empty.
               </Text>
+            </View>
+          )}
+        </View>
+
+        {notProceed.NotProceedShow === false ||
+        notProceed.NotProceedShow === undefined ||
+        usersData[localIndex] !== undefined ? (
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() =>
+              loginConfirm === true
+                ? (sumSubTotal(sumPrice),
+                  totalPrice(sumPrice + 100),
+                  cartItem.length > 0 &&
+                  usersData[localIndex].userAllAddress.length > 0
+                    ? navigation.navigate(routes.PTC_ADDRESS_TIME)
+                    : showMessage({
+                        message:
+                          cartItem.length <= 0
+                            ? "Please add items to cart to proceed!"
+                            : "Please add address to proceed!",
+                        type: "warning",
+                        color: "white",
+                        position: "center",
+                        style: {
+                          borderRadius: 50,
+                          justifyContent: "center",
+                          alignItems: "center",
+                        },
+                        textStyle: {
+                          alignSelf: "center",
+                        },
+                      }))
+                : setShowAlert(true)
+            }
+          >
+            <View
+              style={{
+                height: 50,
+                flexDirection: "row",
+                backgroundColor: Color.orangeDark,
+                alignItems: "center",
+              }}
+            >
               <View
                 style={{
                   flex: 1,
                   flexDirection: "row",
-                  justifyContent: "flex-end",
+                  marginVertical: 10,
+                  marginHorizontal: 10,
                 }}
               >
-                {cartItem.length > 0 ? (
-                  <Text
-                    style={{
-                      fontFamily: fonts.ssl,
-                      color: "white",
-                      fontSize: 15,
-                      fontWeight: "700",
-                      marginRight: 15,
-                    }}
-                  >
-                    Rs {sumPrice + 100}
-                  </Text>
-                ) : (
-                  <Text
-                    style={{
-                      fontFamily: fonts.ssl,
-                      color: "white",
-                      fontSize: 15,
-                      fontWeight: "700",
-                      marginRight: 15,
-                    }}
-                  >
-                    Rs {sumPrice}
-                  </Text>
-                )}
-                <Ionicons
-                  name="ios-arrow-forward"
-                  size={22}
-                  color="white"
-                  style={{ marginRight: 15 }}
-                />
+                <Text
+                  style={{
+                    fontFamily: fonts.ssl,
+                    color: "white",
+                    fontSize: 15,
+                  }}
+                >
+                  Proceed To Checkout
+                </Text>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  {cartItem.length > 0 ? (
+                    <Text
+                      style={{
+                        fontFamily: fonts.ssl,
+                        color: "white",
+                        fontSize: 15,
+                        fontWeight: "700",
+                        marginRight: 15,
+                      }}
+                    >
+                      Rs {sumPrice + 100}
+                    </Text>
+                  ) : (
+                    <Text
+                      style={{
+                        fontFamily: fonts.ssl,
+                        color: "white",
+                        fontSize: 15,
+                        fontWeight: "700",
+                        marginRight: 15,
+                      }}
+                    >
+                      Rs {sumPrice}
+                    </Text>
+                  )}
+                  <Ionicons
+                    name="ios-arrow-forward"
+                    size={22}
+                    color="white"
+                    style={{ marginRight: 15 }}
+                  />
+                </View>
               </View>
             </View>
-          </View>
-        </TouchableOpacity>
-      ) : null}
-    </View>
+          </TouchableOpacity>
+        ) : null}
+      </View>
+      <AwesomeAlert
+        show={showAlert}
+        showProgress={false}
+        title="Please Login."
+        // message="Are you sure ?"
+        closeOnTouchOutside={true}
+        closeOnHardwareBackPress={false}
+        showConfirmButton={true}
+        cancelText="Cancel"
+        confirmText="Okay"
+        confirmButtonColor={Color.orangeDark}
+        onConfirmPressed={() => {
+          setShowAlert(false);
+          navigation.navigate(routes.LOGIN);
+        }}
+      />
+    </>
   );
 }
 const styles = StyleSheet.create({
@@ -321,6 +346,7 @@ const mapStateToProps = (state) => {
     addressSend: state.address,
     usersData: state.usersData,
     localIndex: state.localIndex,
+    loginConfirm: state.loginNow,
   };
 };
 const mapDispatchToProps = (dispatch) => {

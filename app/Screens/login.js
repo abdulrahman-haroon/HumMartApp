@@ -45,12 +45,8 @@ function Login({
   login,
   ordersDetails,
   addressSend,
+  loginConfirmed,
 }) {
-  // console.log(usersData[0].orderDeatilsData[0].cartItem[0].description);
-  // console.log(usersData[0].orderDeatilsData[0].city);
-  // console.log(usersData);
-  // console.log(login);
-
   const handleSubmit = ({ mobileNumber }, action) => {
     {
       addLoginCredentials({
@@ -85,7 +81,8 @@ function Login({
               alignItems: "center",
             },
           }),
-          navigation.navigate(routes.HOME);
+          loginConfirmed(true);
+        navigation.navigate(routes.HOME);
       } else {
         // New user
         storeIndex(innerIncrement);
@@ -111,6 +108,7 @@ function Login({
             alignItems: "center",
           },
         });
+        loginConfirmed(true);
         navigation.navigate(routes.HOME);
         innerIndex();
       }
@@ -237,6 +235,11 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "CHECK",
         check: same,
+      }),
+    loginConfirmed: (confirm) =>
+      dispatch({
+        type: "LOGIN_CONFIRMED",
+        loginConfirmed: confirm,
       }),
     addUserDetails: (allData) =>
       dispatch({

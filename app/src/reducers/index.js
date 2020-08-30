@@ -15,6 +15,7 @@ import globalIndexAuth from "./globalIndexAuth";
 import localIndex from "./localIndex";
 import innerIncrement from "./innerIncrement";
 import sameMobileNo from "./sameMobileNo";
+import loginNow from "./loginNow";
 
 export default combineReducers({
   cartItem,
@@ -32,4 +33,5 @@ export default combineReducers({
   localIndex,
   innerIncrement,
   sameMobileNo,
+  loginNow,
 });
