@@ -35,6 +35,8 @@ function PTC_PlaceOrder({
   checkSame,
   updateUserCompleteData,
   localIndex,
+  currentDate,
+  currentTime,
 }) {
   const [orderId, setOrderId] = useState(
     (Math.round(Math.random() * 10000000000) + 1).toString()
@@ -45,40 +47,7 @@ function PTC_PlaceOrder({
   const [ptcTime, setPtcTime] = useState("");
 
   const [isConfirmed, setIsConfirmed] = useState("No");
-
-  var TimeType;
-  var date = new Date().getDate();
-  var month = new Date().getMonth() + 1;
-  var year = new Date().getFullYear();
-  var hour = new Date().getHours();
-
-  if (hour <= 11) TimeType = "AM";
-  else TimeType = "PM";
-
-  if (hour > 12) hour = hour - 12;
-  if (hour == 0) hour = 12;
-
-  var minutes = new Date().getMinutes();
-  if (minutes < 10) minutes = "0" + minutes.toString();
-
-  var seconds = new Date().getSeconds();
-  if (seconds < 10) seconds = "0" + seconds.toString();
-
-  useEffect(() => {
-    setPtcDate(
-      date.toString() + "-" + month.toString() + "-" + year.toString()
-    );
-    setPtcTime(
-      hour.toString() +
-        ":" +
-        minutes.toString() +
-        ":" +
-        seconds.toString() +
-        " " +
-        TimeType
-    );
-  }, []);
-
+  console.log(currentDate);
   return (
     <>
       <View style={styles.container}>
@@ -167,8 +136,8 @@ function PTC_PlaceOrder({
                       usersData[localIndex].userAllAddress[keySelect].sector,
                     total: Total.totalPrice,
                     subTotal: sTotal.sTotal,
-                    date: ptcDate,
-                    time: ptcTime,
+                    date: currentDate,
+                    time: currentTime,
                     schedule: route.params.dateTime,
                     orderNumber: orderId,
                     cartItem: cartItem,
@@ -218,8 +187,8 @@ function PTC_PlaceOrder({
                 onConfirmation(true),
                 navigation.navigate(routes.MY_ORDERS, {
                   ordersData: true,
-                  date: ptcDate,
-                  time: ptcTime,
+                  date: currentDate,
+                  time: currentTime,
                   schedule: route.params.dateTime,
                 }))
               : showMessage({
@@ -322,6 +291,8 @@ const mapStateToProps = (state) => {
     usersData: state.usersData,
     sameMobileNo: state.sameMobileNo,
     localIndex: state.localIndex,
+    currentDate: state.currentData,
+    currentTime: state.currentTime,
   };
 };
 const mapDispatchToProps = (dispatch) => {

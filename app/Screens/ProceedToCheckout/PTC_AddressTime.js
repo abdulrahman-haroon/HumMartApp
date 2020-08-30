@@ -17,7 +17,14 @@ import AddressSelection from "../AddressSelection";
 
 import { showMessage } from "react-native-flash-message";
 
-function PTC_AddressTime({ navigation, cartItem, dateTime, setDate_Time }) {
+function PTC_AddressTime({
+  navigation,
+  cartItem,
+  dateTime,
+  setDate_Time,
+  currentTime,
+  currentDate,
+}) {
   const [showSelection, setShowSelection] = useState(false);
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -36,7 +43,38 @@ function PTC_AddressTime({ navigation, cartItem, dateTime, setDate_Time }) {
     setDate_Time(date.toString());
     hideDatePicker();
   };
+  var TimeType;
+  var date = new Date().getDate();
+  var month = new Date().getMonth() + 1;
+  var year = new Date().getFullYear();
+  var hour = new Date().getHours();
 
+  if (hour <= 11) TimeType = "AM";
+  else TimeType = "PM";
+
+  if (hour > 12) hour = hour - 12;
+  if (hour == 0) hour = 12;
+
+  var minutes = new Date().getMinutes();
+  if (minutes < 10) minutes = "0" + minutes.toString();
+
+  var seconds = new Date().getSeconds();
+  if (seconds < 10) seconds = "0" + seconds.toString();
+
+  // useEffect(() => {
+  //   setPtcDate(
+  //     date.toString() + "-" + month.toString() + "-" + year.toString()
+  //   );
+  //   setPtcTime(
+  //     hour.toString() +
+  //       ":" +
+  //       minutes.toString() +
+  //       ":" +
+  //       seconds.toString() +
+  //       " " +
+  //       TimeType
+  //   );
+  // }, []);
   return (
     <View style={styles.container}>
       <HeaderNavigation
@@ -163,9 +201,21 @@ function PTC_AddressTime({ navigation, cartItem, dateTime, setDate_Time }) {
         activeOpacity={0.8}
         onPress={() => {
           dateTime != ""
-            ? navigation.navigate(routes.PTC_PLACE_ORDER, {
+            ? (currentDate(
+                date.toString() + "-" + month.toString() + "-" + year.toString()
+              ),
+              currentTime(
+                hour.toString() +
+                  ":" +
+                  minutes.toString() +
+                  ":" +
+                  seconds.toString() +
+                  " " +
+                  TimeType
+              ),
+              navigation.navigate(routes.PTC_PLACE_ORDER, {
                 dateTime: dateData,
-              })
+              }))
             : showMessage({
                 message: "Please select data and time!",
                 type: "warning",
@@ -233,6 +283,16 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "ADD_DATE_TIME",
         dateTime: dateTime,
+      }),
+    currentDate: (date) =>
+      dispatch({
+        type: "CURRENT_Date",
+        date: date,
+      }),
+    currentTime: (time) =>
+      dispatch({
+        type: "CURRENT_TIME",
+        time: time,
       }),
   };
 };

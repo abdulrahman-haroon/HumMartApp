@@ -16,6 +16,8 @@ import localIndex from "./localIndex";
 import innerIncrement from "./innerIncrement";
 import sameMobileNo from "./sameMobileNo";
 import loginNow from "./loginNow";
+import currentData from "./currentData";
+import currentTime from "./currentTime";
 
 export default combineReducers({
   cartItem,
@@ -34,4 +36,6 @@ export default combineReducers({
   innerIncrement,
   sameMobileNo,
   loginNow,
+  currentData,
+  currentTime,
 });
