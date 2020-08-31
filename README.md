@@ -9,13 +9,43 @@ https://github.com/infinitered/apisauce
 
 <h3>NetInfo</h3>
 @react-native-community/netinfo
-https://www.npmjs.com/package/@react-native-community/netinfo
-<h4>-Install:</h4> npm i @react-native-community/netinfo
+https://docs.expo.io/versions/latest/sdk/netinfo/
+<h4>-Install:</h4> expo install @react-native-community/netinfo
 
 # Packages
+<h3>Redux</h3>
+https://redux.js.org/introduction/installation
+<h4>-Install:</h4> npm install redux
+<h4>-Install:</h4> npm install react-redux </br>
+React redux is for the connect between react and redux.
+
+<h3>Formik</h3>
+https://www.npmjs.com/package/formik
+<h4>-Install:</h4>npm i formik
+
+<h3>Yup</h3>
+https://www.npmjs.com/package/yup
+<h4>-Install:</h4>npm i yup </br>
+For validation of forms from formik.
+
 <h3>Navigation</h3>
+https://reactnavigation.org/docs/getting-started/
+<h4>-Install</h4> npm install @react-navigation/native
+<h4>-Install</h4> expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
 <ul>
-  <li>Drawer</li>
+  <li>Drawer</br>
+  https://reactnavigation.org/docs/drawer-navigator</br>
+   <h4>-Install:</h4> npm install @react-navigation/drawer
+  </li>
+  <li>Stack</br>
+  https://reactnavigation.org/docs/stack-navigator</br>
+ <h4>-Install:</h4> npm install @react-navigation/stack
+  </li>
+  <li>Tab</br>
+  https://reactnavigation.org/docs/material-bottom-tab-navigator</br>
+  <h4>-Install:</h4>npm install @react-navigation/material-top-tabs react-native-tab-view
+</li>
 </ul>
 
 <h3>@react-native-modal-datetime-picker</h3>
