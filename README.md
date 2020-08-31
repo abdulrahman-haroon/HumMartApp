@@ -34,16 +34,16 @@ https://reactnavigation.org/docs/getting-started/
 <h4>-Install</h4> expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
 <ul>
-  <li>Drawer</br>
-  https://reactnavigation.org/docs/drawer-navigator</br>
+  <li>Drawer
+  https://reactnavigation.org/docs/drawer-navigator
    <h4>-Install:</h4> npm install @react-navigation/drawer
   </li>
-  <li>Stack</br>
-  https://reactnavigation.org/docs/stack-navigator</br>
+  <li>Stack
+  https://reactnavigation.org/docs/stack-navigator
  <h4>-Install:</h4> npm install @react-navigation/stack
   </li>
-  <li>Tab</br>
-  https://reactnavigation.org/docs/material-bottom-tab-navigator</br>
+  <li>Tab
+  https://reactnavigation.org/docs/material-bottom-tab-navigator
   <h4>-Install:</h4>npm install @react-navigation/material-top-tabs react-native-tab-view
 </li>
 </ul>
