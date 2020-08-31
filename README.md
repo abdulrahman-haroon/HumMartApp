@@ -7,8 +7,16 @@ https://github.com/infinitered/apisauce
 
 <h4>-Install:</h4> npm i apisauce
 
-# Packages
+<h3>NetInfo</h3>
+@react-native-community/netinfo
+https://www.npmjs.com/package/@react-native-community/netinfo
+<h4>-Install:</h4> npm i @react-native-community/netinfo
 
+# Packages
+<h3>Navigation</h3>
+<ul>
+  <li>Drawer</li>
+</ul>
 
 <h3>@react-native-modal-datetime-picker</h3>
 https://www.npmjs.com/package/react-native-modal-datetime-picker
