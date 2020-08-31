@@ -3,6 +3,5 @@ A clone of a grocery shopping app known as HumMart.
 
 # Packages
 <h3>@react-native-community/datetimepicker<h3>
-![example#1](https://user-images.githubusercontent.com/62601444/91692647-26a7dd80-eb83-11ea-8d6d-4e3866725920.gif)
-
-
+![datetimepicker-android](https://user-images.githubusercontent.com/62601444/91693224-222ff480-eb84-11ea-8d35-22af307f9230.gif)
+  https://www.npmjs.com/package/react-native-modal-datetime-picker
