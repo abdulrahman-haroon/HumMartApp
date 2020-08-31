@@ -1,5 +1,5 @@
 # HumMartApp
-A clone of a grocery shopping app known as HumMart.This app is made in react native expo-cli.
+This app is made in react native expo-cli with a backend server Node js with express.
 
 # Backend
 <h3>@Apisauce</h3>
